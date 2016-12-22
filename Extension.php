@@ -5,17 +5,6 @@ if (!defined('BASEPATH')) exit('No direct access allowed');
 class Extension extends \Base_Extension
 {
 
-	public function extensionMeta() {
-		return array(
-			'code'        => 'pages_module',
-			'name'       => 'Pages Links',
-			'description' => 'Allows you to place pages links on any page.',
-			'author'      => 'SamPoyigi',
-			'icon'        => 'fa-files-o',
-			'version'     => '1.2',
-		);
-	}
-
 	public function autoload() {
 	}
 
