@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct access allowed');
 
-class Pages_module extends Base_Component
+class Pages_module extends BaseComponent
 {
 
 	public function index() {
