@@ -5,7 +5,7 @@
   "version": "1.2.0",
   "author": "SamPoyigi",
   "icon": "fa-files-o",
-  "homepage": "https://github.com/igniter-labs/ti-pages-extension",
+  "homepage": "https://github.com/sampoyigi/ti-pages-extension",
   "tags": {
     "1.0.0": "Initial tag of pages extension",
     "1.0.1": "minor fix - extension controller filename case .. etc",
