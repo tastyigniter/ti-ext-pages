@@ -41,7 +41,7 @@ class Extension extends \System\Classes\BaseExtension
     public function registerPermissions()
     {
         return [
-            'Module.Messages' => [
+            'Module.Pages' => [
                 'action'      => ['manage'],
                 'description' => 'Ability to manage local extension settings',
             ],
