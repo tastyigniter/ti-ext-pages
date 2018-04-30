@@ -31,7 +31,7 @@ class Extension extends \System\Classes\BaseExtension
                         'class'      => 'pages',
                         'href'       => admin_url('sampoyigi/pages/pages'),
                         'title'      => lang('admin::default.menu_page'),
-                        'permission' => 'Site.Pages',
+                        'permission' => 'Module.Pages',
                     ],
                 ]
             ],
@@ -42,7 +42,7 @@ class Extension extends \System\Classes\BaseExtension
     {
         return [
             'Module.Pages' => [
-                'action'      => ['manage'],
+                'action'      => ['access', 'manage'],
                 'description' => 'Ability to manage local extension settings',
             ],
         ];
