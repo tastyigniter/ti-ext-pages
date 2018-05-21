@@ -30,7 +30,7 @@ class PageNav extends \System\Classes\BaseComponent
     {
         if (!$this->allPages)
             $this->allPages = Pages_model::select('permalink_slug', 'name', 'navigation')
-                             ->isEnabled()->get();
+                                         ->isEnabled()->get();
 
         return $this->allPages;
     }

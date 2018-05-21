@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'text_title'         => 'Pages',
+    'text_title'           => 'Pages',
     '_text_title'          => 'Pages',
     'text_tab_general'     => 'General',
     'text_component_title' => 'Pages Component',
     'text_component_desc'  => 'Displays a list of pages and links',
 
-    'label_heading' => 'Heading',
+    'label_heading'      => 'Heading',
     'text_new_title'     => 'Page: New',
     'text_edit_title'    => 'Page: Update',
     'text_preview_title' => 'Page: Preview',

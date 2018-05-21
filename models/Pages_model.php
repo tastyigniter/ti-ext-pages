@@ -1,7 +1,5 @@
 <?php namespace SamPoyigi\Pages\Models;
 
-use DB;
-
 /**
  * Pages Model Class
  *
