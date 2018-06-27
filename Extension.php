@@ -1,9 +1,14 @@
 <?php namespace SamPoyigi\Pages;
 
+use Illuminate\Database\Eloquent\Relations\Relation;
+
 class Extension extends \System\Classes\BaseExtension
 {
     public function initialize()
     {
+        Relation::morphMap([
+            'pages' => 'SamPoyigi\Pages\Models\Pages_model',
+        ]);
     }
 
     public function registerComponents()

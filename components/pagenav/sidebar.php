@@ -1,5 +1,5 @@
 <div id="page-box" class="module-box">
-    <div class="panel panel-default">
+    <div class="panel">
         <div class="list-group list-group-responsive">
             <?php foreach ($sidebarPageList as $page) { ?>
                 <a
