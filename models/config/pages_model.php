@@ -15,9 +15,9 @@ $config['list']['filter'] = [
 
 $config['list']['toolbar'] = [
     'buttons' => [
-        'create' => ['label' => 'lang:admin::default.button_new', 'class' => 'btn btn-primary', 'href' => 'sampoyigi/pages/pages/create'],
-        'delete' => ['label' => 'lang:admin::default.button_delete', 'class' => 'btn btn-danger', 'data-request-form' => '#list-form', 'data-request' => 'onDelete', 'data-request-data' => "_method:'DELETE'", 'data-request-confirm' => 'lang:admin::default.alert_warning_confirm'],
-        'filter' => ['label' => 'lang:admin::default.button_icon_filter', 'class' => 'btn btn-default btn-filter', 'data-toggle' => 'list-filter', 'data-target' => '.list-filter'],
+        'create' => ['label' => 'lang:admin::lang.button_new', 'class' => 'btn btn-primary', 'href' => 'sampoyigi/pages/pages/create'],
+        'delete' => ['label' => 'lang:admin::lang.button_delete', 'class' => 'btn btn-danger', 'data-request-form' => '#list-form', 'data-request' => 'onDelete', 'data-request-data' => "_method:'DELETE'", 'data-request-confirm' => 'lang:admin::lang.alert_warning_confirm'],
+        'filter' => ['label' => 'lang:admin::lang.button_icon_filter', 'class' => 'btn btn-default btn-filter', 'data-toggle' => 'list-filter', 'data-target' => '.list-filter'],
     ],
 ];
 
@@ -68,18 +68,18 @@ $config['list']['columns'] = [
 
 $config['form']['toolbar'] = [
     'buttons' => [
-        'save'      => ['label' => 'lang:admin::default.button_save', 'class' => 'btn btn-primary', 'data-request-form' => '#edit-form', 'data-request' => 'onSave'],
+        'save'      => ['label' => 'lang:admin::lang.button_save', 'class' => 'btn btn-primary', 'data-request-form' => '#edit-form', 'data-request' => 'onSave'],
         'saveClose' => [
-            'label'             => 'lang:admin::default.button_save_close',
+            'label'             => 'lang:admin::lang.button_save_close',
             'class'             => 'btn btn-default',
             'data-request'      => 'onSave',
             'data-request-form' => '#edit-form',
             'data-request-data' => 'close:1',
         ],
         'delete'    => [
-            'label'                => 'lang:admin::default.button_icon_delete', 'class' => 'btn btn-danger',
+            'label'                => 'lang:admin::lang.button_icon_delete', 'class' => 'btn btn-danger',
             'data-request-form'    => '#edit-form', 'data-request' => 'onDelete', 'data-request-data' => "_method:'DELETE'",
-            'data-request-confirm' => 'lang:admin::default.alert_warning_confirm', 'context' => ['edit'],
+            'data-request-confirm' => 'lang:admin::lang.alert_warning_confirm', 'context' => ['edit'],
         ],
     ],
 ];
@@ -111,7 +111,7 @@ $config['form']['fields'] = [
         'default' => 'none',
         'comment' => 'lang:sampoyigi.pages::default.help_navigation',
         'options' => [
-            'none'     => 'lang:admin::default.text_none',
+            'none'     => 'lang:admin::lang.text_none',
             'header'   => 'lang:sampoyigi.pages::default.text_header',
             'side_bar' => 'lang:sampoyigi.pages::default.text_side_bar',
             'footer'   => 'lang:sampoyigi.pages::default.text_footer',
@@ -121,7 +121,7 @@ $config['form']['fields'] = [
         'label'        => 'lang:sampoyigi.pages::default.label_language',
         'type'         => 'relation',
         'relationFrom' => 'language',
-        'placeholder'  => 'lang:admin::default.text_please_select',
+        'placeholder'  => 'lang:admin::lang.text_please_select',
     ],
     'meta_description' => [
         'label' => 'lang:sampoyigi.pages::default.label_meta_description',
@@ -134,7 +134,7 @@ $config['form']['fields'] = [
         'span'  => 'right',
     ],
     'status'           => [
-        'label'   => 'lang:admin::default.label_status',
+        'label'   => 'lang:admin::lang.label_status',
         'type'    => 'switch',
         'default' => TRUE,
     ],

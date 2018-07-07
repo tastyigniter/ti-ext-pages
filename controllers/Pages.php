@@ -23,12 +23,12 @@ class Pages extends \Admin\Classes\AdminController
         'name'       => 'lang:sampoyigi.pages::default.text_form_name',
         'model'      => 'SamPoyigi\Pages\Models\Pages_model',
         'create'     => [
-            'title'         => 'lang:admin::default.form.create_title',
+            'title'         => 'lang:admin::lang.form.create_title',
             'redirect'      => 'sampoyigi/pages/pages/edit/{page_id}',
             'redirectClose' => 'pages',
         ],
         'edit'       => [
-            'title'         => 'lang:admin::default.form.edit_title',
+            'title'         => 'lang:admin::lang.form.edit_title',
             'redirect'      => 'sampoyigi/pages/pages/edit/{page_id}',
             'redirectClose' => 'pages',
         ],
@@ -58,7 +58,7 @@ class Pages extends \Admin\Classes\AdminController
         $rules[] = ['meta_keywords', 'lang:sampoyigi.pages::default.label_meta_keywords', 'min:2|max:255'];
         $rules[] = ['layout_id', 'lang:sampoyigi.pages::default.label_layout', 'integer'];
         $rules[] = ['navigation.*', 'lang:sampoyigi.pages::default.label_navigation', 'required'];
-        $rules[] = ['status', 'lang:admin::default.label_status', 'required|integer'];
+        $rules[] = ['status', 'lang:admin::lang.label_status', 'required|integer'];
 
         return $this->validatePasses($form->getSaveData(), $rules);
     }

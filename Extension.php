@@ -36,7 +36,7 @@ class Extension extends \System\Classes\BaseExtension
                         'priority'   => 9,
                         'class'      => 'pages',
                         'href'       => admin_url('sampoyigi/pages/pages'),
-                        'title'      => lang('admin::default.menu_page'),
+                        'title'      => lang('admin::lang.side_menu.page'),
                         'permission' => 'Module.Pages',
                     ],
                 ],
