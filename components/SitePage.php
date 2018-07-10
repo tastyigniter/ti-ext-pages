@@ -10,10 +10,10 @@ class SitePage extends \System\Classes\BaseComponent
     {
         return [
             'slug' => [
-                'title'       => 'rainlab.blog::lang.settings.post_slug',
-                'description' => 'rainlab.blog::lang.settings.post_slug_description',
-                'default'     => '{{ :slug }}',
-                'type'        => 'string',
+                'label'   => 'sampoyigi.pages::default.label_permalink_slug',
+                'comment' => 'sampoyigi.pages::default.help_permalink',
+                'default' => '{{ :slug }}',
+                'type'    => 'text',
             ],
         ];
     }

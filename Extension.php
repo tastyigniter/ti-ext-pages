@@ -21,8 +21,8 @@ class Extension extends \System\Classes\BaseExtension
             ],
             'SamPoyigi\Pages\Components\PageNav'  => [
                 'code'        => 'pageNav',
-                'name'        => 'lang:sampoyigi.pages::default.text_component_title',
-                'description' => 'lang:sampoyigi.pages::default.text_component_desc',
+                'name'        => 'lang:sampoyigi.pages::default.nav.text_component_title',
+                'description' => 'lang:sampoyigi.pages::default.nav.text_component_desc',
             ],
         ];
     }

@@ -5,7 +5,7 @@ return [
     '_text_title'          => 'Pages',
     'text_tab_general'     => 'General',
     'text_component_title' => 'Pages Component',
-    'text_component_desc'  => 'Displays a list of pages and links',
+    'text_component_desc'  => 'Displays a page',
 
     'label_heading'      => 'Heading',
     'text_new_title'     => 'Page: New',
@@ -40,4 +40,9 @@ return [
 
     'help_permalink'  => 'Use ONLY alpha-numeric lowercase characters, underscores or dashes and make sure it is unique GLOBALLY.',
     'help_navigation' => 'Select where to display a link to this page',
+
+    'nav' => [
+        'text_component_title' => 'Pages Nav Component',
+        'text_component_desc'  => 'Displays a list of pages and links',
+    ],
 ];
