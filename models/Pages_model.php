@@ -1,4 +1,4 @@
-<?php namespace SamPoyigi\Pages\Models;
+<?php namespace Igniter\Pages\Models;
 
 use Igniter\Flame\ActivityLog\Traits\LogsActivity;
 

@@ -1,6 +1,8 @@
-<?php
+<?php namespace Igniter\Pages\Database\Migrations;
 
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Schema;
 
 class CreatePagesTable extends Migration
 {
@@ -9,7 +11,7 @@ class CreatePagesTable extends Migration
         if (Schema::hasTable('pages'))
             return;
 
-        Schema::create('pages', function ($table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->integer('page_id', TRUE);
             $table->integer('language_id');

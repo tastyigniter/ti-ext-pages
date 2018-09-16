@@ -1,6 +1,6 @@
-<?php namespace SamPoyigi\Pages\Components;
+<?php namespace Igniter\Pages\Components;
 
-use SamPoyigi\Pages\Models\Pages_model;
+use Igniter\Pages\Models\Pages_model;
 
 class PageNav extends \System\Classes\BaseComponent
 {

@@ -1,6 +1,6 @@
-<?php namespace SamPoyigi\Pages\Components;
+<?php namespace Igniter\Pages\Components;
 
-use SamPoyigi\Pages\Models\Pages_model;
+use Igniter\Pages\Models\Pages_model;
 
 class SitePage extends \System\Classes\BaseComponent
 {
@@ -10,10 +10,10 @@ class SitePage extends \System\Classes\BaseComponent
     {
         return [
             'slug' => [
-                'label'   => 'sampoyigi.pages::default.label_permalink_slug',
-                'comment' => 'sampoyigi.pages::default.help_permalink',
+                'label' => 'igniter.pages::default.label_permalink_slug',
+                'comment' => 'igniter.pages::default.help_permalink',
                 'default' => '{{ :slug }}',
-                'type'    => 'text',
+                'type' => 'text',
             ],
         ];
     }
