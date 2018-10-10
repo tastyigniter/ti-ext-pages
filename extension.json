@@ -1,7 +1,7 @@
 {
   "code": "igniter.pages",
   "name": "Pages",
-  "description": "Allows you to place pages links on any page.",
+  "description": "Allows end users to create and edit dynamic pages with a simple WYSIWYG user interface.",
   "version": "1.2.0-beta.2",
   "author": "SamPoyigi",
   "icon": "fa-files-o",
