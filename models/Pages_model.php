@@ -7,7 +7,7 @@ use Igniter\Flame\ActivityLog\Traits\LogsActivity;
  *
  * @package Admin
  */
-class Pages_model extends \System\models\Pages_model
+class Pages_model extends \System\Models\Pages_model
 {
     use LogsActivity;
 
@@ -22,5 +22,10 @@ class Pages_model extends \System\models\Pages_model
     public function getMessageForEvent($eventName)
     {
         return $eventName.' page <b>:subject.name</b>';
+    }
+
+    public function getMorphClass()
+    {
+        return 'pages';
     }
 }

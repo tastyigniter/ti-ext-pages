@@ -22,7 +22,7 @@ class PageNav extends \System\Classes\BaseComponent
         $this->loadPages();
 
         return $this->allPages->filter(function ($page) use ($navigation) {
-            return in_array($navigation, $page->navigation);
+            return in_array($navigation, (array)$page->navigation);
         });
     }
 
