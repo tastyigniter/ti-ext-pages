@@ -48,7 +48,7 @@ class Extension extends \System\Classes\BaseExtension
     {
         return [
             'Module.Pages' => [
-                'action' => ['access', 'manage'],
+                'group' => 'module',
                 'description' => 'Ability to manage local extension settings',
             ],
         ];
