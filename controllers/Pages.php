@@ -33,7 +33,7 @@ class Pages extends \Admin\Classes\AdminController
             'redirectClose' => 'pages',
         ],
         'delete' => [
-            'redirect' => 'pages',
+            'redirect' => 'igniter/pages/pages',
         ],
         'configFile' => 'pages_model',
     ];
