@@ -14,7 +14,7 @@ class Pages extends \Admin\Classes\AdminController
             'model' => 'Igniter\Pages\Models\Pages_model',
             'title' => 'lang:igniter.pages::default.text_title',
             'emptyMessage' => 'lang:igniter.pages::default.text_empty',
-            'defaultSort' => ['country_name', 'ASC'],
+            'defaultSort' => ['page_id', 'DESC'],
             'configFile' => 'pages_model',
         ],
     ];
