@@ -15,6 +15,13 @@ class Pages_model extends \System\Models\Pages_model
         return html_entity_decode($value);
     }
 
+    public function setTitleAttribute($value)
+    {
+        $this->attributes['title'] = $value;
+        $this->attributes['heading'] = $value;
+        $this->attributes['name'] = $value;
+    }
+
     public function getMorphClass()
     {
         return 'pages';

@@ -20,7 +20,13 @@ class SitePage extends \System\Classes\BaseComponent
 
     public function onRun()
     {
-        $this->page['sitePage'] = $this->loadPage();
+        $this->page['sitePage'] = $sitePage = $this->loadPage();
+
+        if (!$sitePage)
+            return;
+
+        $this->controller->getPage()->title = $sitePage->title;
+        $this->controller->getPage()->description = $sitePage->meta_description;
     }
 
     protected function loadPage()
