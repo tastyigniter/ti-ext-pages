@@ -2,7 +2,7 @@
   "code": "igniter.pages",
   "name": "Pages",
   "description": "Allows end users to create and edit dynamic pages with a simple WYSIWYG user interface.",
-  "version": "v1.2.1",
+  "version": "v1.2.2",
   "author": "SamPoyigi",
   "icon": "fa-files-o",
   "homepage": "https://github.com/tastyigniter/ti-ext-pages"

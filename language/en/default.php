@@ -3,7 +3,8 @@
 return [
     'text_title' => 'Pages',
     '_text_title' => 'Pages',
-    'text_tab_general' => 'General',
+    'text_tab_edit' => 'Edit',
+    'text_tab_manage' => 'Manage',
     'text_component_title' => 'Pages Component',
     'text_component_desc' => 'Displays a page',
 
@@ -19,15 +20,12 @@ return [
     'text_side_bar' => 'Sidebar Nav Menu',
     'text_footer' => 'Footer Nav Menu',
 
-    'column_name' => 'Name',
     'column_preview' => 'Preview',
     'column_language' => 'Language',
     'column_date_updated' => 'Date Updated',
     'column_status' => 'Status',
 
     'label_title' => 'Title',
-    'label_name' => 'Name',
-    'label_heading' => 'Heading',
     'label_permalink_id' => 'Permalink ID',
     'label_permalink_slug' => 'Permalink Slug',
     'label_content' => 'Content',

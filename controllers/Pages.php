@@ -50,13 +50,9 @@ class Pages extends \Admin\Classes\AdminController
     public function formValidate($model, $form)
     {
         $rules[] = ['language_id', 'lang:igniter.pages::default.label_language', 'required|integer'];
-        $rules[] = ['name', 'lang:igniter.pages::default.label_name', 'required|min:2|max:255'];
         $rules[] = ['title', 'lang:igniter.pages::default.label_title', 'required|min:2|max:255'];
         $rules[] = ['permalink_slug', 'lang:igniter.pages::default.label_permalink_slug', 'alpha_dash|max:255'];
         $rules[] = ['content', 'lang:igniter.pages::default.label_content', 'required|min:2'];
-        $rules[] = ['meta_description', 'lang:igniter.pages::default.label_meta_description', 'min:2|max:255'];
-        $rules[] = ['meta_keywords', 'lang:igniter.pages::default.label_meta_keywords', 'min:2|max:255'];
-        $rules[] = ['layout_id', 'lang:igniter.pages::default.label_layout', 'integer'];
         $rules[] = ['navigation.*', 'lang:igniter.pages::default.label_navigation', 'required'];
         $rules[] = ['status', 'lang:admin::lang.label_status', 'required|integer'];
 

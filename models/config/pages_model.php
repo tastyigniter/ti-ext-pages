@@ -40,7 +40,7 @@ $config['list']['columns'] = [
         ],
     ],
     'name' => [
-        'label' => 'lang:igniter.pages::default.column_name',
+        'label' => 'lang:admin::lang.label_name',
         'type' => 'text',
         'searchable' => TRUE,
     ],
@@ -56,7 +56,7 @@ $config['list']['columns'] = [
         'searchable' => TRUE,
     ],
     'status' => [
-        'label' => 'lang:igniter.pages::default.column_status',
+        'label' => 'lang:admin::lang.label_status',
         'type' => 'switch',
     ],
     'page_id' => [
@@ -85,30 +85,30 @@ $config['form']['toolbar'] = [
 ];
 
 $config['form']['fields'] = [
-    'name' => [
-        'label' => 'lang:igniter.pages::default.label_name',
-        'type' => 'text',
-        'span' => 'left',
-    ],
     'title' => [
         'label' => 'lang:igniter.pages::default.label_title',
         'type' => 'text',
-        'span' => 'right',
-    ],
-    'content' => [
-        'label' => 'lang:igniter.pages::default.label_content',
-        'type' => 'richeditor',
-        'cssClass' => 'richeditor-fluid',
+        'span' => 'left',
     ],
     'permalink_slug' => [
         'label' => 'lang:igniter.pages::default.label_permalink_slug',
         'type' => 'text',
-        'comment' => 'lang:igniter.pages::default.help_permalink',
+//        'comment' => 'lang:igniter.pages::default.help_permalink',
+        'span' => 'right',
+    ],
+];
+$config['form']['tabs']['fields'] = [
+    'content' => [
+        'type' => 'richeditor',
+        'tab' => 'lang:igniter.pages::default.text_tab_edit',
+        'cssClass' => 'richeditor-fluid',
     ],
     'navigation' => [
         'label' => 'lang:igniter.pages::default.label_navigation',
         'type' => 'checkbox',
+        'span' => 'left',
         'default' => 'none',
+        'tab' => 'lang:igniter.pages::default.text_tab_manage',
         'comment' => 'lang:igniter.pages::default.help_navigation',
         'options' => [
             'none' => 'lang:admin::lang.text_none',
@@ -120,21 +120,26 @@ $config['form']['fields'] = [
     'language_id' => [
         'label' => 'lang:igniter.pages::default.label_language',
         'type' => 'relation',
+        'span' => 'right',
         'relationFrom' => 'language',
+        'tab' => 'lang:igniter.pages::default.text_tab_manage',
         'placeholder' => 'lang:admin::lang.text_please_select',
     ],
     'meta_description' => [
         'label' => 'lang:igniter.pages::default.label_meta_description',
+        'tab' => 'lang:igniter.pages::default.text_tab_manage',
         'type' => 'textarea',
         'span' => 'left',
     ],
     'meta_keywords' => [
         'label' => 'lang:igniter.pages::default.label_meta_keywords',
+        'tab' => 'lang:igniter.pages::default.text_tab_manage',
         'type' => 'textarea',
         'span' => 'right',
     ],
     'status' => [
         'label' => 'lang:admin::lang.label_status',
+        'tab' => 'lang:igniter.pages::default.text_tab_manage',
         'type' => 'switch',
         'default' => TRUE,
     ],
