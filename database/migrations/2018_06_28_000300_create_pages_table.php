@@ -1,10 +1,9 @@
 <?php namespace Igniter\Pages\Database\Migrations;
 
-use Igniter\Pages\Models\Pages_model;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Schema;
-use System\Models\Languages_model;
 
 class CreatePagesTable extends Migration
 {
@@ -41,12 +40,12 @@ class CreatePagesTable extends Migration
 
     protected function seedPages()
     {
-        if (Pages_model::count())
+        if (DB::table('pages')->count())
             return;
 
-        $language = Languages_model::whereCode('en')->first();
+        $language = DB::table('languages')->where('code', 'en')->first();
 
-        Pages_model::insert([
+        DB::table('pages')->insert([
             [
                 'language_id' => $language->language_id,
                 'name' => 'About Us',
