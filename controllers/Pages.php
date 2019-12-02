@@ -25,12 +25,12 @@ class Pages extends \Admin\Classes\AdminController
         'create' => [
             'title' => 'lang:admin::lang.form.create_title',
             'redirect' => 'igniter/pages/pages/edit/{page_id}',
-            'redirectClose' => 'pages',
+            'redirectClose' => 'igniter/pages/pages',
         ],
         'edit' => [
             'title' => 'lang:admin::lang.form.edit_title',
             'redirect' => 'igniter/pages/pages/edit/{page_id}',
-            'redirectClose' => 'pages',
+            'redirectClose' => 'igniter/pages/pages',
         ],
         'delete' => [
             'redirect' => 'igniter/pages/pages',
