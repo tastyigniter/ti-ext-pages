@@ -6,6 +6,24 @@ class Extension extends \System\Classes\BaseExtension
 {
     public function boot()
     {
+        Event::listen('pages.menuitem.listTypes', function () {
+            return [
+                'static-page' => 'igniter.pages::default.menu.text_static_page',
+                'all-static-pages' => 'igniter.pages::default.menu.text_all_static_pages',
+            ];
+        });
+
+        Event::listen('pages.menuitem.getTypeInfo', function ($type) {
+            if ($type == 'url' OR $type == 'header') return [];
+
+            return StaticPage::getMenuTypeInfo($type);
+        });
+
+        Event::listen('pages.menuitem.resolveItem', function ($item, $url, $theme) {
+            if ($item->type == 'static-page' OR $item->type == 'all-static-pages')
+                return StaticPage::resolveMenuItem($item, $url, $theme);
+        });
+
         Relation::morphMap([
             'pages' => 'Igniter\Pages\Models\Pages_model',
         ]);
@@ -23,6 +41,11 @@ class Extension extends \System\Classes\BaseExtension
                 'code' => 'pageNav',
                 'name' => 'lang:igniter.pages::default.nav.text_component_title',
                 'description' => 'lang:igniter.pages::default.nav.text_component_desc',
+            ],
+            'Igniter\Pages\Components\StaticMenu' => [
+                'code' => 'staticMenu',
+                'name' => 'lang:igniter.pages::default.menu.text_component_title',
+                'description' => 'lang:igniter.pages::default.menu.text_component_desc',
             ],
         ];
     }
@@ -47,9 +70,9 @@ class Extension extends \System\Classes\BaseExtension
     public function registerPermissions()
     {
         return [
-            'Module.Pages' => [
+            'Igniter.PageMenus' => [
                 'group' => 'module',
-                'description' => 'Ability to manage local extension settings',
+                'description' => 'Ability to manage page menus',
             ],
         ];
     }

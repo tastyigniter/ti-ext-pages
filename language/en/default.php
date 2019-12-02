@@ -43,4 +43,27 @@ return [
         'text_component_title' => 'Pages Nav Component',
         'text_component_desc' => 'Displays a list of pages and links',
     ],
+
+    'menu' => [
+        'text_component_title' => 'Static Menu Component',
+        'text_component_desc' => 'Outputs a menu in a layout.',
+        'text_static_page' => 'Static Page',
+        'text_all_static_pages' => 'All Static Pages',
+        'text_menu_items' => 'Menu Items',
+
+        'label_title' => 'Title',
+        'label_type' => 'Type',
+        'label_url' => 'URL',
+        'label_reference' => 'Reference',
+        'label_parent_id' => 'Parent Menu Item',
+        'label_description' => 'Description',
+        'label_code' => 'Code',
+        'label_attributes' => 'Extra HTML Attributes',
+        'label_menu_code' => 'Menu code',
+
+        'button_menus' => '<i class="fa fa-sitemap"></i>&nbsp;Menus',
+
+        'help_reference' => 'Select the page to use for the URL address.',
+        'help_menu_code' => 'Specify a code of the menu the component should output.',
+    ],
 ];

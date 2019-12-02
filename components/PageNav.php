@@ -8,6 +8,7 @@ class PageNav extends \System\Classes\BaseComponent
 
     public function onRun()
     {
+        traceLog('Deprecated component. See staticMenu component.');
         $this->page['activePageId'] = null;
         if (method_exists($this->controller, 'getPage') AND $page = $this->controller->getPage())
             $this->page['activePageId'] = $page->getId();

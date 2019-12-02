@@ -1,6 +1,7 @@
 <?php namespace Igniter\Pages\Controllers;
 
 use AdminMenu;
+use Igniter\Pages\Models\Menu;
 
 class Pages extends \Admin\Classes\AdminController
 {
@@ -45,6 +46,14 @@ class Pages extends \Admin\Classes\AdminController
         parent::__construct();
 
         AdminMenu::setContext('pages', 'design');
+    }
+
+    public function index()
+    {
+        if ($this->getUser()->hasPermission('Igniter.PageMenus.Manage'))
+            Menu::syncAll();
+
+        $this->asExtension('ListController')->index();
     }
 
     public function formValidate($model, $form)
