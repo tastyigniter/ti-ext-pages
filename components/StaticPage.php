@@ -1,17 +1,22 @@
-<?php namespace Igniter\Pages\Components;
+<?php
+
+namespace Igniter\Pages\Components;
 
 use Igniter\Pages\Models\Pages_model;
+use System\Classes\BaseComponent;
 
-class SitePage extends \System\Classes\BaseComponent
+class StaticPage extends BaseComponent
 {
-    public $allPages;
+    /**
+     * @var \Igniter\Pages\Models\Pages_model
+     */
+    protected $staticPage;
 
     public function defineProperties()
     {
         return [
             'slug' => [
                 'label' => 'igniter.pages::default.label_permalink_slug',
-                'comment' => 'igniter.pages::default.help_permalink',
                 'default' => '{{ :slug }}',
                 'type' => 'text',
             ],
@@ -20,14 +25,17 @@ class SitePage extends \System\Classes\BaseComponent
 
     public function onRun()
     {
-        traceLog('Deprecated component. See staticPage component.');
-        $this->page['sitePage'] = $sitePage = $this->loadPage();
+        $this->page['staticPage'] = $this->staticPage = $this->loadPage();
 
-        if (!$sitePage)
-            return;
+        if ($this->staticPage) {
+            $this->page->title = $this->staticPage->title;
+            $this->page->description = $this->staticPage->description;
+        }
+    }
 
-        $this->controller->getPage()->title = $sitePage->title;
-        $this->controller->getPage()->description = $sitePage->meta_description;
+    public function content()
+    {
+        return $this->staticPage ? $this->staticPage->content : '';
     }
 
     protected function loadPage()

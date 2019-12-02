@@ -1,12 +1,11 @@
 <?php
 
 return [
-    'text_title' => 'Pages',
-    '_text_title' => 'Pages',
+    'text_title' => 'Static Pages',
     'text_tab_edit' => 'Edit',
     'text_tab_manage' => 'Manage',
-    'text_component_title' => 'Pages Component',
-    'text_component_desc' => 'Displays a page',
+    'text_component_title' => 'Static Page Component',
+    'text_component_desc' => 'Displays a static page in a layout',
 
     'label_heading' => 'Heading',
     'text_new_title' => 'Page: New',
@@ -16,9 +15,6 @@ return [
     'text_empty' => 'There are no pages available.',
     'text_filter_search' => 'Search by name.',
     'text_filter_status' => 'View all status',
-    'text_header' => 'Header Nav Menu',
-    'text_side_bar' => 'Sidebar Nav Menu',
-    'text_footer' => 'Footer Nav Menu',
 
     'column_preview' => 'Preview',
     'column_language' => 'Language',
@@ -33,15 +29,16 @@ return [
     'label_meta_description' => 'Meta Description',
     'label_meta_keywords' => 'Meta Keywords',
     'label_layout' => 'Layout',
-    'label_navigation' => 'Navigation',
+    'label_navigation' => 'Hide in Navigation',
     'label_status' => 'Status',
 
     'help_permalink' => 'Use ONLY alpha-numeric lowercase characters, underscores or dashes and make sure it is unique GLOBALLY.',
     'help_navigation' => 'Select where to display a link to this page',
+    'help_layout' => 'The layout to use to render this page',
 
     'nav' => [
         'text_component_title' => 'Pages Nav Component',
-        'text_component_desc' => 'Displays a list of pages and links',
+        'text_component_desc' => 'Displays a list of pages',
     ],
 
     'menu' => [

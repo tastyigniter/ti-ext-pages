@@ -1,11 +1,24 @@
 <?php namespace Igniter\Pages;
 
+use Igniter\Pages\Classes\Page as StaticPage;
+use Igniter\Pages\Classes\PageManager;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\Facades\Event;
 
 class Extension extends \System\Classes\BaseExtension
 {
     public function boot()
     {
+        Event::listen('router.beforeRoute', function ($url) {
+            return PageManager::instance()->initPage($url);
+        });
+
+        Event::listen('main.page.beforeRenderPage', function ($controller, $page) {
+            $contents = PageManager::instance()->getPageContents($page);
+            if (strlen($contents))
+                return $contents;
+        });
+
         Event::listen('pages.menuitem.listTypes', function () {
             return [
                 'static-page' => 'igniter.pages::default.menu.text_static_page',
@@ -39,8 +52,13 @@ class Extension extends \System\Classes\BaseExtension
             ],
             'Igniter\Pages\Components\PageNav' => [
                 'code' => 'pageNav',
-                'name' => 'lang:igniter.pages::default.nav.text_component_title',
-                'description' => 'lang:igniter.pages::default.nav.text_component_desc',
+                'name' => 'lang:igniter.pages::default.menu.text_component_title',
+                'description' => 'lang:igniter.pages::default.menu.text_component_desc',
+            ],
+            'Igniter\Pages\Components\StaticPage' => [
+                'code' => 'staticPage',
+                'name' => 'lang:igniter.pages::default.text_component_title',
+                'description' => 'lang:igniter.pages::default.text_component_desc',
             ],
             'Igniter\Pages\Components\StaticMenu' => [
                 'code' => 'staticMenu',
@@ -56,7 +74,7 @@ class Extension extends \System\Classes\BaseExtension
             'design' => [
                 'child' => [
                     'pages' => [
-                        'priority' => 9,
+                        'priority' => 15,
                         'class' => 'pages',
                         'href' => admin_url('igniter/pages/pages'),
                         'title' => lang('admin::lang.side_menu.page'),

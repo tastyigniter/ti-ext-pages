@@ -1,7 +1,7 @@
 {
   "code": "igniter.pages",
-  "name": "Pages",
-  "description": "Allows end users to create and edit dynamic pages with a simple WYSIWYG user interface.",
+  "name": "Static Pages",
+  "description": "Provides static pages and navigation menus for your TastyIgniter application.",
   "version": "v1.2.2",
   "author": "SamPoyigi",
   "icon": "fa-files-o",

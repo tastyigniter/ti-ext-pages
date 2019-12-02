@@ -40,8 +40,8 @@ $config['list']['columns'] = [
             'target' => '_blank',
         ],
     ],
-    'name' => [
-        'label' => 'lang:admin::lang.label_name',
+    'title' => [
+        'label' => 'lang:igniter.pages::default.label_title',
         'type' => 'text',
         'searchable' => TRUE,
     ],
@@ -104,19 +104,11 @@ $config['form']['tabs']['fields'] = [
         'tab' => 'lang:igniter.pages::default.text_tab_edit',
         'cssClass' => 'richeditor-fluid',
     ],
-    'navigation' => [
-        'label' => 'lang:igniter.pages::default.label_navigation',
-        'type' => 'checkbox',
+    'layout' => [
+        'label' => 'lang:igniter.pages::default.label_layout',
+        'type' => 'select',
         'span' => 'left',
-        'default' => 'none',
         'tab' => 'lang:igniter.pages::default.text_tab_manage',
-        'comment' => 'lang:igniter.pages::default.help_navigation',
-        'options' => [
-            'none' => 'lang:admin::lang.text_none',
-            'header' => 'lang:igniter.pages::default.text_header',
-            'side_bar' => 'lang:igniter.pages::default.text_side_bar',
-            'footer' => 'lang:igniter.pages::default.text_footer',
-        ],
     ],
     'language_id' => [
         'label' => 'lang:igniter.pages::default.label_language',
@@ -138,10 +130,18 @@ $config['form']['tabs']['fields'] = [
         'type' => 'textarea',
         'span' => 'right',
     ],
+    'metadata[navigation_hidden]' => [
+        'label' => 'lang:igniter.pages::default.label_navigation',
+        'tab' => 'lang:igniter.pages::default.text_tab_manage',
+        'type' => 'switch',
+        'span' => 'left',
+        'default' => FALSE,
+    ],
     'status' => [
         'label' => 'lang:admin::lang.label_status',
         'tab' => 'lang:igniter.pages::default.text_tab_manage',
         'type' => 'switch',
+        'span' => 'right',
         'default' => TRUE,
     ],
 ];
