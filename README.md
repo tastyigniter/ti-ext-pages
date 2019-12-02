@@ -1,55 +1,67 @@
-This TastyIgniter extension allows end users to create and edit dynamic pages with a simple WYSIWYG user interface.
+This TastyIgniter extension allows end users to manage static pages and menus with a simple WYSIWYG user interface.
+
+This extension currently includes two components: Static Page and Static Menu.
 
 ### Admin Panel
-In the admin user interface you can create, edit or delete pages. 
 
-### How to use the Pages Component
+In the admin user interface you can create, edit or delete pages and menus. 
 
-**Example**
+### Usage
 
+The first thing we have to do is create the layout that will host all pages of the website. 
+
+```php+HTML
+---
+description: Static layout for static pages
+
+'[staticPage]':
+
+'[staticMenu]':
+    code: main-menu
+---
+<html>
+    <head>
+        <title><?= $this->page->title; ?></title>
+    </head>
+    <body>
+        <?= component('staticMenu'); ?>
+        <?= page(); ?>
+    </body>
+</html>
 ```
----
-title: Site Pages
-permalink: /pages/:slug
 
-'[sitePage]':
-    slug: ':slug'
-    
-'[pageNav]':
----
-<?
-function onEnd()
-{
-    $this->title = $this['sitePage'] ? $this['sitePage']->title : $this->title;
-}
-?>
----
-...
-<?= component('sitePage'); ?>
-...
-```
+Includes the staticPage and staticMenu component to the layout. The staticMenu component has the `code` property that should correspond to a code of the static menu to display. 
 
-**Example of displaying the page navigation sidebar**
-```            
-<?= partial('pageNav::sidebar'); ?>
-``` 
+The static menu component injects the `menuItems` page variable. The `menuItems` variable is an array of objects. Each object has the following properties:
 
-**Example of displaying the page navigation links**
+- `title` - specifies the menu item title.
+- `url` - specifies the absolute menu item URL.
+- `isActive` - indicates whether the item corresponds to a page currently being viewed.
+- `isChildActive` - indicates whether the item contains an active subitem.
+- `extraAttributes` - specifies the menu item extra HTML attributes
+- `items` - an array of the menu item subitems, if any. If there are no subitems, the array is empty 
 
-The pageNav component provides the following variables on the page its loaded.
-
-`$headerPageList`: Contains an array of pages with header navigation selected.
-`$footerPageList`: Contains an array of pages with footer navigation selected.
-
-```            
-<?php if (!empty($headerPageList)) foreach ($headerPageList as $page) { ?>
-    <li class="nav-item">
-        <a class="nav-link"
-           href="<?= page_url('pages', ['slug' => $page->permalink_slug]); ?>"
-        ><?= $page->name; ?></a>
-    </li>
+```php+HTML
+<?php foreach ($menuItems as $item) { ?>
+   <li><a href="<?= $item->url; ?>"><?= $item->title; ?></a></li>
 <?php } ?>
-``` 
+```
+
+
+
+**Setting the active menu item explicitly**
+
+You may want to tag a particular menu item explicitly as active in some cases. You can do that in the `onInit()` function of the page, by assigning a value to the `activeMenuItem` page variable matching the menu item code that you want to activate. In the Edit Menu Item popup, menu item codes are managed. 
+
+```php
+function onInit()
+{
+    $this['activeMenuItem'] = 'about-us';
+}	
+```
+
+
 
 ### License
+
 [The MIT License (MIT)](https://tastyigniter.com/licence/)
