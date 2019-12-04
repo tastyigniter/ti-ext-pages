@@ -2,8 +2,12 @@
   "code": "igniter.pages",
   "name": "Static Pages",
   "description": "Provides static pages and navigation menus for your TastyIgniter application.",
-  "version": "v1.2.2",
+  "version": "v1.3.0",
   "author": "SamPoyigi",
-  "icon": "fa-files-o",
+  "icon": {
+    "class": "fa fa-files-o",
+    "color": "#664500",
+    "backgroundColor": "#FECC4D"
+  },
   "homepage": "https://github.com/tastyigniter/ti-ext-pages"
 }

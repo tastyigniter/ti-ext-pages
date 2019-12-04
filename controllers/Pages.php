@@ -39,7 +39,7 @@ class Pages extends \Admin\Classes\AdminController
         'configFile' => 'pages_model',
     ];
 
-    protected $requiredPermissions = 'Site.Pages';
+    protected $requiredPermissions = 'Igniter.Pages.*';
 
     public function __construct()
     {

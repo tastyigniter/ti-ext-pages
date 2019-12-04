@@ -20,7 +20,7 @@ class Menus extends \Admin\Classes\AdminController
     public $listConfig = [
         'list' => [
             'model' => 'Igniter\Pages\Models\Menu',
-            'title' => 'Menus',
+            'title' => 'Static Menus',
             'emptyMessage' => 'lang:admin::lang.list.text_empty',
             'defaultSort' => ['id', 'DESC'],
             'configFile' => 'menu',
@@ -28,7 +28,7 @@ class Menus extends \Admin\Classes\AdminController
     ];
 
     public $formConfig = [
-        'name' => 'Menus',
+        'name' => 'Static Menu',
         'model' => 'Igniter\Pages\Models\Menu',
         'create' => [
             'title' => 'lang:admin::lang.form.create_title',
@@ -50,7 +50,7 @@ class Menus extends \Admin\Classes\AdminController
         'configFile' => 'menu',
     ];
 
-    protected $requiredPermissions = 'Igniter.PageMenus';
+    protected $requiredPermissions = 'Igniter.Pages.*';
 
     public function __construct()
     {

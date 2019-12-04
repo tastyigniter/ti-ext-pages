@@ -58,7 +58,7 @@ return [
         'label_attributes' => 'Extra HTML Attributes',
         'label_menu_code' => 'Menu code',
 
-        'button_menus' => '<i class="fa fa-sitemap"></i>&nbsp;Menus',
+        'button_menus' => '<i class="fa fa-sitemap"></i>&nbsp;Static Menus',
 
         'help_reference' => 'Select the page to use for the URL address.',
         'help_menu_code' => 'Specify a code of the menu the component should output.',

@@ -22,14 +22,14 @@ class StaticMenu extends BaseComponent
     {
         return [
             'code' => [
-                'title' => 'igniter.pages::default.label_menu_code',
-                'description' => 'igniter.pages::default.help_menu_code',
-                'type' => 'dropdown',
+                'label' => 'igniter.pages::default.menu.label_menu_code',
+                'description' => 'igniter.pages::default.menu.help_menu_code',
+                'type' => 'select',
             ],
         ];
     }
 
-    public function getCodeOptions()
+    public static function getCodeOptions()
     {
         return Menu::lists('name', 'code')->all();
     }

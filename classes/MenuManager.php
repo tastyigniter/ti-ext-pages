@@ -29,7 +29,7 @@ class MenuManager
         $menus = [];
         $themes = Themes_model::get();
         foreach ($themes as $theme) {
-            $files = File::glob($configPath = $theme->themeClass->getPath().'/_meta/menus/*.php');
+            $files = File::glob($configPath = $theme->getTheme()->getPath().'/_meta/menus/*.php');
             foreach ($files as $file) {
                 $config = File::getRequire($file);
                 $menus[] = [
@@ -109,7 +109,7 @@ class MenuManager
 
     protected function resolveItem($menu, $item, $parentReference, $currentUrl, $activeMenuItem)
     {
-        $response = Event::fire('pages.menuitem.resolveItem', [$item, $currentUrl, $menu->theme->themeClass]);
+        $response = Event::fire('pages.menuitem.resolveItem', [$item, $currentUrl, $menu->theme->getTheme()]);
 
         if (is_array($response)) {
             foreach ($response as $itemInfo) {
@@ -153,5 +153,4 @@ class MenuManager
 
         return $parentReference;
     }
-
 }

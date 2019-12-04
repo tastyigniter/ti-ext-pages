@@ -45,16 +45,6 @@ class Extension extends \System\Classes\BaseExtension
     public function registerComponents()
     {
         return [
-            'Igniter\Pages\Components\SitePage' => [
-                'code' => 'sitePage',
-                'name' => 'lang:igniter.pages::default.text_component_title',
-                'description' => 'lang:igniter.pages::default.text_component_desc',
-            ],
-            'Igniter\Pages\Components\PageNav' => [
-                'code' => 'pageNav',
-                'name' => 'lang:igniter.pages::default.menu.text_component_title',
-                'description' => 'lang:igniter.pages::default.menu.text_component_desc',
-            ],
             'Igniter\Pages\Components\StaticPage' => [
                 'code' => 'staticPage',
                 'name' => 'lang:igniter.pages::default.text_component_title',
@@ -78,7 +68,7 @@ class Extension extends \System\Classes\BaseExtension
                         'class' => 'pages',
                         'href' => admin_url('igniter/pages/pages'),
                         'title' => lang('admin::lang.side_menu.page'),
-                        'permission' => 'Module.Pages',
+                        'permission' => 'Igniter.Pages.*',
                     ],
                 ],
             ],
@@ -88,9 +78,9 @@ class Extension extends \System\Classes\BaseExtension
     public function registerPermissions()
     {
         return [
-            'Igniter.PageMenus' => [
+            'Igniter.Pages.Manage' => [
                 'group' => 'module',
-                'description' => 'Ability to manage page menus',
+                'description' => 'Create, modify and delete front-end pages and menus',
             ],
         ];
     }
