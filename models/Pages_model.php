@@ -11,6 +11,8 @@ class Pages_model extends \System\Models\Pages_model
 {
     use Sortable;
 
+    const SORT_ORDER = 'priority';
+
     public function getLayoutOptions()
     {
         $result = [];

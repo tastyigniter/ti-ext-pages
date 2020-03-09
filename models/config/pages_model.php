@@ -36,7 +36,7 @@ $config['list']['columns'] = [
         'iconCssClass' => 'fa fa-eye',
         'attributes' => [
             'class' => 'btn btn-outline-info',
-            'href' => root_url('pages/{permalink_slug}'),
+            'href' => root_url('{permalink_slug}'),
             'target' => '_blank',
         ],
     ],
@@ -51,17 +51,17 @@ $config['list']['columns'] = [
         'select' => 'name',
         'searchable' => TRUE,
     ],
-    'date_updated' => [
-        'label' => 'lang:igniter.pages::default.column_date_updated',
-        'type' => 'datesince',
-        'searchable' => TRUE,
-    ],
     'status' => [
         'label' => 'lang:admin::lang.label_status',
         'type' => 'switch',
     ],
+    'date_updated' => [
+        'label' => 'lang:igniter.pages::default.column_date_updated',
+        'type' => 'timetense',
+        'searchable' => TRUE,
+    ],
     'page_id' => [
-        'label' => 'lang:igniter.pages::default.column_id',
+        'label' => 'lang:admin::lang.column_id',
         'invisible' => TRUE,
     ],
 
