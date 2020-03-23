@@ -18,6 +18,8 @@ class StaticMenu extends BaseComponent
      */
     protected $menuItems;
 
+    protected static $menuCache;
+
     public function defineProperties()
     {
         return [
@@ -68,6 +70,12 @@ class StaticMenu extends BaseComponent
      */
     protected function getMenu()
     {
-        return Menu::whereCode($this->property('code'))->first();
+        $code = $this->property('code');
+        if (isset(self::$menuCache[$code]))
+            return self::$menuCache[$code];
+
+        $menu = Menu::whereCode($code)->first();
+
+        return self::$menuCache[$code] = $menu;
     }
 }

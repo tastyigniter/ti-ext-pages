@@ -14,6 +14,8 @@ class MenuManager
 {
     use Singleton;
 
+    protected static $themesCache;
+
     protected $defaultMenuItem = [
         'code' => null,
         'title' => null,
@@ -109,7 +111,9 @@ class MenuManager
 
     protected function resolveItem($menu, $item, $parentReference, $currentUrl, $activeMenuItem)
     {
-        $response = Event::fire('pages.menuitem.resolveItem', [$item, $currentUrl, $menu->theme->getTheme()]);
+        $theme = $this->getThemeFromMenu($menu);
+
+        $response = Event::fire('pages.menuitem.resolveItem', [$item, $currentUrl, $theme]);
 
         if (is_array($response)) {
             foreach ($response as $itemInfo) {
@@ -152,5 +156,14 @@ class MenuManager
         }
 
         return $parentReference;
+    }
+
+    protected function getThemeFromMenu($menu)
+    {
+        $code = $menu->theme_code;
+        if (isset(self::$themesCache[$code]))
+            return self::$themesCache[$code];
+
+        return self::$themesCache[$code] = $menu->theme->getTheme();
     }
 }

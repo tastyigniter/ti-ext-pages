@@ -107,6 +107,7 @@ $config['form']['fields'] = [
         'span' => 'right',
     ],
 ];
+
 $config['form']['tabs']['fields'] = [
     'content' => [
         'type' => 'richeditor',

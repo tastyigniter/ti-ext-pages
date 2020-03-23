@@ -4,7 +4,7 @@
             <?php foreach ($sidebarPageList as $page) { ?>
                 <a
                     class="list-group-item <?= ($activePageId == $page->page_id) ? 'active' : ''; ?>"
-                    href="<?= site_url('pages', ['slug' => $page->permalink_slug]); ?>"
+                    href="<?= site_url($page->permalink_slug); ?>"
                 >
                     <i class="fa fa-angle-right"></i>
                     <?= $page->name; ?>
