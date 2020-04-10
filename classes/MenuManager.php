@@ -29,7 +29,7 @@ class MenuManager
     public function getMenusConfig()
     {
         $menus = [];
-        $themes = Themes_model::get();
+        $themes = Themes_model::isEnabled()->get();
         foreach ($themes as $theme) {
             $files = File::glob($configPath = $theme->getTheme()->getPath().'/_meta/menus/*.php');
             foreach ($files as $file) {
