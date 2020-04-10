@@ -16,13 +16,22 @@ class AlterColumnsOnPagesTable extends Migration
             $table->dropColumn('layout_id');
             $table->string('layout')->nullable();
 
-            $table->dropColumn('navigation');
             $table->mediumText('metadata')->nullable();
 
             $table->integer('priority')->nullable();
         });
 
         DB::table('pages')->update(['layout' => 'static']);
+        DB::table('pages')->get()->each(function ($model) {
+            $navigation = @unserialize($model->navigation) ?: [];
+            DB::table('pages')->where('page_id', $model->page_id)->update([
+                'metadata' => json_encode(['navigation' => empty($navigation) ? '0' : '1']),
+            ]);
+        });
+
+        Schema::table('pages', function (Blueprint $table) {
+            $table->dropColumn('navigation');
+        });
     }
 
     public function down()

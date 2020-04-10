@@ -65,7 +65,6 @@ class CreatePagesTable extends Migration
                 'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 'meta_description' => '',
                 'meta_keywords' => '',
-                'metadata' => '{"navigation_hidden":"1"}',
                 'date_added' => $now,
                 'date_updated' => $now,
                 'status' => 1,
