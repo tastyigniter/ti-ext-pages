@@ -3,6 +3,7 @@
 namespace Igniter\Pages\Models;
 
 use Igniter\Flame\Database\Traits\NestedTree;
+use Igniter\Flame\Database\Traits\Sortable;
 use Igniter\Flame\Database\Traits\Validation;
 use Illuminate\Support\Facades\Event;
 use Model;
@@ -12,8 +13,11 @@ use Model;
  */
 class MenuItem extends Model
 {
+    use Sortable;
     use NestedTree;
     use Validation;
+
+    const SORT_ORDER = 'priority';
 
     public $table = 'igniter_pages_menu_items';
 

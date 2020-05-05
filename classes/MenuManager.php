@@ -82,7 +82,7 @@ class MenuManager
             return $result;
         };
 
-        $items = $iterator($menu->items()->get()->toTree());
+        $items = $iterator($menu->items()->sorted()->get()->toTree());
 
         $hasActiveChild = function ($items) use (&$hasActiveChild) {
             foreach ($items as $item) {
