@@ -55,7 +55,7 @@ $config['list']['columns'] = [
         'type' => 'switch',
     ],
     'date_updated' => [
-        'label' => 'lang:igniter.pages::default.column_date_updated',
+        'label' => 'lang:admin::lang.column_date_updated',
         'type' => 'timetense',
         'searchable' => TRUE,
     ],

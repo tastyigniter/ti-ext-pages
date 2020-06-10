@@ -18,7 +18,6 @@ return [
 
     'column_preview' => 'Preview',
     'column_language' => 'Language',
-    'column_date_updated' => 'Date Updated',
     'column_status' => 'Status',
 
     'label_title' => 'Title',
