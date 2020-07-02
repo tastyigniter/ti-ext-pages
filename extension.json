@@ -2,7 +2,7 @@
   "code": "igniter.pages",
   "name": "Static Pages",
   "description": "Provides static pages and navigation menus for your TastyIgniter application.",
-  "version": "v1.3.3",
+  "version": "v1.3.4",
   "author": "SamPoyigi",
   "icon": {
     "class": "fa fa-files-o",
