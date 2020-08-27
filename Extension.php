@@ -1,4 +1,6 @@
-<?php namespace Igniter\Pages;
+<?php
+
+namespace Igniter\Pages;
 
 use Igniter\Pages\Classes\Page as StaticPage;
 use Igniter\Pages\Classes\PageManager;

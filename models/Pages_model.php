@@ -1,4 +1,6 @@
-<?php namespace Igniter\Pages\Models;
+<?php
+
+namespace Igniter\Pages\Models;
 
 use Igniter\Flame\Database\Traits\Sortable;
 use Main\Classes\ThemeManager;

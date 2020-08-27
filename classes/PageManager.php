@@ -1,4 +1,6 @@
-<?php namespace Igniter\Pages\Classes;
+<?php
+
+namespace Igniter\Pages\Classes;
 
 use Igniter\Flame\Exception\ApplicationException;
 use Igniter\Flame\Support\RouterHelper;

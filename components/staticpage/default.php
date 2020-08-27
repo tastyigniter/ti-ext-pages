@@ -1,1 +1,1 @@
-<?= $__SELF__->content; ?>
+<?= $__SELF__->content;
