@@ -1,4 +1,6 @@
-<?php namespace Igniter\Pages\Components;
+<?php
+
+namespace Igniter\Pages\Components;
 
 use Igniter\Pages\Models\Pages_model;
 

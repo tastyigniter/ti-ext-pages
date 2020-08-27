@@ -1,4 +1,6 @@
-<?php namespace Igniter\Pages\Database\Migrations;
+<?php
+
+namespace Igniter\Pages\Database\Migrations;
 
 use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
