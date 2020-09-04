@@ -2,7 +2,6 @@
 
 return [
     'list' => [
-        'filter' => [],
         'toolbar' => [
             'buttons' => [
                 'back' => [
