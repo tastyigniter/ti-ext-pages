@@ -47,7 +47,7 @@ class StaticMenu extends BaseComponent
             return $this->menuItems;
 
         if (!strlen($code = $this->property('code')))
-            return;
+            return [];
 
         if ($menu = $this->getMenu()) {
             $this->menuName = $menu->name;
