@@ -14,7 +14,6 @@ return [
     'text_form_name' => 'Page',
     'text_empty' => 'There are no pages available.',
     'text_filter_search' => 'Search by name.',
-    'text_filter_status' => 'View all status',
 
     'column_preview' => 'Preview',
     'column_language' => 'Language',
