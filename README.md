@@ -21,11 +21,11 @@ description: Static layout for static pages
 ---
 <html>
     <head>
-        <title><?= $this->page->title; ?></title>
+        <title>{{ $this->page->title }}</title>
     </head>
     <body>
-        <?= component('staticMenu'); ?>
-        <?= page(); ?>
+        @component('staticMenu')
+        {!! page() !!}
     </body>
 </html>
 ```
@@ -42,9 +42,9 @@ The static menu component injects the `menuItems` page variable. The `menuItems`
 - `items` - an array of the menu item subitems, if any. If there are no subitems, the array is empty 
 
 ```php+HTML
-<?php foreach ($menuItems as $item) { ?>
-   <li><a href="<?= $item->url; ?>"><?= $item->title; ?></a></li>
-<?php } ?>
+@foreach ($menuItems as $item)
+   <li><a href="{{ $item->url }}">{{ $item->title }}</a></li>
+@endforeach
 ```
 
 
