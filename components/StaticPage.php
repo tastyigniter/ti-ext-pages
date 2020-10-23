@@ -19,6 +19,7 @@ class StaticPage extends BaseComponent
                 'label' => 'igniter.pages::default.label_permalink_slug',
                 'default' => '{{ :slug }}',
                 'type' => 'text',
+                'validationRule' => 'required|string',
             ],
         ];
     }

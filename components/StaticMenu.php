@@ -27,6 +27,7 @@ class StaticMenu extends BaseComponent
                 'label' => 'igniter.pages::default.menu.label_menu_code',
                 'description' => 'igniter.pages::default.menu.help_menu_code',
                 'type' => 'select',
+                'validationRule' => 'required|alpha_dash',
             ],
         ];
     }
