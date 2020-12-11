@@ -35,7 +35,7 @@ class MenuItem extends Model
 
     public $timestamps = TRUE;
 
-    public $casts = [
+    protected $casts = [
         'parent_id' => 'integer',
         'config' => 'array',
     ];
