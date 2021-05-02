@@ -34,11 +34,13 @@ class Menus extends \Admin\Classes\AdminController
             'title' => 'lang:admin::lang.form.create_title',
             'redirect' => 'igniter/pages/menus/edit/{id}',
             'redirectClose' => 'igniter/pages/menus',
+            'redirectNew' => 'igniter/pages/menus/create',
         ],
         'edit' => [
             'title' => 'lang:admin::lang.form.edit_title',
             'redirect' => 'igniter/pages/menus/edit/{id}',
             'redirectClose' => 'igniter/pages/menus',
+            'redirectNew' => 'igniter/pages/menus/create',
         ],
         'preview' => [
             'title' => 'lang:admin::lang.form.preview_title',

@@ -52,16 +52,11 @@ return [
                 ],
                 'save' => [
                     'label' => 'lang:admin::lang.button_save',
+                    'context' => ['create', 'edit'],
+                    'partial' => 'form/toolbar_button',
                     'class' => 'btn btn-primary',
                     'data-request' => 'onSave',
-                    'data-progress-indicator' => 'lang:admin::lang.text_saving',
-                ],
-                'saveClose' => [
-                    'label' => 'lang:admin::lang.button_save_close',
-                    'class' => 'btn btn-default',
-                    'data-request' => 'onSave',
-                    'data-request-data' => 'close:1',
-                    'data-progress-indicator' => 'lang:admin::lang.text_saving',
+                    'data-progress-indicator' => 'admin::lang.text_saving',
                 ],
                 'delete' => [
                     'label' => 'lang:admin::lang.button_icon_delete', 'class' => 'btn btn-danger',
