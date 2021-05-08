@@ -4,6 +4,7 @@ namespace Igniter\Pages;
 
 use Igniter\Pages\Classes\Page as StaticPage;
 use Igniter\Pages\Classes\PageManager;
+use Igniter\Pages\Models\Menu;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Event;
 
@@ -11,6 +12,10 @@ class Extension extends \System\Classes\BaseExtension
 {
     public function boot()
     {
+        Event::listen('main.theme.activated', function () {
+            Menu::syncAll();
+        });
+
         Event::listen('router.beforeRoute', function ($url) {
             return PageManager::instance()->initPage($url);
         });
