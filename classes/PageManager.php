@@ -75,8 +75,8 @@ class PageManager
         $page->settings['id'] = str_replace('/', '-', $staticPage->permalink_slug);
         $page->settings['title'] = $staticPage->title;
         $page->settings['layout'] = $staticPage->layout ?? 'static';
-        $page->settings['meta_description'] = $staticPage->meta_description;
-        $page->settings['meta_keywords'] = $staticPage->meta_keywords;
+        $page->settings['description'] = $staticPage->meta_description;
+        $page->settings['keywords'] = $staticPage->meta_keywords;
         $page->settings['is_hidden'] = !(bool)$staticPage->status;
     }
 
