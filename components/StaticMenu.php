@@ -75,7 +75,7 @@ class StaticMenu extends BaseComponent
         if (isset(self::$menuCache[$code]))
             return self::$menuCache[$code];
 
-        $menu = Menu::whereCode($code)->first();
+        $menu = Menu::with(['items'])->whereCode($code)->first();
 
         return self::$menuCache[$code] = $menu;
     }
