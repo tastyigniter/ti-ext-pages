@@ -2,9 +2,9 @@
 
 namespace Igniter\Pages\Models;
 
+use Igniter\Flame\Database\Model;
 use Igniter\Flame\Database\Traits\Purgeable;
 use Igniter\Pages\Classes\MenuManager;
-use Model;
 use System\Models\Themes_model;
 
 /**

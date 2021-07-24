@@ -2,11 +2,11 @@
 
 namespace Igniter\Pages\Models;
 
+use Igniter\Flame\Database\Model;
 use Igniter\Flame\Database\Traits\NestedTree;
 use Igniter\Flame\Database\Traits\Sortable;
 use Igniter\Flame\Database\Traits\Validation;
 use Illuminate\Support\Facades\Event;
-use Model;
 
 /**
  * MenuItem Model

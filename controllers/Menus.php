@@ -2,7 +2,7 @@
 
 namespace Igniter\Pages\Controllers;
 
-use AdminMenu;
+use Admin\Facades\AdminMenu;
 use Igniter\Pages\Models\Menu;
 use Igniter\Pages\Models\MenuItem;
 use Illuminate\Support\Facades\Request;

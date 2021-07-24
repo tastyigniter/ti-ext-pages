@@ -2,7 +2,7 @@
 
 namespace Igniter\Pages\Controllers;
 
-use AdminMenu;
+use Admin\Facades\AdminMenu;
 use Igniter\Pages\Models\Menu;
 
 class Pages extends \Admin\Classes\AdminController
