@@ -51,6 +51,7 @@ class CreatePagesTable extends Migration
         DB::table('pages')->insert([
             [
                 'language_id' => $language->language_id,
+                'name' => 'About Us',
                 'title' => 'About Us',
                 'permalink_slug' => 'about-us',
                 'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -62,6 +63,7 @@ class CreatePagesTable extends Migration
             ],
             [
                 'language_id' => $language->language_id,
+                'name' => 'Policy',
                 'title' => 'Policy',
                 'permalink_slug' => 'policy',
                 'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -73,6 +75,7 @@ class CreatePagesTable extends Migration
             ],
             [
                 'language_id' => $language->language_id,
+                'name' => 'Terms and Conditions',
                 'title' => 'Terms and Conditions',
                 'permalink_slug' => 'terms-and-conditions',
                 'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
