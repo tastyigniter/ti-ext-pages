@@ -48,6 +48,7 @@ return [
 
         'label_title' => 'Title',
         'label_type' => 'Type',
+        'label_theme' => 'Theme',
         'label_url' => 'URL',
         'label_reference' => 'Reference',
         'label_parent_id' => 'Parent Menu Item',

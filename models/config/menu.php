@@ -40,6 +40,10 @@ return [
             'code' => [
                 'label' => 'igniter.pages::default.menu.label_code',
             ],
+            'theme_name' => [
+                'label' => 'igniter.pages::default.menu.label_theme',
+                'disabled' => TRUE,
+            ],
         ],
     ],
     'form' => [
@@ -67,10 +71,18 @@ return [
             ],
         ],
         'fields' => [
+            'theme_name' => [
+                'label' => 'igniter.pages::default.menu.label_theme',
+                'type' => 'text',
+                'span' => 'left',
+                'cssClass' => 'flex-width',
+                'disabled' => TRUE,
+            ],
             'name' => [
                 'label' => 'admin::lang.label_name',
                 'type' => 'text',
                 'span' => 'left',
+                'cssClass' => 'flex-width',
             ],
             'code' => [
                 'label' => 'igniter.pages::default.menu.label_code',

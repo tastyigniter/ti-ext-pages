@@ -108,4 +108,9 @@ class Menu extends Model
 
         $iterator($items);
     }
+
+    public function getThemeNameAttribute($value)
+    {
+        return $this->theme->name;
+    }
 }
