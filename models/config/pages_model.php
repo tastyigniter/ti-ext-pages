@@ -54,7 +54,7 @@ $config['list']['columns'] = [
         'label' => 'lang:admin::lang.label_status',
         'type' => 'switch',
     ],
-    'date_updated' => [
+    'updated_at' => [
         'label' => 'lang:admin::lang.column_date_updated',
         'type' => 'timetense',
         'searchable' => TRUE,

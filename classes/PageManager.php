@@ -63,7 +63,7 @@ class PageManager
     {
         return Page::inTheme($this->theme)->newFromFinder([
             'fileName' => $staticPage->permalink_slug,
-            'mTime' => $staticPage->date_updated->timestamp,
+            'mTime' => $staticPage->updated_at->timestamp,
             'content' => $staticPage->content,
             'markup' => $staticPage->content,
             'code' => null,
