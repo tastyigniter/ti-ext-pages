@@ -1,67 +1,27 @@
+### Introduction
+
 This TastyIgniter extension allows end users to manage static pages and menus with a simple WYSIWYG user interface.
 
-This extension currently includes two components: Static Page and Static Menu.
+### Documentation
 
-### Admin Panel
+Documentation for TastyIgniter Pages extension can be found on
+the [TastyIgniter website](https://tastyigniter.com/docs/extensions/pages).
 
-In the admin user interface you can create, edit or delete pages and menus. 
+### Contributing
 
-### Usage
+Thank you for considering contributing! The contribution guide can be found in
+the [TastyIgniter documentation](https://tastyigniter.com/docs/contribution-guide).
 
-The first thing we have to do is create the layout that will host all pages of the website. 
+### Code of Conduct
 
-```php+HTML
----
-description: Static layout for static pages
+In order to ensure that the [TastyIgniter community](https://forum.tastyigniter.com) is welcoming to all, please review
+and abide by the [Code of Conduct](https://tastyigniter.com/docs/code-of-conduct).
 
-'[staticPage]':
+### Security Vulnerabilities
 
-'[staticMenu]':
-    code: main-menu
----
-<html>
-    <head>
-        <title>{{ $this->page->title }}</title>
-    </head>
-    <body>
-        @component('staticMenu')
-        {!! page() !!}
-    </body>
-</html>
-```
-
-Includes the staticPage and staticMenu component to the layout. The staticMenu component has the `code` property that should correspond to a code of the static menu to display. 
-
-The static menu component injects the `menuItems` page variable. The `menuItems` variable is an array of objects. Each object has the following properties:
-
-- `title` - specifies the menu item title.
-- `url` - specifies the absolute menu item URL.
-- `isActive` - indicates whether the item corresponds to a page currently being viewed.
-- `isChildActive` - indicates whether the item contains an active subitem.
-- `extraAttributes` - specifies the menu item extra HTML attributes
-- `items` - an array of the menu item subitems, if any. If there are no subitems, the array is empty 
-
-```php+HTML
-@foreach ($menuItems as $item)
-   <li><a href="{{ $item->url }}">{{ $item->title }}</a></li>
-@endforeach
-```
-
-
-
-**Setting the active menu item explicitly**
-
-You may want to tag a particular menu item explicitly as active in some cases. You can do that in the `onInit()` function of the page, by assigning a value to the `activeMenuItem` page variable matching the menu item code that you want to activate. In the Edit Menu Item popup, menu item codes are managed. 
-
-```php
-function onInit()
-{
-    $this['activeMenuItem'] = 'about-us';
-}	
-```
-
-
+Please review [our security policy](https://github.com/tastyigniter/ti-ext-pages/security/policy) on how to report
+security vulnerabilities.
 
 ### License
 
-[The MIT License (MIT)](https://tastyigniter.com/licence/)
+TastyIgniter Pages extension is open-sourced software licensed under the [MIT license](LICENSE).
