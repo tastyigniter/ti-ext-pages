@@ -111,6 +111,6 @@ class Menu extends Model
 
     public function getThemeNameAttribute($value)
     {
-        return $this->theme->name;
+        return optional($this->theme)->name;
     }
 }
