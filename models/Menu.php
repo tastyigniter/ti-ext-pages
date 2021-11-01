@@ -90,7 +90,7 @@ class Menu extends Model
     {
         $iterator = function ($items, $parentId = null) use (&$iterator) {
             foreach ($items as $item) {
-                if ($item['type'] == 'static-page' AND !is_numeric($item['reference'])) {
+                if ($item['type'] == 'static-page' && !is_numeric($item['reference'])) {
                     $item['reference'] = ($page = Pages_model::whereSlug($item['reference'])->first())
                         ? $page->getKey() : $item['reference'];
                 }
