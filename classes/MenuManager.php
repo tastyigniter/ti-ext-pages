@@ -65,7 +65,7 @@ class MenuManager
 
                 if ($item->type == 'url') {
                     $parentReference->url = $item->url;
-                    $parentReference->isActive = $currentUrl == strtolower(URL::to($item->url)) OR $activeMenuItem === $item->code;
+                    $parentReference->isActive = $currentUrl == strtolower(URL::to($item->url)) || $activeMenuItem === $item->code;
                 }
                 else {
                     $parentReference = $this->resolveItem(
@@ -122,7 +122,7 @@ class MenuManager
 
                 if (isset($itemInfo['url'])) {
                     $parentReference->url = $itemInfo['url'];
-                    $parentReference->isActive = $itemInfo['isActive'] OR $activeMenuItem === $item->code;
+                    $parentReference->isActive = $itemInfo['isActive'] || $activeMenuItem === $item->code;
                 }
 
                 if (isset($itemInfo['items'])) {

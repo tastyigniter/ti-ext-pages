@@ -34,13 +34,13 @@ class Extension extends \System\Classes\BaseExtension
         });
 
         Event::listen('pages.menuitem.getTypeInfo', function ($type) {
-            if ($type == 'url' OR $type == 'header') return [];
+            if ($type == 'url' || $type == 'header') return [];
 
             return StaticPage::getMenuTypeInfo($type);
         });
 
         Event::listen('pages.menuitem.resolveItem', function ($item, $url, $theme) {
-            if ($item->type == 'static-page' OR $item->type == 'all-static-pages')
+            if ($item->type == 'static-page' || $item->type == 'all-static-pages')
                 return StaticPage::resolveMenuItem($item, $url, $theme);
         });
 
