@@ -19,7 +19,7 @@ class Menus extends \Admin\Classes\AdminController
 
     public $listConfig = [
         'list' => [
-            'model' => 'Igniter\Pages\Models\Menu',
+            'model' => \Igniter\Pages\Models\Menu::class,
             'title' => 'Static Menus',
             'emptyMessage' => 'lang:admin::lang.list.text_empty',
             'defaultSort' => ['id', 'DESC'],
@@ -29,7 +29,7 @@ class Menus extends \Admin\Classes\AdminController
 
     public $formConfig = [
         'name' => 'Static Menu',
-        'model' => 'Igniter\Pages\Models\Menu',
+        'model' => \Igniter\Pages\Models\Menu::class,
         'create' => [
             'title' => 'lang:admin::lang.form.create_title',
             'redirect' => 'igniter/pages/menus/edit/{id}',

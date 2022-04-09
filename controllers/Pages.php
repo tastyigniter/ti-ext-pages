@@ -14,7 +14,7 @@ class Pages extends \Admin\Classes\AdminController
 
     public $listConfig = [
         'list' => [
-            'model' => 'Igniter\Pages\Models\Pages_model',
+            'model' => \Igniter\Pages\Models\Pages_model::class,
             'title' => 'lang:igniter.pages::default.text_title',
             'emptyMessage' => 'lang:igniter.pages::default.text_empty',
             'defaultSort' => ['page_id', 'DESC'],
@@ -24,7 +24,7 @@ class Pages extends \Admin\Classes\AdminController
 
     public $formConfig = [
         'name' => 'lang:igniter.pages::default.text_form_name',
-        'model' => 'Igniter\Pages\Models\Pages_model',
+        'model' => \Igniter\Pages\Models\Pages_model::class,
         'create' => [
             'title' => 'lang:admin::lang.form.create_title',
             'redirect' => 'igniter/pages/pages/edit/{page_id}',

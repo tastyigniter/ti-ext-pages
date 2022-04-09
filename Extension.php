@@ -45,19 +45,19 @@ class Extension extends \System\Classes\BaseExtension
         });
 
         Relation::morphMap([
-            'pages' => 'Igniter\Pages\Models\Pages_model',
+            'pages' => \Igniter\Pages\Models\Pages_model::class,
         ]);
     }
 
     public function registerComponents()
     {
         return [
-            'Igniter\Pages\Components\StaticPage' => [
+            \Igniter\Pages\Components\StaticPage::class => [
                 'code' => 'staticPage',
                 'name' => 'lang:igniter.pages::default.text_component_title',
                 'description' => 'lang:igniter.pages::default.text_component_desc',
             ],
-            'Igniter\Pages\Components\StaticMenu' => [
+            \Igniter\Pages\Components\StaticMenu::class => [
                 'code' => 'staticMenu',
                 'name' => 'lang:igniter.pages::default.menu.text_component_title',
                 'description' => 'lang:igniter.pages::default.menu.text_component_desc',
