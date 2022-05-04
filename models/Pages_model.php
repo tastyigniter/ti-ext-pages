@@ -19,7 +19,7 @@ class Pages_model extends \System\Models\Pages_model
     {
         $result = [];
         $theme = ThemeManager::instance()->getActiveTheme();
-        $layouts = Layout::listInTheme($theme, TRUE);
+        $layouts = Layout::listInTheme($theme, true);
         foreach ($layouts as $layout) {
             if (!$layout->hasComponent('staticPage')) continue;
 

@@ -40,7 +40,7 @@ return [
             ],
             'theme_name' => [
                 'label' => 'igniter.pages::default.menu.label_theme',
-                'disabled' => TRUE,
+                'disabled' => true,
             ],
         ],
     ],
@@ -74,7 +74,7 @@ return [
                 'type' => 'text',
                 'span' => 'left',
                 'cssClass' => 'flex-width',
-                'disabled' => TRUE,
+                'disabled' => true,
             ],
             'name' => [
                 'label' => 'admin::lang.label_name',
@@ -96,7 +96,7 @@ return [
                     'context' => 'edit',
                     'form' => 'menuitem',
                     'nameFrom' => 'title',
-                    'sortable' => TRUE,
+                    'sortable' => true,
                     'partial' => 'form/type_info_summary',
                     'containerAttributes' => [
                         'data-control' => 'menu-item-editor',

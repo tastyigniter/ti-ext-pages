@@ -33,7 +33,7 @@ class MenuItem extends Model
         'config',
     ];
 
-    public $timestamps = TRUE;
+    public $timestamps = true;
 
     protected $casts = [
         'parent_id' => 'integer',

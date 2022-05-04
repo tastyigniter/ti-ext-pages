@@ -20,9 +20,9 @@ class MenuManager
         'code' => null,
         'title' => null,
         'url' => null,
-        'isActive' => FALSE,
-        'isChildActive' => FALSE,
-        'extraAttributes' => FALSE,
+        'isActive' => false,
+        'isChildActive' => false,
+        'extraAttributes' => false,
         'items' => [],
     ];
 
@@ -52,7 +52,7 @@ class MenuManager
             $currentUrl = '/';
 
         $currentUrl = strtolower(URL::to($currentUrl));
-        $activeMenuItem = $page->activeMenuItem ?: FALSE;
+        $activeMenuItem = $page->activeMenuItem ?: false;
 
         $iterator = function ($items) use (&$iterator, $currentUrl, $activeMenuItem, $menu) {
             $result = [];
@@ -87,7 +87,7 @@ class MenuManager
         $hasActiveChild = function ($items) use (&$hasActiveChild) {
             foreach ($items as $item) {
                 if ($item->isActive)
-                    return TRUE;
+                    return true;
 
                 $result = $hasActiveChild($item->items);
                 if ($result)
@@ -133,7 +133,7 @@ class MenuManager
                             $reference->code = array_get($item, 'code', null);
                             $reference->title = array_get($item, 'title', '-- no title --');
                             $reference->url = array_get($item, 'url', '#');
-                            $reference->isActive = array_get($item, 'isActive', FALSE);
+                            $reference->isActive = array_get($item, 'isActive', false);
                             $reference->extraAttributes = array_get($item, 'extraAttributes');
 
                             if (!strlen($parentReference->url)) {

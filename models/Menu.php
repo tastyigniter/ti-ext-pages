@@ -18,7 +18,7 @@ class Menu extends Model
 
     protected $fillable = [];
 
-    public $timestamps = TRUE;
+    public $timestamps = true;
 
     /**
      * @var array Relations
@@ -68,7 +68,7 @@ class Menu extends Model
     {
         $id = $this->getKey();
         if (!is_numeric($id))
-            return FALSE;
+            return false;
 
         $idsToKeep = [];
         foreach ($items as $item) {
