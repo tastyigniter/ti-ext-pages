@@ -15,7 +15,7 @@ class CreatePagesTable extends Migration
         if (!Schema::hasTable('pages')) {
             Schema::create('pages', function (Blueprint $table) {
                 $table->engine = 'InnoDB';
-                $table->integer('page_id', TRUE);
+                $table->integer('page_id', true);
                 $table->integer('language_id');
                 $table->string('name');
                 $table->string('title');

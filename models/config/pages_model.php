@@ -67,13 +67,13 @@ $config['list']['columns'] = [
     'title' => [
         'label' => 'lang:igniter.pages::default.label_title',
         'type' => 'text',
-        'searchable' => TRUE,
+        'searchable' => true,
     ],
     'language_name' => [
         'label' => 'lang:igniter.pages::default.column_language',
         'relation' => 'language',
         'select' => 'name',
-        'searchable' => TRUE,
+        'searchable' => true,
     ],
     'status' => [
         'label' => 'lang:admin::lang.label_status',
@@ -82,11 +82,11 @@ $config['list']['columns'] = [
     'updated_at' => [
         'label' => 'lang:admin::lang.column_date_updated',
         'type' => 'timetense',
-        'searchable' => TRUE,
+        'searchable' => true,
     ],
     'page_id' => [
         'label' => 'lang:admin::lang.column_id',
-        'invisible' => TRUE,
+        'invisible' => true,
     ],
 
 ];
@@ -169,14 +169,14 @@ $config['form']['tabs']['fields'] = [
         'tab' => 'lang:igniter.pages::default.text_tab_manage',
         'type' => 'switch',
         'span' => 'left',
-        'default' => FALSE,
+        'default' => false,
     ],
     'status' => [
         'label' => 'lang:admin::lang.label_status',
         'tab' => 'lang:igniter.pages::default.text_tab_manage',
         'type' => 'switch',
         'span' => 'right',
-        'default' => TRUE,
+        'default' => true,
     ],
 ];
 

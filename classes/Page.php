@@ -55,7 +55,7 @@ class Page extends \Main\Template\Page
         else {
             $items = [];
             foreach ($pages as $page) {
-                if (array_get($page->metadata, 'navigation_hidden', FALSE)) continue;
+                if (array_get($page->metadata, 'navigation_hidden', false)) continue;
 
                 $pageUrl = URL::to($page->permalink_slug);
                 $items[] = [
