@@ -95,7 +95,7 @@ $config['form']['toolbar'] = [
     'buttons' => [
         'back' => [
             'label' => 'admin::lang.button_icon_back',
-            'class' => 'btn btn-default',
+            'class' => 'btn btn-outline-secondary',
             'href' => 'igniter/pages/pages',
         ],
         'save' => [
