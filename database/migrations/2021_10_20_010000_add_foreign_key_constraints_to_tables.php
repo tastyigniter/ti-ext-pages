@@ -18,8 +18,12 @@ class AddForeignKeyConstraintsToTables extends Migration
 
     public function down()
     {
-        Schema::table('pages', function (Blueprint $table) {
-            $table->dropForeign(['language_id']);
-        });
+        try {
+            Schema::table('pages', function (Blueprint $table) {
+                $table->dropForeign(['language_id']);
+            });
+        }
+        catch (\Exception $e) {
+        }
     }
 }
