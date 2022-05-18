@@ -4,7 +4,7 @@ namespace Igniter\Pages\Components;
 
 use Igniter\Pages\Classes\MenuManager;
 use Igniter\Pages\Models\Menu;
-use System\Classes\BaseComponent;
+use Igniter\System\Classes\BaseComponent;
 
 class StaticMenu extends BaseComponent
 {

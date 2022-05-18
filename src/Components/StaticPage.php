@@ -2,13 +2,13 @@
 
 namespace Igniter\Pages\Components;
 
-use Igniter\Pages\Models\Pages_model;
-use System\Classes\BaseComponent;
+use Igniter\Pages\Models\Page;
+use Igniter\System\Classes\BaseComponent;
 
 class StaticPage extends BaseComponent
 {
     /**
-     * @var \Igniter\Pages\Models\Pages_model
+     * @var \Igniter\Pages\Models\Page
      */
     protected $staticPage;
 
@@ -43,7 +43,7 @@ class StaticPage extends BaseComponent
     {
         $slug = $this->param('slug', $this->property('slug'));
 
-        $page = Pages_model::where('permalink_slug', $slug);
+        $page = Page::where('permalink_slug', $slug);
 
         return $page->isEnabled()->first();
     }

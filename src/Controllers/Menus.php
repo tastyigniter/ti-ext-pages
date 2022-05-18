@@ -2,7 +2,7 @@
 
 namespace Igniter\Pages\Controllers;
 
-use Admin\Facades\AdminMenu;
+use Igniter\Admin\Facades\AdminMenu;
 use Igniter\Pages\Models\Menu;
 use Igniter\Pages\Models\MenuItem;
 use Illuminate\Support\Facades\Request;
@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Request;
 /**
  * Menus Admin Controller
  */
-class Menus extends \Admin\Classes\AdminController
+class Menus extends \Igniter\Admin\Classes\AdminController
 {
     public $implement = [
-        \Admin\Actions\FormController::class,
-        \Admin\Actions\ListController::class,
+        \Igniter\Admin\Actions\FormController::class,
+        \Igniter\Admin\Actions\ListController::class,
     ];
 
     public $listConfig = [

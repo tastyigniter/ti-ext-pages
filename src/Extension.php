@@ -8,7 +8,7 @@ use Igniter\Pages\Models\Menu;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Event;
 
-class Extension extends \System\Classes\BaseExtension
+class Extension extends \Igniter\System\Classes\BaseExtension
 {
     public function boot()
     {
@@ -45,7 +45,7 @@ class Extension extends \System\Classes\BaseExtension
         });
 
         Relation::morphMap([
-            'pages' => \Igniter\Pages\Models\Pages_model::class,
+            'pages' => \Igniter\Pages\Models\Page::class,
         ]);
     }
 

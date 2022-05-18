@@ -5,10 +5,10 @@ namespace Igniter\Pages\Classes;
 use Igniter\Flame\Support\Facades\File;
 use Igniter\Flame\Traits\Singleton;
 use Igniter\Pages\Models\Menu;
+use Igniter\System\Models\Theme;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\URL;
-use System\Models\Themes_model;
 
 class MenuManager
 {
@@ -29,7 +29,7 @@ class MenuManager
     public function getMenusConfig()
     {
         $menus = [];
-        $themes = Themes_model::isEnabled()->get();
+        $themes = Theme::isEnabled()->get();
         foreach ($themes as $theme) {
             $files = File::glob($configPath = $theme->getTheme()->getPath().'/_meta/menus/*.php');
             foreach ($files as $file) {
