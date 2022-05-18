@@ -7,8 +7,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class AlterColumnsOnPagesTable extends Migration
-{
+return new class extends Migration {
     public function up()
     {
         Schema::table('pages', function (Blueprint $table) {
@@ -39,4 +38,4 @@ class AlterColumnsOnPagesTable extends Migration
     public function down()
     {
     }
-}
+};

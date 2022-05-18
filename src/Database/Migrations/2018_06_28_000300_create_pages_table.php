@@ -8,8 +8,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePagesTable extends Migration
-{
+return new class extends Migration {
     public function up()
     {
         if (!Schema::hasTable('pages')) {
@@ -87,4 +86,4 @@ class CreatePagesTable extends Migration
             ],
         ]);
     }
-}
+};

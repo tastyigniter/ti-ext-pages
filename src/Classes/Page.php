@@ -2,11 +2,10 @@
 
 namespace Igniter\Pages\Classes;
 
-use Igniter\Pages\Models\Pages_model;
+use Igniter\Main\Classes\Theme;
 use Illuminate\Support\Facades\URL;
-use Main\Classes\Theme;
 
-class Page extends \Main\Template\Page
+class Page extends \Igniter\Main\Template\Page
 {
     /**
      * Handler for the pages.menuitem.getTypeInfo event.
@@ -31,12 +30,12 @@ class Page extends \Main\Template\Page
      * Handler for the pages.menuitem.resolveItem event.
      * @param \Igniter\Pages\Models\MenuItem $item
      * @param string $url
-     * @param \Main\Classes\Theme $theme
+     * @param \Igniter\Main\Classes\Theme $theme
      * @return array|void
      */
     public static function resolveMenuItem($item, string $url, Theme $theme)
     {
-        $query = Pages_model::isEnabled()->orderBy('title');
+        $query = Page::isEnabled()->orderBy('title');
 
         if ($item->type == 'static-page')
             $query->where('page_id', $item->reference);
@@ -74,7 +73,7 @@ class Page extends \Main\Template\Page
     {
         $references = [];
 
-        $pages = Pages_model::isEnabled()->orderBy('title')->get();
+        $pages = Page::isEnabled()->orderBy('title')->get();
         foreach ($pages as $page) {
             $references[$page->page_id] = $page->title;
         }

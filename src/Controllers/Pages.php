@@ -2,29 +2,29 @@
 
 namespace Igniter\Pages\Controllers;
 
-use Admin\Facades\AdminMenu;
+use Igniter\Admin\Facades\AdminMenu;
 use Igniter\Pages\Models\Menu;
 
-class Pages extends \Admin\Classes\AdminController
+class Pages extends \Igniter\Admin\Classes\AdminController
 {
     public $implement = [
-        \Admin\Actions\ListController::class,
-        \Admin\Actions\FormController::class,
+        \Igniter\Admin\Actions\ListController::class,
+        \Igniter\Admin\Actions\FormController::class,
     ];
 
     public $listConfig = [
         'list' => [
-            'model' => \Igniter\Pages\Models\Pages_model::class,
+            'model' => \Igniter\Pages\Models\Page::class,
             'title' => 'lang:igniter.pages::default.text_title',
             'emptyMessage' => 'lang:igniter.pages::default.text_empty',
             'defaultSort' => ['page_id', 'DESC'],
-            'configFile' => 'pages_model',
+            'configFile' => 'page',
         ],
     ];
 
     public $formConfig = [
         'name' => 'lang:igniter.pages::default.text_form_name',
-        'model' => \Igniter\Pages\Models\Pages_model::class,
+        'model' => \Igniter\Pages\Models\Page::class,
         'create' => [
             'title' => 'lang:admin::lang.form.create_title',
             'redirect' => 'igniter/pages/pages/edit/{page_id}',
@@ -40,7 +40,7 @@ class Pages extends \Admin\Classes\AdminController
         'delete' => [
             'redirect' => 'igniter/pages/pages',
         ],
-        'configFile' => 'pages_model',
+        'configFile' => 'page',
     ];
 
     protected $requiredPermissions = 'Igniter.Pages.*';

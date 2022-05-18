@@ -5,16 +5,16 @@ namespace Igniter\Pages\Classes;
 use Igniter\Flame\Exception\ApplicationException;
 use Igniter\Flame\Support\RouterHelper;
 use Igniter\Flame\Traits\Singleton;
-use Igniter\Pages\Models\Pages_model;
+use Igniter\Main\Classes\ThemeManager;
+use Igniter\Pages\Models\Page;
 use Illuminate\Support\Facades\Lang;
-use Main\Classes\ThemeManager;
 
 class PageManager
 {
     use Singleton;
 
     /**
-     * @var \Main\Classes\Theme
+     * @var \Igniter\Main\Classes\Theme
      */
     protected $theme;
 
@@ -54,7 +54,7 @@ class PageManager
     {
         $url = ltrim(RouterHelper::normalizeUrl($url), '/');
 
-        $query = Pages_model::isEnabled();
+        $query = Page::isEnabled();
 
         return $query->where('permalink_slug', $url)->first();
     }
