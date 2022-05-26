@@ -4,8 +4,8 @@ namespace Igniter\Pages\Classes;
 
 use Igniter\Flame\Support\Facades\File;
 use Igniter\Flame\Traits\Singleton;
+use Igniter\Main\Models\Theme;
 use Igniter\Pages\Models\Menu;
-use Igniter\System\Models\Theme;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\URL;

@@ -3,6 +3,7 @@
 namespace Igniter\Pages\Classes;
 
 use Igniter\Main\Classes\Theme;
+use Igniter\Pages\Models\Page as PageModel;
 use Illuminate\Support\Facades\URL;
 
 class Page extends \Igniter\Main\Template\Page
@@ -35,7 +36,7 @@ class Page extends \Igniter\Main\Template\Page
      */
     public static function resolveMenuItem($item, string $url, Theme $theme)
     {
-        $query = Page::isEnabled()->orderBy('title');
+        $query = PageModel::isEnabled()->orderBy('title');
 
         if ($item->type == 'static-page')
             $query->where('page_id', $item->reference);
