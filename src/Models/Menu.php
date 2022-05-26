@@ -4,8 +4,8 @@ namespace Igniter\Pages\Models;
 
 use Igniter\Flame\Database\Model;
 use Igniter\Flame\Database\Traits\Purgeable;
+use Igniter\Main\Models\Theme;
 use Igniter\Pages\Classes\MenuManager;
-use Igniter\System\Models\Theme;
 
 /**
  * Menu Model
