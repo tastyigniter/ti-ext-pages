@@ -20,7 +20,7 @@ class PageManager
 
     protected function initialize()
     {
-        $this->theme = ThemeManager::instance()->getActiveTheme();
+        $this->theme = resolve(ThemeManager::class)->getActiveTheme();
         if (!$this->theme)
             throw new ApplicationException(Lang::get('main::lang.not_found.active_theme'));
     }

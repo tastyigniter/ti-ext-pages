@@ -37,7 +37,7 @@ description: Static layout for static pages
         <title>{{ $this->page->title }}</title>
     </head>
     <body>
-        @component('staticMenu')
+        @componentPartial('staticMenu')
         {!! page() !!}
     </body>
 </html>

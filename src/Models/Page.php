@@ -77,7 +77,7 @@ class Page extends Model
     public function getLayoutOptions()
     {
         $result = [];
-        $theme = ThemeManager::instance()->getActiveTheme();
+        $theme = resolve(ThemeManager::class)->getActiveTheme();
         $layouts = Layout::listInTheme($theme, true);
         foreach ($layouts as $layout) {
             if (!$layout->hasComponent('staticPage')) continue;
