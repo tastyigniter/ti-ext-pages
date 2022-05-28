@@ -13,7 +13,7 @@
 
         @if ($item->items)
             <ul>
-                @partial($__SELF__.'::items', ['items' => $item->items])
+                @themePartial($__SELF__.'::items', ['items' => $item->items])
             </ul>
         @endif
     </li>
