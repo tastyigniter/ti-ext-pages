@@ -4,26 +4,16 @@ namespace Igniter\Pages\Classes;
 
 use Igniter\Flame\Exception\ApplicationException;
 use Igniter\Flame\Support\RouterHelper;
-use Igniter\Flame\Traits\Singleton;
 use Igniter\Main\Classes\ThemeManager;
-use Igniter\Pages\Models\Page;
+use Igniter\Pages\Models\Page as PageModel;
 use Illuminate\Support\Facades\Lang;
 
 class PageManager
 {
-    use Singleton;
-
     /**
      * @var \Igniter\Main\Classes\Theme
      */
     protected $theme;
-
-    protected function initialize()
-    {
-        $this->theme = resolve(ThemeManager::class)->getActiveTheme();
-        if (!$this->theme)
-            throw new ApplicationException(Lang::get('main::lang.not_found.active_theme'));
-    }
 
     public function initPage($url)
     {
@@ -50,18 +40,26 @@ class PageManager
         return $page['staticPage']->content;
     }
 
+    public function listPageSlugs()
+    {
+        return PageModel::isEnabled()->dropdown('permalink_slug');
+    }
+
     protected function findByUrl($url)
     {
         $url = ltrim(RouterHelper::normalizeUrl($url), '/');
 
-        $query = Page::isEnabled();
+        $query = PageModel::isEnabled();
 
         return $query->where('permalink_slug', $url)->first();
     }
 
     protected function makePage($staticPage)
     {
-        return Page::inTheme($this->theme)->newFromFinder([
+        if (!$theme = resolve(ThemeManager::class)->getActiveTheme())
+            throw new ApplicationException(Lang::get('main::lang.not_found.active_theme'));
+
+        return Page::inTheme($theme)->newFromFinder([
             'fileName' => $staticPage->permalink_slug,
             'mTime' => $staticPage->updated_at->timestamp,
             'content' => $staticPage->content,
@@ -78,10 +76,5 @@ class PageManager
         $page->settings['description'] = $staticPage->meta_description;
         $page->settings['keywords'] = $staticPage->meta_keywords;
         $page->settings['is_hidden'] = !(bool)$staticPage->status;
-    }
-
-    protected function getCacheKey($keyName)
-    {
-        return crc32($this->theme->getPath()).$keyName;
     }
 }
