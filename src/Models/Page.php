@@ -109,9 +109,4 @@ class Page extends Model
     {
         return html_entity_decode($value);
     }
-
-    public function getMorphClass()
-    {
-        return 'pages';
-    }
 }
