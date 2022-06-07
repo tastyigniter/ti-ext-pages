@@ -3,6 +3,7 @@
 namespace Igniter\Pages;
 
 use Igniter\Flame\Igniter;
+use Igniter\Pages\Classes\MenuManager;
 use Igniter\Pages\Classes\Page as StaticPage;
 use Igniter\Pages\Classes\PageManager;
 use Igniter\Pages\Models\Menu;
@@ -15,6 +16,7 @@ class Extension extends \Igniter\System\Classes\BaseExtension
 {
     public function register()
     {
+        $this->app->singleton(MenuManager::class);
         $this->app->singleton(PageManager::class);
     }
 

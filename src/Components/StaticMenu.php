@@ -52,7 +52,7 @@ class StaticMenu extends BaseComponent
 
         if ($menu = $this->getMenu()) {
             $this->menuName = $menu->name;
-            $this->menuItems = MenuManager::instance()->generateReferences($menu, $this->page);
+            $this->menuItems = resolve(MenuManager::class)->generateReferences($menu, $this->page);
         }
 
         return $this->menuItems ?? [];
