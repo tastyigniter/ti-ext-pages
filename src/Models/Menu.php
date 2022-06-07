@@ -38,7 +38,7 @@ class Menu extends Model
     {
         $dbMenus = self::pluck('code')->all();
 
-        $manager = MenuManager::instance();
+        $manager = resolve(MenuManager::class);
         foreach ($manager->getMenusConfig() as $config) {
             if (in_array($config['code'], $dbMenus)) continue;
 

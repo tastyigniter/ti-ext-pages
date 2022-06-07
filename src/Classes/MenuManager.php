@@ -3,7 +3,6 @@
 namespace Igniter\Pages\Classes;
 
 use Igniter\Flame\Support\Facades\File;
-use Igniter\Flame\Traits\Singleton;
 use Igniter\Main\Models\Theme;
 use Igniter\Pages\Models\Menu;
 use Illuminate\Support\Facades\Event;
@@ -12,8 +11,6 @@ use Illuminate\Support\Facades\URL;
 
 class MenuManager
 {
-    use Singleton;
-
     protected static $themesCache;
 
     protected $defaultMenuItem = [
