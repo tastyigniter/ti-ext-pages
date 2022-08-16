@@ -24,4 +24,5 @@ security vulnerabilities.
 
 ### License
 
-TastyIgniter Pages extension is open-sourced software licensed under the [MIT license](LICENSE).
+TastyIgniter Pages extension is open-sourced software licensed under
+the [MIT license](https://github.com/tastyigniter/ti-ext-pages/LICENSE.md).
