@@ -134,7 +134,7 @@ $config['form']['fields'] = [
 
 $config['form']['tabs']['fields'] = [
     'content' => [
-        'type' => 'richeditor',
+        'type' => 'codeeditor',
         'tab' => 'lang:igniter.pages::default.text_tab_edit',
         'cssClass' => 'richeditor-fluid',
     ],
