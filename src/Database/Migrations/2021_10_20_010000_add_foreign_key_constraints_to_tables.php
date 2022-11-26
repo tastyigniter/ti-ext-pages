@@ -19,7 +19,7 @@ return new class extends Migration {
     {
         try {
             Schema::table('pages', function (Blueprint $table) {
-                $table->dropForeign(['language_id']);
+                $table->dropForeignKeyIfExists('language_id');
             });
         }
         catch (\Exception $e) {

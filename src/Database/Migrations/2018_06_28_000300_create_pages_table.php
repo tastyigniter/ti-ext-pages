@@ -49,7 +49,7 @@ return new class extends Migration {
 
         DB::table('pages')->insert([
             [
-                'language_id' => $language->language_id,
+                'language_id' => $language?->language_id,
                 'name' => 'About Us',
                 'title' => 'About Us',
                 'permalink_slug' => 'about-us',
@@ -61,7 +61,7 @@ return new class extends Migration {
                 'status' => 1,
             ],
             [
-                'language_id' => $language->language_id,
+                'language_id' => $language?->language_id,
                 'name' => 'Policy',
                 'title' => 'Policy',
                 'permalink_slug' => 'policy',
@@ -73,7 +73,7 @@ return new class extends Migration {
                 'status' => 1,
             ],
             [
-                'language_id' => $language->language_id,
+                'language_id' => $language?->language_id,
                 'name' => 'Terms and Conditions',
                 'title' => 'Terms and Conditions',
                 'permalink_slug' => 'terms-and-conditions',
