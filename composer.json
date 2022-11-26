@@ -1,6 +1,6 @@
 {
   "name": "tastyigniter/ti-ext-pages",
-  "type": "tastyigniter-extension",
+  "type": "tastyigniter-package",
   "description": "Provides static pages and navigation menus for your TastyIgniter application.",
   "license": "MIT",
   "authors": [
