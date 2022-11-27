@@ -1,7 +1,5 @@
 <?php
 
-namespace Igniter\Pages\Database\Migrations;
-
 use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
