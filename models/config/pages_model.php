@@ -1,4 +1,5 @@
 <?php
+
 $config['list']['filter'] = [
     'search' => [
         'prompt' => 'lang:igniter.pages::default.text_filter_search',
@@ -134,7 +135,7 @@ $config['form']['fields'] = [
 
 $config['form']['tabs']['fields'] = [
     'content' => [
-        'type' => 'codeeditor',
+        'type' => 'richeditor',
         'tab' => 'lang:igniter.pages::default.text_tab_edit',
         'cssClass' => 'richeditor-fluid',
     ],
