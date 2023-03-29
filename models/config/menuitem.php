@@ -13,7 +13,7 @@ return [
                 'type' => 'select',
                 'span' => 'right',
                 'attributes' => [
-                    'data-control' => 'menu-item-type',
+                    'data-toggle' => 'menu-item-type',
                     'data-handler' => 'onGetMenuItemTypeInfo',
                 ],
             ],

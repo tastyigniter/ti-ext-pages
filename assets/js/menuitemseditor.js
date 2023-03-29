@@ -20,7 +20,7 @@
 
         $(window).on('recordEditorModalShown', $.proxy(this.onModalLoaded, this))
 
-        $(document).on('change', 'select[data-control="menu-item-type"]', $.proxy(this.onChangeType, this))
+        $(document).on('change', 'select[data-toggle="menu-item-type"]', $.proxy(this.onChangeType, this))
     }
 
     MenuItemsEditor.prototype.onChangeType = function (event) {
@@ -86,7 +86,7 @@
         this.$modalElement = $modalEl
 
         $modalEl.find('.form-group-hide').hide()
-        $modalEl.find('select[data-control="menu-item-type"]').trigger('change')
+        $modalEl.find('select[data-toggle="menu-item-type"]').trigger('change')
     }
 
     MenuItemsEditor.prototype.loadProperties = function (event) {
