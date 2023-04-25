@@ -1,29 +1,42 @@
 {
-  "name": "tastyigniter/ti-ext-pages",
-  "type": "tastyigniter-package",
-  "description": "Provides static pages and navigation menus for your TastyIgniter application.",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Sam Poyigi",
-      "email": "sam@sampoyigi.com"
+    "name": "tastyigniter/ti-ext-pages",
+    "type": "tastyigniter-package",
+    "description": "Provides static pages and navigation menus for your TastyIgniter application.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sam Poyigi",
+            "email": "sam@sampoyigi.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Igniter\\Pages\\": "src/"
+        }
+    },
+    "extra": {
+        "tastyigniter-extension": {
+            "code": "igniter.pages",
+            "name": "Static Pages",
+            "icon": {
+                "class": "fa fa-files-o",
+                "color": "#664500",
+                "backgroundColor": "#FECC4D"
+            },
+            "homepage": "https://tastyigniter.com/marketplace/item/igniter-pages"
+        }
+    },
+    "require-dev": {
+        "laravel/pint": "^1.2",
+        "nunomaduro/larastan": "^2.4.0",
+        "pestphp/pest-plugin-laravel": "^2.0",
+        "pestphp/pest": "^2.5",
+        "orchestra/testbench": "^8.5"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        },
+        "sort-packages": true
     }
-  ],
-  "autoload": {
-    "psr-4": {
-      "Igniter\\Pages\\": "src/"
-    }
-  },
-  "extra": {
-    "tastyigniter-extension": {
-      "code": "igniter.pages",
-      "name": "Static Pages",
-      "icon": {
-        "class": "fa fa-files-o",
-        "color": "#664500",
-        "backgroundColor": "#FECC4D"
-      },
-      "homepage": "https://tastyigniter.com/marketplace/item/igniter-pages"
-    }
-  }
 }
