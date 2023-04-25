@@ -27,16 +27,18 @@ class Extension extends \Igniter\System\Classes\BaseExtension
         });
 
         Event::listen('router.beforeRoute', function ($url) {
-            if (!request()->routeIs('igniter.pages'))
+            if (!request()->routeIs('igniter.pages')) {
                 return;
+            }
 
             return resolve(PageManager::class)->initPage($url);
         });
 
         Event::listen('main.page.beforeRenderPage', function ($controller, $page) {
             $contents = resolve(PageManager::class)->getPageContents($page);
-            if (strlen($contents))
+            if (strlen($contents)) {
                 return $contents;
+            }
         });
 
         Event::listen('pages.menuitem.listTypes', function () {
@@ -47,14 +49,17 @@ class Extension extends \Igniter\System\Classes\BaseExtension
         });
 
         Event::listen('pages.menuitem.getTypeInfo', function ($type) {
-            if ($type == 'url' || $type == 'header') return [];
+            if ($type == 'url' || $type == 'header') {
+                return [];
+            }
 
             return StaticPage::getMenuTypeInfo($type);
         });
 
         Event::listen('pages.menuitem.resolveItem', function ($item, $url, $theme) {
-            if ($item->type == 'static-page' || $item->type == 'all-static-pages')
+            if ($item->type == 'static-page' || $item->type == 'all-static-pages') {
                 return StaticPage::resolveMenuItem($item, $url, $theme);
+            }
         });
 
         Relation::morphMap(['pages' => \Igniter\Pages\Models\Page::class]);
@@ -107,8 +112,9 @@ class Extension extends \Igniter\System\Classes\BaseExtension
 
     protected function defineRoutes()
     {
-        if (!Igniter::hasDatabase())
+        if (!Igniter::hasDatabase()) {
             return;
+        }
 
         Route::middleware(config('igniter.routes.middleware'))
             ->domain(config('igniter.routes.domain'))

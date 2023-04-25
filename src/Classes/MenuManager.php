@@ -45,8 +45,9 @@ class MenuManager
 
     public function generateReferences(Menu $menu, $page)
     {
-        if (!strlen($currentUrl = Request::path()))
+        if (!strlen($currentUrl = Request::path())) {
             $currentUrl = '/';
+        }
 
         $currentUrl = strtolower(URL::to($currentUrl));
         $activeMenuItem = $page->activeMenuItem ?: false;
@@ -63,15 +64,15 @@ class MenuManager
                 if ($item->type == 'url') {
                     $parentReference->url = $item->url;
                     $parentReference->isActive = $currentUrl == strtolower(URL::to($item->url)) || $activeMenuItem === $item->code;
-                }
-                else {
+                } else {
                     $parentReference = $this->resolveItem(
                         $menu, $item, $parentReference, $currentUrl, $activeMenuItem
                     );
                 }
 
-                if (count($item->children))
+                if (count($item->children)) {
                     $parentReference->items = $iterator($item->children);
+                }
 
                 $result[] = $parentReference;
             }
@@ -83,12 +84,14 @@ class MenuManager
 
         $hasActiveChild = function ($items) use (&$hasActiveChild) {
             foreach ($items as $item) {
-                if ($item->isActive)
+                if ($item->isActive) {
                     return true;
+                }
 
                 $result = $hasActiveChild($item->items);
-                if ($result)
+                if ($result) {
                     return $result;
+                }
             }
         };
 
@@ -114,8 +117,9 @@ class MenuManager
 
         if (is_array($response)) {
             foreach ($response as $itemInfo) {
-                if (!is_array($itemInfo))
+                if (!is_array($itemInfo)) {
                     continue;
+                }
 
                 if (isset($itemInfo['url'])) {
                     $parentReference->url = $itemInfo['url'];
@@ -138,8 +142,9 @@ class MenuManager
                                 $parentReference->isActive = $reference->isActive;
                             }
 
-                            if (isset($item['items']))
+                            if (isset($item['items'])) {
                                 $reference->items = $itemIterator($item['items']);
+                            }
 
                             $result[] = $reference;
                         }
@@ -158,8 +163,9 @@ class MenuManager
     protected function getThemeFromMenu($menu)
     {
         $code = $menu->theme_code;
-        if (isset(self::$themesCache[$code]))
+        if (isset(self::$themesCache[$code])) {
             return self::$themesCache[$code];
+        }
 
         return self::$themesCache[$code] = $menu->theme->getTheme();
     }

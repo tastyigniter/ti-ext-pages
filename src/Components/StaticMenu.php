@@ -44,11 +44,13 @@ class StaticMenu extends BaseComponent
 
     public function menuItems()
     {
-        if (!is_null($this->menuItems))
+        if (!is_null($this->menuItems)) {
             return $this->menuItems;
+        }
 
-        if (!strlen($code = $this->property('code')))
+        if (!strlen($code = $this->property('code'))) {
             return [];
+        }
 
         if ($menu = $this->getMenu()) {
             $this->menuName = $menu->name;
@@ -72,8 +74,9 @@ class StaticMenu extends BaseComponent
     protected function getMenu()
     {
         $code = $this->property('code');
-        if (isset(self::$menuCache[$code]))
+        if (isset(self::$menuCache[$code])) {
             return self::$menuCache[$code];
+        }
 
         $menu = Menu::with(['items'])->whereCode($code)->first();
 
