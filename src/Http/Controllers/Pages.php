@@ -54,8 +54,9 @@ class Pages extends \Igniter\Admin\Classes\AdminController
 
     public function index()
     {
-        if ($this->getUser()->hasPermission('Igniter.PageMenus.Manage'))
+        if ($this->getUser()->hasPermission('Igniter.PageMenus.Manage')) {
             Menu::syncAll();
+        }
 
         $this->asExtension('ListController')->index();
     }

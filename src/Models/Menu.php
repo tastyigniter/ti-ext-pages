@@ -40,7 +40,9 @@ class Menu extends Model
 
         $manager = resolve(MenuManager::class);
         foreach ($manager->getMenusConfig() as $config) {
-            if (in_array($config['code'], $dbMenus)) continue;
+            if (in_array($config['code'], $dbMenus)) {
+                continue;
+            }
 
             $menu = new static;
             $menu->code = $config['code'];
@@ -60,15 +62,17 @@ class Menu extends Model
     {
         $this->restorePurgedValues();
 
-        if (array_key_exists('items', $this->attributes))
+        if (array_key_exists('items', $this->attributes)) {
             $this->addMenuItems((array)$this->attributes['items']);
+        }
     }
 
     public function addMenuItems($items)
     {
         $id = $this->getKey();
-        if (!is_numeric($id))
+        if (!is_numeric($id)) {
             return false;
+        }
 
         $idsToKeep = [];
         foreach ($items as $item) {

@@ -68,7 +68,9 @@ class MenuItem extends Model
 
         if (is_array($response)) {
             foreach ($response as $typeInfo) {
-                if (!is_array($typeInfo)) continue;
+                if (!is_array($typeInfo)) {
+                    continue;
+                }
 
                 foreach ($typeInfo as $name => $value) {
                     $result[$name] = $value;
@@ -90,7 +92,9 @@ class MenuItem extends Model
 
         if (is_array($response)) {
             foreach ($response as $typeList) {
-                if (!is_array($typeList)) continue;
+                if (!is_array($typeList)) {
+                    continue;
+                }
 
                 foreach ($typeList as $typeCode => $typeName) {
                     $result[$typeCode] = $typeName;
@@ -113,8 +117,9 @@ class MenuItem extends Model
     public function getSummaryAttribute($value)
     {
         $summary = '';
-        if ($this->parent)
+        if ($this->parent) {
             $summary .= 'Parent: '.$this->parent->title.' ';
+        }
 
         $summary .= 'Type: '.$this->type;
 

@@ -19,8 +19,9 @@ class PageManager
     {
         $staticPage = $this->findByUrl($url);
 
-        if (!$staticPage)
+        if (!$staticPage) {
             return null;
+        }
 
         $page = $this->makePage($staticPage);
         $page->permalink = $url;
@@ -56,8 +57,9 @@ class PageManager
 
     protected function makePage($staticPage)
     {
-        if (!$theme = resolve(ThemeManager::class)->getActiveTheme())
+        if (!$theme = resolve(ThemeManager::class)->getActiveTheme()) {
             throw new ApplicationException(Lang::get('main::lang.not_found.active_theme'));
+        }
 
         return Page::inTheme($theme)->newFromFinder([
             'fileName' => $staticPage->permalink_slug,

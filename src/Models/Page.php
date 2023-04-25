@@ -65,8 +65,6 @@ class Page extends Model
     /**
      * Scope a query to only include enabled page
      *
-     * @param $query
-     *
      * @return $this
      */
     public function scopeIsEnabled($query)
@@ -80,7 +78,9 @@ class Page extends Model
         $theme = resolve(ThemeManager::class)->getActiveTheme();
         $layouts = Layout::listInTheme($theme, true);
         foreach ($layouts as $layout) {
-            if (!$layout->hasComponent('staticPage')) continue;
+            if (!$layout->hasComponent('staticPage')) {
+                continue;
+            }
 
             $baseName = $layout->getBaseFileName();
             $result[$baseName] = strlen($layout->description) ? $layout->description : $baseName;
@@ -96,11 +96,13 @@ class Page extends Model
             $layoutId = count($layouts) ? array_keys($layouts)[0] : null;
         }
 
-        if (!$layoutId)
+        if (!$layoutId) {
             return null;
+        }
 
-        if (!$layout = Layout::load($this->theme, $layoutId))
+        if (!$layout = Layout::load($this->theme, $layoutId)) {
             return null;
+        }
 
         return $layout;
     }

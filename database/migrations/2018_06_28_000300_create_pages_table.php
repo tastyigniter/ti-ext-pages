@@ -6,7 +6,8 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     public function up()
     {
         if (!Schema::hasTable('pages')) {
@@ -39,8 +40,9 @@ return new class extends Migration {
 
     protected function seedPages()
     {
-        if (DB::table('pages')->count())
+        if (DB::table('pages')->count()) {
             return;
+        }
 
         $now = Carbon::now();
         $language = DB::table('languages')->where('code', 'en')->first();
