@@ -116,8 +116,8 @@ class Extension extends \Igniter\System\Classes\BaseExtension
             return;
         }
 
-        Route::middleware(config('igniter.routes.middleware'))
-            ->domain(config('igniter.routes.domain'))
+        Route::middleware(config('igniter-routes.middleware'))
+            ->domain(config('igniter-routes.domain'))
             ->name('igniter.pages.')
             ->group(function (Router $router) {
                 resolve(PageManager::class)->listPageSlugs()->each(function ($slug) use ($router) {
