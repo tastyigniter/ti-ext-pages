@@ -104,7 +104,7 @@ class MenuManager
 
         $iterator($items);
 
-        Event::fire('pages.menu.referencesGenerated', [&$items]);
+        Event::dispatch('pages.menu.referencesGenerated', [&$items]);
 
         return $items;
     }
@@ -113,7 +113,7 @@ class MenuManager
     {
         $theme = $this->getThemeFromMenu($menu);
 
-        $response = Event::fire('pages.menuitem.resolveItem', [$item, $currentUrl, $theme]);
+        $response = Event::dispatch('pages.menuitem.resolveItem', [$item, $currentUrl, $theme]);
 
         if (is_array($response)) {
             foreach ($response as $itemInfo) {

@@ -64,7 +64,7 @@ class MenuItem extends Model
     public static function getTypeInfo($type)
     {
         $result = [];
-        $response = Event::fire('pages.menuitem.getTypeInfo', [$type]);
+        $response = Event::dispatch('pages.menuitem.getTypeInfo', [$type]);
 
         if (is_array($response)) {
             foreach ($response as $typeInfo) {
@@ -88,7 +88,7 @@ class MenuItem extends Model
             'header' => 'Header',
         ];
 
-        $response = Event::fire('pages.menuitem.listTypes');
+        $response = Event::dispatch('pages.menuitem.listTypes');
 
         if (is_array($response)) {
             foreach ($response as $typeList) {
