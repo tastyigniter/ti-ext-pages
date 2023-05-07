@@ -6,28 +6,18 @@ parameters:
 			path: database/migrations/2021_10_20_010000_add_foreign_key_constraints_to_tables.php
 
 		-
-			message: "#^Function root_url not found\\.$#"
+			message: "#^Call to an undefined method Igniter\\\\Pages\\\\Models\\\\Menu\\:\\:items\\(\\)\\.$#"
 			count: 1
-			path: resources/models/page.php
+			path: src/Classes/MenuManager.php
 
 		-
-			message: "#^Call to an undefined method Igniter\\\\Pages\\\\Models\\\\Menu\\:\\:items\\(\\)\\.$#"
+			message: "#^Call to an undefined static method Igniter\\\\Main\\\\Models\\\\Theme\\:\\:isEnabled\\(\\)\\.$#"
 			count: 1
 			path: src/Classes/MenuManager.php
 
 		-
 			message: "#^Call to an undefined static method Illuminate\\\\Support\\\\Facades\\\\Event\\:\\:fire\\(\\)\\.$#"
 			count: 2
-			path: src/Classes/MenuManager.php
-
-		-
-			message: "#^Call to static method isEnabled\\(\\) on an unknown class Igniter\\\\Main\\\\Models\\\\Theme\\.$#"
-			count: 1
-			path: src/Classes/MenuManager.php
-
-		-
-			message: "#^Function array_get not found\\.$#"
-			count: 8
 			path: src/Classes/MenuManager.php
 
 		-
@@ -51,18 +41,8 @@ parameters:
 			path: src/Classes/Page.php
 
 		-
-			message: "#^Function array_get not found\\.$#"
-			count: 1
-			path: src/Classes/Page.php
-
-		-
 			message: "#^Method Igniter\\\\Pages\\\\Classes\\\\Page\\:\\:getMenuTypeInfo\\(\\) should return array but return statement is missing\\.$#"
 			count: 1
-			path: src/Classes/Page.php
-
-		-
-			message: "#^Parameter \\$theme of method Igniter\\\\Pages\\\\Classes\\\\Page\\:\\:resolveMenuItem\\(\\) has invalid type Igniter\\\\Main\\\\Classes\\\\Theme\\.$#"
-			count: 2
 			path: src/Classes/Page.php
 
 		-
@@ -76,37 +56,7 @@ parameters:
 			path: src/Classes/PageManager.php
 
 		-
-			message: "#^Call to static method normalizeUrl\\(\\) on an unknown class Igniter\\\\Flame\\\\Support\\\\RouterHelper\\.$#"
-			count: 1
-			path: src/Classes/PageManager.php
-
-		-
-			message: "#^Class Igniter\\\\Main\\\\Classes\\\\ThemeManager not found\\.$#"
-			count: 1
-			path: src/Classes/PageManager.php
-
-		-
-			message: "#^Instantiated class Igniter\\\\Flame\\\\Exception\\\\ApplicationException not found\\.$#"
-			count: 1
-			path: src/Classes/PageManager.php
-
-		-
-			message: "#^Property Igniter\\\\Pages\\\\Classes\\\\PageManager\\:\\:\\$theme has unknown class Igniter\\\\Main\\\\Classes\\\\Theme as its type\\.$#"
-			count: 1
-			path: src/Classes/PageManager.php
-
-		-
-			message: "#^Access to an undefined property Igniter\\\\Pages\\\\Components\\\\StaticMenu\\:\\:\\$page\\.$#"
-			count: 2
-			path: src/Components/StaticMenu.php
-
-		-
-			message: "#^Call to an undefined method Igniter\\\\Pages\\\\Components\\\\StaticMenu\\:\\:property\\(\\)\\.$#"
-			count: 1
-			path: src/Components/StaticMenu.php
-
-		-
-			message: "#^Call to an undefined method Igniter\\\\Pages\\\\Components\\\\StaticMenu\\:\\:setProperty\\(\\)\\.$#"
+			message: "#^Call to an undefined method Illuminate\\\\Database\\\\Eloquent\\\\Builder\\:\\:whereCode\\(\\)\\.$#"
 			count: 1
 			path: src/Components/StaticMenu.php
 
@@ -116,12 +66,12 @@ parameters:
 			path: src/Components/StaticMenu.php
 
 		-
-			message: "#^Call to an undefined static method Igniter\\\\Pages\\\\Models\\\\Menu\\:\\:with\\(\\)\\.$#"
+			message: "#^Access to an undefined property Igniter\\\\Main\\\\Template\\\\Page\\:\\:\\$description\\.$#"
 			count: 1
-			path: src/Components/StaticMenu.php
+			path: src/Components/StaticPage.php
 
 		-
-			message: "#^Access to an undefined property Igniter\\\\Pages\\\\Components\\\\StaticPage\\:\\:\\$page\\.$#"
+			message: "#^Access to an undefined property Igniter\\\\Main\\\\Template\\\\Page\\:\\:\\$title\\.$#"
 			count: 1
 			path: src/Components/StaticPage.php
 
@@ -131,27 +81,7 @@ parameters:
 			path: src/Components/StaticPage.php
 
 		-
-			message: "#^Call to an undefined method Igniter\\\\Pages\\\\Components\\\\StaticPage\\:\\:param\\(\\)\\.$#"
-			count: 1
-			path: src/Components/StaticPage.php
-
-		-
-			message: "#^Call to an undefined method Igniter\\\\Pages\\\\Components\\\\StaticPage\\:\\:property\\(\\)\\.$#"
-			count: 1
-			path: src/Components/StaticPage.php
-
-		-
 			message: "#^Call to an undefined static method Igniter\\\\Pages\\\\Models\\\\Page\\:\\:where\\(\\)\\.$#"
-			count: 1
-			path: src/Components/StaticPage.php
-
-		-
-			message: "#^Cannot access property \\$description on array\\<string, mixed\\>\\.$#"
-			count: 1
-			path: src/Components/StaticPage.php
-
-		-
-			message: "#^Cannot access property \\$title on array\\<string, mixed\\>\\.$#"
 			count: 1
 			path: src/Components/StaticPage.php
 
@@ -161,124 +91,29 @@ parameters:
 			path: src/Components/staticpage/default.blade.php
 
 		-
-			message: "#^Access to an undefined property Igniter\\\\Pages\\\\Extension\\:\\:\\$app\\.$#"
-			count: 2
-			path: src/Extension.php
-
-		-
 			message: "#^Call to an undefined method Illuminate\\\\Routing\\\\Router\\:\\:pagic\\(\\)\\.$#"
 			count: 1
 			path: src/Extension.php
 
 		-
-			message: "#^Call to static method hasDatabase\\(\\) on an unknown class Igniter\\\\Flame\\\\Igniter\\.$#"
-			count: 1
-			path: src/Extension.php
-
-		-
-			message: "#^Function admin_url not found\\.$#"
-			count: 1
-			path: src/Extension.php
-
-		-
-			message: "#^Function lang not found\\.$#"
-			count: 1
-			path: src/Extension.php
-
-		-
-			message: "#^Access to an undefined property Igniter\\\\Pages\\\\Http\\\\Controllers\\\\Menus\\:\\:\\$widgets\\.$#"
-			count: 2
-			path: src/Http/Controllers/Menus.php
-
-		-
-			message: "#^Call to an undefined method Igniter\\\\Pages\\\\Http\\\\Controllers\\\\Menus\\:\\:addJs\\(\\)\\.$#"
+			message: "#^Call to an undefined method Igniter\\\\Admin\\\\Classes\\\\BaseWidget\\:\\:getField\\(\\)\\.$#"
 			count: 1
 			path: src/Http/Controllers/Menus.php
 
 		-
-			message: "#^Call to an undefined method Igniter\\\\Pages\\\\Http\\\\Controllers\\\\Menus\\:\\:asExtension\\(\\)\\.$#"
-			count: 5
-			path: src/Http/Controllers/Menus.php
-
-		-
-			message: "#^Call to an undefined method Igniter\\\\Pages\\\\Http\\\\Controllers\\\\Menus\\:\\:getUser\\(\\)\\.$#"
+			message: "#^Call to an undefined method Igniter\\\\Admin\\\\Classes\\\\BaseWidget\\:\\:renderField\\(\\)\\.$#"
 			count: 1
 			path: src/Http/Controllers/Menus.php
 
 		-
-			message: "#^Call to an undefined method Igniter\\\\Pages\\\\Http\\\\Controllers\\\\Menus\\:\\:makePartial\\(\\)\\.$#"
+			message: "#^Call to an undefined static method Igniter\\\\Admin\\\\Facades\\\\AdminMenu\\:\\:setContext\\(\\)\\.$#"
 			count: 1
 			path: src/Http/Controllers/Menus.php
 
 		-
-			message: "#^Call to static method setContext\\(\\) on an unknown class Igniter\\\\Admin\\\\Facades\\\\AdminMenu\\.$#"
-			count: 1
-			path: src/Http/Controllers/Menus.php
-
-		-
-			message: "#^Class Igniter\\\\Admin\\\\Http\\\\Actions\\\\FormController not found\\.$#"
-			count: 1
-			path: src/Http/Controllers/Menus.php
-
-		-
-			message: "#^Class Igniter\\\\Admin\\\\Http\\\\Actions\\\\ListController not found\\.$#"
-			count: 1
-			path: src/Http/Controllers/Menus.php
-
-		-
-			message: "#^Function flash not found\\.$#"
-			count: 1
-			path: src/Http/Controllers/Menus.php
-
-		-
-			message: "#^Function lang not found\\.$#"
-			count: 1
-			path: src/Http/Controllers/Menus.php
-
-		-
-			message: "#^Igniter\\\\Pages\\\\Http\\\\Controllers\\\\Menus\\:\\:__construct\\(\\) calls parent\\:\\:__construct\\(\\) but Igniter\\\\Pages\\\\Http\\\\Controllers\\\\Menus does not extend any class\\.$#"
-			count: 1
-			path: src/Http/Controllers/Menus.php
-
-		-
-			message: "#^Call to an undefined method Igniter\\\\Pages\\\\Http\\\\Controllers\\\\Pages\\:\\:asExtension\\(\\)\\.$#"
+			message: "#^Call to an undefined static method Igniter\\\\Admin\\\\Facades\\\\AdminMenu\\:\\:setContext\\(\\)\\.$#"
 			count: 1
 			path: src/Http/Controllers/Pages.php
-
-		-
-			message: "#^Call to an undefined method Igniter\\\\Pages\\\\Http\\\\Controllers\\\\Pages\\:\\:getUser\\(\\)\\.$#"
-			count: 1
-			path: src/Http/Controllers/Pages.php
-
-		-
-			message: "#^Call to an undefined method Igniter\\\\Pages\\\\Http\\\\Controllers\\\\Pages\\:\\:validatePasses\\(\\)\\.$#"
-			count: 1
-			path: src/Http/Controllers/Pages.php
-
-		-
-			message: "#^Call to static method setContext\\(\\) on an unknown class Igniter\\\\Admin\\\\Facades\\\\AdminMenu\\.$#"
-			count: 1
-			path: src/Http/Controllers/Pages.php
-
-		-
-			message: "#^Class Igniter\\\\Admin\\\\Http\\\\Actions\\\\FormController not found\\.$#"
-			count: 1
-			path: src/Http/Controllers/Pages.php
-
-		-
-			message: "#^Class Igniter\\\\Admin\\\\Http\\\\Actions\\\\ListController not found\\.$#"
-			count: 1
-			path: src/Http/Controllers/Pages.php
-
-		-
-			message: "#^Igniter\\\\Pages\\\\Http\\\\Controllers\\\\Pages\\:\\:__construct\\(\\) calls parent\\:\\:__construct\\(\\) but Igniter\\\\Pages\\\\Http\\\\Controllers\\\\Pages does not extend any class\\.$#"
-			count: 1
-			path: src/Http/Controllers/Pages.php
-
-		-
-			message: "#^Access to an undefined property Igniter\\\\Pages\\\\Models\\\\Menu\\:\\:\\$attributes\\.$#"
-			count: 1
-			path: src/Models/Menu.php
 
 		-
 			message: "#^Access to an undefined property Igniter\\\\Pages\\\\Models\\\\Menu\\:\\:\\$code\\.$#"
@@ -301,23 +136,8 @@ parameters:
 			path: src/Models/Menu.php
 
 		-
-			message: "#^Call to an undefined method Igniter\\\\Pages\\\\Models\\\\Menu\\:\\:getKey\\(\\)\\.$#"
-			count: 1
-			path: src/Models/Menu.php
-
-		-
 			message: "#^Call to an undefined method Igniter\\\\Pages\\\\Models\\\\Menu\\:\\:items\\(\\)\\.$#"
 			count: 3
-			path: src/Models/Menu.php
-
-		-
-			message: "#^Call to an undefined method Igniter\\\\Pages\\\\Models\\\\Menu\\:\\:restorePurgedValues\\(\\)\\.$#"
-			count: 1
-			path: src/Models/Menu.php
-
-		-
-			message: "#^Call to an undefined method Igniter\\\\Pages\\\\Models\\\\Menu\\:\\:save\\(\\)\\.$#"
-			count: 1
 			path: src/Models/Menu.php
 
 		-
@@ -328,21 +148,6 @@ parameters:
 		-
 			message: "#^Call to an undefined static method Igniter\\\\Pages\\\\Models\\\\Page\\:\\:whereSlug\\(\\)\\.$#"
 			count: 1
-			path: src/Models/Menu.php
-
-		-
-			message: "#^Class Igniter\\\\Main\\\\Models\\\\Theme not found\\.$#"
-			count: 1
-			path: src/Models/Menu.php
-
-		-
-			message: "#^Function array_except not found\\.$#"
-			count: 2
-			path: src/Models/Menu.php
-
-		-
-			message: "#^Function array_get not found\\.$#"
-			count: 3
 			path: src/Models/Menu.php
 
 		-
@@ -387,25 +192,5 @@ parameters:
 
 		-
 			message: "#^Call to an undefined static method static\\(Igniter\\\\Pages\\\\Models\\\\Page\\)\\:\\:isEnabled\\(\\)\\.$#"
-			count: 1
-			path: src/Models/Page.php
-
-		-
-			message: "#^Call to static method listInTheme\\(\\) on an unknown class Igniter\\\\Main\\\\Template\\\\Layout\\.$#"
-			count: 1
-			path: src/Models/Page.php
-
-		-
-			message: "#^Call to static method load\\(\\) on an unknown class Igniter\\\\Main\\\\Template\\\\Layout\\.$#"
-			count: 1
-			path: src/Models/Page.php
-
-		-
-			message: "#^Class Igniter\\\\Main\\\\Classes\\\\ThemeManager not found\\.$#"
-			count: 1
-			path: src/Models/Page.php
-
-		-
-			message: "#^Class Igniter\\\\System\\\\Models\\\\Language not found\\.$#"
 			count: 1
 			path: src/Models/Page.php
