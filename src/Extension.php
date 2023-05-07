@@ -57,7 +57,7 @@ class Extension extends \Igniter\System\Classes\BaseExtension
         });
 
         Event::listen('pages.menuitem.resolveItem', function ($item, $url, $theme) {
-            if ($item->type == 'static-page' || $item->type == 'all-static-pages') {
+            if ($theme && ($item->type == 'static-page' || $item->type == 'all-static-pages')) {
                 return StaticPage::resolveMenuItem($item, $url, $theme);
             }
         });
