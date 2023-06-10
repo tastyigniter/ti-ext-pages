@@ -43,7 +43,7 @@ class PageManager
 
     public function listPageSlugs()
     {
-        return PageModel::isEnabled()->dropdown('permalink_slug');
+        return PageModel::whereIsEnabled()->dropdown('permalink_slug');
     }
 
     protected function findByUrl($url)

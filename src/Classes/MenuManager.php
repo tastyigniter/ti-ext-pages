@@ -26,7 +26,7 @@ class MenuManager
     public function getMenusConfig()
     {
         $menus = [];
-        $themes = Theme::isEnabled()->get();
+        $themes = Theme::whereIsEnabled()->get();
         foreach ($themes as $theme) {
             $files = File::glob($configPath = $theme->getTheme()->getPath().'/_meta/menus/*.php');
             foreach ($files as $file) {

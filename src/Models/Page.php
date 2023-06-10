@@ -7,6 +7,7 @@ use Igniter\Flame\Database\Traits\HasPermalink;
 use Igniter\Flame\Database\Traits\Sortable;
 use Igniter\Main\Classes\ThemeManager;
 use Igniter\Main\Template\Layout;
+use Igniter\System\Models\Concerns\Switchable;
 
 /**
  * Pages Model Class
@@ -15,6 +16,7 @@ class Page extends Model
 {
     use HasPermalink;
     use Sortable;
+    use Switchable;
 
     const SORT_ORDER = 'priority';
 
@@ -55,21 +57,7 @@ class Page extends Model
 
     public static function getDropdownOptions()
     {
-        return static::isEnabled()->dropdown('title');
-    }
-
-    //
-    // Scopes
-    //
-
-    /**
-     * Scope a query to only include enabled page
-     *
-     * @return $this
-     */
-    public function scopeIsEnabled($query)
-    {
-        return $query->where('status', 1);
+        return static::whereIsEnabled()->dropdown('title');
     }
 
     public function getLayoutOptions()
