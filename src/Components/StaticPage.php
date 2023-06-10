@@ -45,6 +45,6 @@ class StaticPage extends BaseComponent
 
         $page = Page::where('permalink_slug', $slug);
 
-        return $page->isEnabled()->first();
+        return $page->whereIsEnabled()->first();
     }
 }

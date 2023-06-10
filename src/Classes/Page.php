@@ -33,7 +33,7 @@ class Page extends \Igniter\Main\Template\Page
      */
     public static function resolveMenuItem($item, string $url, Theme $theme)
     {
-        $query = PageModel::isEnabled()->orderBy('title');
+        $query = PageModel::whereIsEnabled()->orderBy('title');
 
         if ($item->type == 'static-page') {
             $query->where('page_id', $item->reference);
@@ -74,7 +74,7 @@ class Page extends \Igniter\Main\Template\Page
     {
         $references = [];
 
-        $pages = Page::isEnabled()->orderBy('title')->get();
+        $pages = Page::whereIsEnabled()->orderBy('title')->get();
         foreach ($pages as $page) {
             $references[$page->page_id] = $page->title;
         }
