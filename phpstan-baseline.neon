@@ -11,13 +11,8 @@ parameters:
 			path: src/Classes/MenuManager.php
 
 		-
-			message: "#^Call to an undefined static method Igniter\\\\Main\\\\Models\\\\Theme\\:\\:isEnabled\\(\\)\\.$#"
+			message: "#^Call to an undefined static method Igniter\\\\Main\\\\Models\\\\Theme\\:\\:whereIsEnabled\\(\\)\\.$#"
 			count: 1
-			path: src/Classes/MenuManager.php
-
-		-
-			message: "#^Call to an undefined static method Illuminate\\\\Support\\\\Facades\\\\Event\\:\\:fire\\(\\)\\.$#"
-			count: 2
 			path: src/Classes/MenuManager.php
 
 		-
@@ -31,12 +26,12 @@ parameters:
 			path: src/Classes/Page.php
 
 		-
-			message: "#^Call to an undefined static method Igniter\\\\Pages\\\\Classes\\\\Page\\:\\:isEnabled\\(\\)\\.$#"
+			message: "#^Call to an undefined static method Igniter\\\\Pages\\\\Classes\\\\Page\\:\\:whereIsEnabled\\(\\)\\.$#"
 			count: 1
 			path: src/Classes/Page.php
 
 		-
-			message: "#^Call to an undefined static method Igniter\\\\Pages\\\\Models\\\\Page\\:\\:isEnabled\\(\\)\\.$#"
+			message: "#^Call to an undefined static method Igniter\\\\Pages\\\\Models\\\\Page\\:\\:whereIsEnabled\\(\\)\\.$#"
 			count: 1
 			path: src/Classes/Page.php
 
@@ -51,8 +46,18 @@ parameters:
 			path: src/Classes/PageManager.php
 
 		-
-			message: "#^Call to an undefined static method Igniter\\\\Pages\\\\Models\\\\Page\\:\\:isEnabled\\(\\)\\.$#"
-			count: 2
+			message: "#^Call to an undefined static method Igniter\\\\Pages\\\\Models\\\\Page\\:\\:whereIsEnabled\\(\\)\\.$#"
+			count: 1
+			path: src/Classes/PageManager.php
+
+		-
+			message: "#^Cannot call method where\\(\\) on bool\\.$#"
+			count: 1
+			path: src/Classes/PageManager.php
+
+		-
+			message: "#^Static call to instance method Igniter\\\\Pages\\\\Models\\\\Page\\:\\:isEnabled\\(\\)\\.$#"
+			count: 1
 			path: src/Classes/PageManager.php
 
 		-
@@ -176,11 +181,6 @@ parameters:
 			path: src/Models/MenuItem.php
 
 		-
-			message: "#^Call to an undefined static method Illuminate\\\\Support\\\\Facades\\\\Event\\:\\:fire\\(\\)\\.$#"
-			count: 2
-			path: src/Models/MenuItem.php
-
-		-
 			message: "#^Access to an undefined property Igniter\\\\Pages\\\\Models\\\\Page\\:\\:\\$layout\\.$#"
 			count: 1
 			path: src/Models/Page.php
@@ -191,6 +191,6 @@ parameters:
 			path: src/Models/Page.php
 
 		-
-			message: "#^Call to an undefined static method static\\(Igniter\\\\Pages\\\\Models\\\\Page\\)\\:\\:isEnabled\\(\\)\\.$#"
+			message: "#^Call to an undefined static method static\\(Igniter\\\\Pages\\\\Models\\\\Page\\)\\:\\:whereIsEnabled\\(\\)\\.$#"
 			count: 1
 			path: src/Models/Page.php
