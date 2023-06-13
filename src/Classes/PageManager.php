@@ -50,7 +50,7 @@ class PageManager
     {
         $url = ltrim(RouterHelper::normalizeUrl($url), '/');
 
-        $query = PageModel::isEnabled();
+        $query = PageModel::query()->isEnabled();
 
         return $query->where('permalink_slug', $url)->first();
     }
