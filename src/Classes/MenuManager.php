@@ -28,7 +28,9 @@ class MenuManager
         $menus = [];
         $themes = Theme::whereIsEnabled()->get();
         foreach ($themes as $theme) {
-            $files = File::glob($configPath = $theme->getTheme()->getPath().'/_meta/menus/*.php');
+            if (!$theme->getTheme()) continue;
+
+            $files = File::glob($theme->getTheme()->getPath().'/_meta/menus/*.php');
             foreach ($files as $file) {
                 $config = File::getRequire($file);
                 $menus[] = [
