@@ -60,8 +60,8 @@ $config['list']['columns'] = [
         'type' => 'button',
         'iconCssClass' => 'fa fa-eye',
         'attributes' => [
-            'class' => 'btn btn-outline-info',
-            'href' => root_url('{permalink_slug}'),
+            'class' => 'btn btn-light text-info',
+            'href' => page_url('{permalink_slug}'),
             'target' => '_blank',
         ],
     ],
