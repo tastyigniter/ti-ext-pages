@@ -44,7 +44,7 @@ class Menus extends \Igniter\Admin\Classes\AdminController
         ],
         'preview' => [
             'title' => 'lang:admin::lang.form.preview_title',
-            'redirect' => 'igniter/pages/menus',
+            'back' => 'igniter/pages/menus',
         ],
         'delete' => [
             'redirect' => 'igniter/pages/menus',
