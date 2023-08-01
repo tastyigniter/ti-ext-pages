@@ -1,5 +1,5 @@
 <button
-    class="btn btn-outline-default"
+    class="btn btn-light"
     data-request="onNewItem"
 >
     <i class="fa fa-plus"></i>&nbsp;&nbsp;New Item
