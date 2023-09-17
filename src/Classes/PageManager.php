@@ -61,7 +61,7 @@ class PageManager
             throw new ApplicationException(Lang::get('main::lang.not_found.active_theme'));
         }
 
-        return Page::inTheme($theme)->newFromFinder([
+        return Page::on($theme->getName())->newFromFinder([
             'fileName' => $staticPage->permalink_slug,
             'mTime' => $staticPage->updated_at->timestamp,
             'content' => $staticPage->content,
@@ -72,11 +72,13 @@ class PageManager
 
     protected function fillSettingsFromAttributes($page, $staticPage)
     {
-        $page->settings['id'] = str_replace('/', '-', $staticPage->permalink_slug);
-        $page->settings['title'] = $staticPage->title;
-        $page->settings['layout'] = $staticPage->layout ?? 'static';
-        $page->settings['description'] = $staticPage->meta_description;
-        $page->settings['keywords'] = $staticPage->meta_keywords;
-        $page->settings['is_hidden'] = !(bool)$staticPage->status;
+        $settings['id'] = str_replace('/', '-', $staticPage->permalink_slug);
+        $settings['title'] = $staticPage->title;
+        $settings['layout'] = $staticPage->layout ?? 'static';
+        $settings['description'] = $staticPage->meta_description;
+        $settings['keywords'] = $staticPage->meta_keywords;
+        $settings['is_hidden'] = !(bool)$staticPage->status;
+
+        $page->settings = $settings;
     }
 }

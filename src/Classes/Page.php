@@ -33,13 +33,12 @@ class Page extends \Igniter\Main\Template\Page
      */
     public static function resolveMenuItem($item, string $url, Theme $theme)
     {
-        $query = PageModel::whereIsEnabled()->orderBy('title');
+        $pages = PageModel::loadPages();
 
         if ($item->type == 'static-page') {
-            $query->where('page_id', $item->reference);
+            $pages->where('page_id', $item->reference);
         }
 
-        $pages = $query->get();
         if ($pages->isEmpty()) {
             return;
         }

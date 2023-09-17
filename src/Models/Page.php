@@ -8,6 +8,7 @@ use Igniter\Flame\Database\Traits\Sortable;
 use Igniter\Main\Classes\ThemeManager;
 use Igniter\Main\Template\Layout;
 use Igniter\System\Models\Concerns\Switchable;
+use Illuminate\Support\Collection;
 
 /**
  * Pages Model Class
@@ -55,9 +56,20 @@ class Page extends Model
         ],
     ];
 
+    protected static ?Collection $pagesCache = null;
+
     public static function getDropdownOptions()
     {
         return static::whereIsEnabled()->dropdown('title');
+    }
+
+    public static function loadPages()
+    {
+        if (!is_null(self::$pagesCache)) {
+            return self::$pagesCache;
+        }
+
+        return self::$pagesCache = static::whereIsEnabled()->orderBy('title')->get();
     }
 
     public function getLayoutOptions()
