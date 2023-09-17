@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Event;
  */
 class MenuItem extends Model
 {
-    use Sortable;
     use NestedTree;
+    use Sortable;
     use Validation;
 
     const SORT_ORDER = 'priority';
