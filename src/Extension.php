@@ -27,7 +27,7 @@ class Extension extends \Igniter\System\Classes\BaseExtension
         });
 
         Event::listen('router.beforeRoute', function ($url) {
-            if (!request()->routeIs('igniter.pages')) {
+            if (!request()->routeIs('igniter.pages.*')) {
                 return;
             }
 
