@@ -28,11 +28,16 @@ class MenuManager
         $menus = [];
         $themes = Theme::whereIsEnabled()->get();
         foreach ($themes as $theme) {
-            if (!$theme->getTheme()) {
+            if (!$themeObj = $theme->getTheme()) {
                 continue;
             }
 
-            $files = File::glob($theme->getTheme()->getPath().'/_meta/menus/*.php');
+            $sourcePath = $themeObj->getSourcePath();
+            if ($themeObj->hasParent()) {
+                $sourcePath = $themeObj->getParent()->getSourcePath();
+            }
+
+            $files = File::glob($sourcePath.'/_meta/menus/*.php');
             foreach ($files as $file) {
                 $config = File::getRequire($file);
                 $menus[] = [
