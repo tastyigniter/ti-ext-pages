@@ -10,7 +10,12 @@ return new class extends Migration
     {
         Schema::table('pages', function (Blueprint $table) {
             $table->unsignedBigInteger('page_id')->change();
-            $table->foreignId('language_id')->change()->constrained('languages', 'language_id');
+        });
+
+        rescue(function () {
+            Schema::table('pages', function (Blueprint $table) {
+                $table->foreignId('language_id')->change()->constrained('languages', 'language_id');
+            });
         });
     }
 
