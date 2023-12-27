@@ -67,7 +67,9 @@ class Pages extends \Igniter\Admin\Classes\AdminController
         $rules[] = ['title', 'lang:igniter.pages::default.label_title', 'required|min:2|max:255'];
         $rules[] = ['permalink_slug', 'lang:igniter.pages::default.label_permalink_slug', 'alpha_dash|max:255'];
         $rules[] = ['content', 'lang:igniter.pages::default.label_content', 'required|min:2'];
-        $rules[] = ['navigation.*', 'lang:igniter.pages::default.label_navigation', 'required'];
+        $rules[] = ['meta_description', 'lang:igniter.pages::default.label_meta_description', 'nullable'];
+        $rules[] = ['meta_keywords', 'lang:igniter.pages::default.label_meta_keywords', 'nullable'];
+        $rules[] = ['metadata.navigation_hidden', 'lang:igniter.pages::default.label_navigation', 'required'];
         $rules[] = ['status', 'lang:admin::lang.label_status', 'required|integer'];
 
         return $this->validatePasses($form->getSaveData(), $rules);
