@@ -7,8 +7,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class MakePageIdIncremental extends Migration
-{
+return new class extends Migration {
     public function up()
     {
         $tablePrefix = Schema::getConnection()->getTablePrefix();
@@ -25,4 +24,4 @@ class MakePageIdIncremental extends Migration
     public function down()
     {
     }
-}
+};
