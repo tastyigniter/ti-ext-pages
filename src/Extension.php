@@ -67,22 +67,6 @@ class Extension extends \Igniter\System\Classes\BaseExtension
         $this->defineRoutes();
     }
 
-    public function registerComponents()
-    {
-        return [
-            \Igniter\Pages\Components\StaticPage::class => [
-                'code' => 'staticPage',
-                'name' => 'lang:igniter.pages::default.text_component_title',
-                'description' => 'lang:igniter.pages::default.text_component_desc',
-            ],
-            \Igniter\Pages\Components\StaticMenu::class => [
-                'code' => 'staticMenu',
-                'name' => 'lang:igniter.pages::default.menu.text_component_title',
-                'description' => 'lang:igniter.pages::default.menu.text_component_desc',
-            ],
-        ];
-    }
-
     public function registerNavigation()
     {
         return [

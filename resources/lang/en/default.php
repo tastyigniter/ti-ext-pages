@@ -4,8 +4,6 @@ return [
     'text_title' => 'Static Pages',
     'text_tab_edit' => 'Edit',
     'text_tab_manage' => 'Manage',
-    'text_component_title' => 'Static Page Component',
-    'text_component_desc' => 'Displays a static page in a layout',
 
     'label_heading' => 'Heading',
     'text_new_title' => 'Page: New',
@@ -34,14 +32,7 @@ return [
     'help_navigation' => 'Select where to display a link to this page',
     'help_layout' => 'The layout to use to render this page',
 
-    'nav' => [
-        'text_component_title' => 'Pages Nav Component',
-        'text_component_desc' => 'Displays a list of pages',
-    ],
-
     'menu' => [
-        'text_component_title' => 'Static Menu Component',
-        'text_component_desc' => 'Outputs a menu in a layout.',
         'text_static_page' => 'Static Page',
         'text_all_static_pages' => 'All Static Pages',
         'text_menu_items' => 'Menu Items',

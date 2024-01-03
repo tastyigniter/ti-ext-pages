@@ -41,6 +41,7 @@ return [
             'theme_name' => [
                 'label' => 'igniter.pages::default.menu.label_theme',
                 'disabled' => true,
+                'sortable' => false,
             ],
         ],
     ],
