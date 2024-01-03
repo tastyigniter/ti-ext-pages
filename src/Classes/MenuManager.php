@@ -32,12 +32,12 @@ class MenuManager
                 continue;
             }
 
-            $sourcePath = $themeObj->getSourcePath();
+            $metaPath = $themeObj->getMetaPath();
             if ($themeObj->hasParent()) {
-                $sourcePath = $themeObj->getParent()->getSourcePath();
+                $metaPath = $themeObj->getParent()->getMetaPath();
             }
 
-            $files = File::glob($sourcePath.'/_meta/menus/*.php');
+            $files = File::glob($metaPath.'/menus/*.php');
             foreach ($files as $file) {
                 $config = File::getRequire($file);
                 $menus[] = [

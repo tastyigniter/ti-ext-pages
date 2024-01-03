@@ -36,11 +36,11 @@ class Menu extends Model
 
     public static function syncAll()
     {
-        $dbMenus = self::pluck('code')->all();
+        $dbMenus = self::pluck('theme_code', 'code')->all();
 
         $manager = resolve(MenuManager::class);
         foreach ($manager->getMenusConfig() as $config) {
-            if (in_array($config['code'], $dbMenus)) {
+            if (array_get($dbMenus, $config['code']) == $config['themeCode']) {
                 continue;
             }
 
