@@ -10,10 +10,8 @@ class Page extends \Igniter\Main\Template\Page
 {
     /**
      * Handler for the pages.menuitem.getTypeInfo event.
-     *
-     * @return array
      */
-    public static function getMenuTypeInfo(string $type)
+    public static function getMenuTypeInfo(string $type): ?array
     {
         if ($type == 'all-static-pages') {
             return [];
@@ -31,7 +29,7 @@ class Page extends \Igniter\Main\Template\Page
      * @param \Igniter\Pages\Models\MenuItem $item
      * @return array|void
      */
-    public static function resolveMenuItem($item, string $url, Theme $theme)
+    public static function resolveMenuItem($item, string $url, Theme $theme): ?array
     {
         $pages = PageModel::loadPages();
 
@@ -40,7 +38,7 @@ class Page extends \Igniter\Main\Template\Page
         }
 
         if ($pages->isEmpty()) {
-            return;
+            return null;
         }
 
         $result = [];

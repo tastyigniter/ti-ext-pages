@@ -12,12 +12,12 @@ use Illuminate\Support\Facades\Request;
  */
 class Menus extends \Igniter\Admin\Classes\AdminController
 {
-    public $implement = [
+    public array $implement = [
         \Igniter\Admin\Http\Actions\FormController::class,
         \Igniter\Admin\Http\Actions\ListController::class,
     ];
 
-    public $listConfig = [
+    public array $listConfig = [
         'list' => [
             'model' => \Igniter\Pages\Models\Menu::class,
             'title' => 'Static Menus',
@@ -27,7 +27,7 @@ class Menus extends \Igniter\Admin\Classes\AdminController
         ],
     ];
 
-    public $formConfig = [
+    public array $formConfig = [
         'name' => 'Static Menu',
         'model' => \Igniter\Pages\Models\Menu::class,
         'create' => [
@@ -52,7 +52,7 @@ class Menus extends \Igniter\Admin\Classes\AdminController
         'configFile' => 'menu',
     ];
 
-    protected $requiredPermissions = 'Igniter.Pages.*';
+    protected null|string|array $requiredPermissions = 'Igniter.Pages.*';
 
     public function __construct()
     {

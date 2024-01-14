@@ -67,7 +67,7 @@ class Extension extends \Igniter\System\Classes\BaseExtension
         $this->defineRoutes();
     }
 
-    public function registerNavigation()
+    public function registerNavigation(): array
     {
         return [
             'design' => [
@@ -84,7 +84,7 @@ class Extension extends \Igniter\System\Classes\BaseExtension
         ];
     }
 
-    public function registerPermissions()
+    public function registerPermissions(): array
     {
         return [
             'Igniter.Pages.Manage' => [
