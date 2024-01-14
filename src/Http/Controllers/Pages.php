@@ -7,12 +7,12 @@ use Igniter\Pages\Models\Menu;
 
 class Pages extends \Igniter\Admin\Classes\AdminController
 {
-    public $implement = [
+    public array $implement = [
         \Igniter\Admin\Http\Actions\ListController::class,
         \Igniter\Admin\Http\Actions\FormController::class,
     ];
 
-    public $listConfig = [
+    public array $listConfig = [
         'list' => [
             'model' => \Igniter\Pages\Models\Page::class,
             'title' => 'lang:igniter.pages::default.text_title',
@@ -22,7 +22,7 @@ class Pages extends \Igniter\Admin\Classes\AdminController
         ],
     ];
 
-    public $formConfig = [
+    public array $formConfig = [
         'name' => 'lang:igniter.pages::default.text_form_name',
         'model' => \Igniter\Pages\Models\Page::class,
         'create' => [
@@ -43,7 +43,7 @@ class Pages extends \Igniter\Admin\Classes\AdminController
         'configFile' => 'page',
     ];
 
-    protected $requiredPermissions = 'Igniter.Pages.*';
+    protected null|string|array $requiredPermissions = 'Igniter.Pages.*';
 
     public function __construct()
     {
