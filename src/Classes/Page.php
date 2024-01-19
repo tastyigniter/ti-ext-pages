@@ -13,21 +13,19 @@ class Page extends \Igniter\Main\Template\Page
      */
     public static function getMenuTypeInfo(string $type): ?array
     {
-        if ($type == 'all-static-pages') {
-            return [];
-        }
-
         if ($type == 'static-page') {
             return [
                 'references' => self::listStaticPageMenuOptions(),
             ];
         }
+
+        return [];
     }
 
     /**
      * Handler for the pages.menuitem.resolveItem event.
      * @param \Igniter\Pages\Models\MenuItem $item
-     * @return array|void
+     * @return ?array
      */
     public static function resolveMenuItem($item, string $url, Theme $theme): ?array
     {
