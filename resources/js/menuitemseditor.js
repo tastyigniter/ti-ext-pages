@@ -33,12 +33,10 @@
             return
         }
 
-        $el.prop('disabled', true)
         $.ti.loadingIndicator.show()
         $.request($el.data('handler'), {
             data: {type: type, recordId: this.$modalElement.find('[name="recordId"]').val()}
         }).always(function () {
-            $el.prop('disabled', false)
             $.ti.loadingIndicator.hide()
         }).done(function (json) {
             self.typeInfo[type] = json.menuItemTypeInfo
@@ -60,23 +58,19 @@
     MenuItemsEditor.prototype.applyTypeInfoReferences = function (references, $modalEl) {
         var $reference = $('div[data-field-name="reference"]', $modalEl),
             $selector = $('select', $reference),
-            selected = $selector.val()
+            selected = $selector.val(),
+            choices = []
 
         selected = selected ? selected : this.properties.reference
 
         if (references) {
-            $selector.find('option').remove()
             $reference.show()
 
             $.each(references, function (index, code) {
-                var $option = $('<option></option>').attr('value', index)
-
-                if (selected === index)
-                    $option.attr('selected', true)
-
-                $option.text(code).val(index)
-                $selector.append($option)
+                choices.push({value: index, label: code, selected: selected === index})
             })
+
+            $selector.selectList('setChoices', choices)
         } else {
             $reference.hide()
         }

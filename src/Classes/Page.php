@@ -13,13 +13,9 @@ class Page extends \Igniter\Main\Template\Page
      */
     public static function getMenuTypeInfo(string $type): ?array
     {
-        if ($type == 'static-page') {
-            return [
-                'references' => self::listStaticPageMenuOptions(),
-            ];
-        }
-
-        return [];
+        return [
+            'references' => self::listStaticPageMenuOptions(),
+        ];
     }
 
     /**
@@ -69,7 +65,7 @@ class Page extends \Igniter\Main\Template\Page
     {
         $references = [];
 
-        $pages = Page::whereIsEnabled()->orderBy('title')->get();
+        $pages = PageModel::whereIsEnabled()->orderBy('title')->get();
         foreach ($pages as $page) {
             $references[$page->page_id] = $page->title;
         }

@@ -49,11 +49,11 @@ class Extension extends \Igniter\System\Classes\BaseExtension
         });
 
         Event::listen('pages.menuitem.getTypeInfo', function ($type) {
-            if ($type == 'url' || $type == 'header') {
-                return [];
+            if ($type == 'static-page') {
+                return StaticPage::getMenuTypeInfo($type);
             }
 
-            return StaticPage::getMenuTypeInfo($type);
+            return [];
         });
 
         Event::listen('pages.menuitem.resolveItem', function ($item, $url, $theme) {

@@ -72,7 +72,7 @@ class Menus extends \Igniter\Admin\Classes\AdminController
 
     public function edit($context, $recordId)
     {
-        $this->addJs('$/igniter/pages/assets/js/menuitemseditor.js');
+        $this->addJs('igniter.pages::/js/menuitemseditor.js');
 
         $this->asExtension('FormController')->edit($context, $recordId);
     }

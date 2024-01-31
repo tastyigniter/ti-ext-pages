@@ -13,7 +13,7 @@ return [
                 'type' => 'select',
                 'span' => 'right',
                 'attributes' => [
-                    'data-control' => 'menu-item-type',
+                    'data-toggle' => 'menu-item-type',
                     'data-handler' => 'onGetMenuItemTypeInfo',
                 ],
             ],
@@ -21,6 +21,11 @@ return [
                 'label' => 'igniter.pages::default.menu.label_url',
                 'type' => 'text',
                 'cssClass' => 'form-group-hide',
+                'trigger' => [
+                    'action' => 'show',
+                    'field' => 'type',
+                    'condition' => 'value[url]',
+                ],
             ],
             'reference' => [
                 'label' => 'igniter.pages::default.menu.label_reference',
