@@ -100,7 +100,7 @@ class Extension extends \Igniter\System\Classes\BaseExtension
             return;
         }
 
-        Route::middleware('igniter')
+        Route::middleware(config('igniter-routes.middleware', []))
             ->domain(config('igniter-routes.domain'))
             ->name('igniter.pages.')
             ->prefix(Igniter::uri())
