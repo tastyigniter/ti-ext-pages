@@ -23,7 +23,7 @@ In the admin user interface you can create, edit or delete pages and menus.
 
 The first thing we have to do is create the layout that will host all pages of the website.
 
-```php+HTML
+```blade
 ---
 description: Static layout for static pages
 
@@ -56,7 +56,7 @@ object has the following properties:
 - `extraAttributes` - specifies the menu item extra HTML attributes
 - `items` - an array of the menu item subitems, if any. If there are no subitems, the array is empty
 
-```php+HTML
+```blade
 @foreach ($menuItems as $item)
    <li><a href="{{ $item->url }}">{{ $item->title }}</a></li>
 @endforeach
