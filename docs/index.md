@@ -8,8 +8,6 @@ sortOrder: 70
 
 This TastyIgniter extension allows end users to manage static pages and menus with a simple WYSIWYG user interface.
 
-This extension includes two components: Static Page and Static Menu.
-
 ## Installation
 
 To install this extension, click on the **Add to Site** button on the TastyIgniter marketplace item page or search
@@ -43,10 +41,10 @@ description: Static layout for static pages
 </html>
 ```
 
-Includes the staticPage and staticMenu component to the layout. The staticMenu component has the `code` property that
+Include the `staticPage` and `staticMenu` component to the layout. The `staticMenu` component has the `code` property that
 should correspond to a code of the static menu to display.
 
-The static menu component injects the `menuItems` page variable. The `menuItems` variable is an array of objects. Each
+The `staticMenu` component injects the `$menuItems` page variable. The `$menuItems` variable is an array of objects. Each
 object has the following properties:
 
 - `title` - specifies the menu item title.
