@@ -88,7 +88,7 @@ class Extension extends \Igniter\System\Classes\BaseExtension
     {
         return [
             'Igniter.Pages.Manage' => [
-                'group' => 'admin',
+                'group' => 'igniter::admin.permissions.name',
                 'description' => 'Create, modify and delete front-end pages and menus',
             ],
         ];
