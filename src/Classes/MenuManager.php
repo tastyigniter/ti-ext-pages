@@ -52,14 +52,14 @@ class MenuManager
         return $menus;
     }
 
-    public function generateReferences(Menu $menu, $page)
+    public function generateReferences(Menu $menu, $pageOrLayout = null)
     {
         if (!strlen($currentUrl = Request::path())) {
             $currentUrl = '/';
         }
 
         $currentUrl = strtolower(URL::to($currentUrl));
-        $activeMenuItem = $page->activeMenuItem ?: false;
+        $activeMenuItem = $pageOrLayout->activeMenuItem ?: false;
 
         $iterator = function ($items) use (&$iterator, $currentUrl, $activeMenuItem, $menu) {
             $result = [];
