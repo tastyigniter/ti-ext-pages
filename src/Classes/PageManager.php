@@ -58,7 +58,7 @@ class PageManager
     protected function makePage($staticPage)
     {
         if (!$theme = resolve(ThemeManager::class)->getActiveTheme()) {
-            throw new ApplicationException(Lang::get('main::lang.not_found.active_theme'));
+            throw new ApplicationException(Lang::get('igniter::main.not_found.active_theme'));
         }
 
         return Page::on($theme->getName())->newFromFinder([
