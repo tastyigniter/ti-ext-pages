@@ -91,7 +91,7 @@ parameters:
 			path: src/Models/Menu.php
 
 		-
-			message: "#^Call to an undefined static method Igniter\\\\Pages\\\\Models\\\\Menu\\:\\:pluck\\(\\)\\.$#"
+			message: "#^Call to an undefined static method Igniter\\\\Pages\\\\Models\\\\Menu\\:\\:select\\(\\)\\.$#"
 			count: 1
 			path: src/Models/Menu.php
 
