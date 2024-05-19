@@ -61,7 +61,7 @@ class MenuManager
         $currentUrl = strtolower(URL::to($currentUrl));
         $activeMenuItem = $pageOrLayout->activeMenuItem ?: false;
 
-        $iterator = function ($items) use (&$iterator, $currentUrl, $activeMenuItem, $menu) {
+        $iterator = function($items) use (&$iterator, $currentUrl, $activeMenuItem, $menu) {
             $result = [];
 
             foreach ($items as $item) {
@@ -91,7 +91,7 @@ class MenuManager
 
         $items = $iterator($menu->items()->sorted()->get()->toTree());
 
-        $hasActiveChild = function ($items) use (&$hasActiveChild) {
+        $hasActiveChild = function($items) use (&$hasActiveChild) {
             foreach ($items as $item) {
                 if ($item->isActive) {
                     return true;
@@ -104,7 +104,7 @@ class MenuManager
             }
         };
 
-        $iterator = function ($items) use (&$iterator, &$hasActiveChild) {
+        $iterator = function($items) use (&$iterator, &$hasActiveChild) {
             foreach ($items as $item) {
                 $item->isChildActive = $hasActiveChild($item->items);
                 $iterator($item->items);
@@ -136,7 +136,7 @@ class MenuManager
                 }
 
                 if (isset($itemInfo['items'])) {
-                    $itemIterator = function ($items) use (&$itemIterator, $parentReference) {
+                    $itemIterator = function($items) use (&$itemIterator, $parentReference) {
                         $result = [];
                         foreach ($items as $item) {
                             $reference = (object)$this->defaultMenuItem;

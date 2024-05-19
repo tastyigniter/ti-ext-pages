@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('igniter_pages_menus', function (Blueprint $table) {
+        Schema::create('igniter_pages_menus', function(Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('theme_code')->index();
@@ -17,7 +17,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('igniter_pages_menu_items', function (Blueprint $table) {
+        Schema::create('igniter_pages_menu_items', function(Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('menu_id')->unsigned()->index();

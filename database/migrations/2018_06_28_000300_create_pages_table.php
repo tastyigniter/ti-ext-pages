@@ -11,7 +11,7 @@ return new class extends Migration
     public function up()
     {
         if (!Schema::hasTable('pages')) {
-            Schema::create('pages', function (Blueprint $table) {
+            Schema::create('pages', function(Blueprint $table) {
                 $table->engine = 'InnoDB';
                 $table->integer('page_id', true);
                 $table->integer('language_id');

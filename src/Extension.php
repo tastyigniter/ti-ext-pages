@@ -22,11 +22,11 @@ class Extension extends \Igniter\System\Classes\BaseExtension
 
     public function boot()
     {
-        Event::listen('main.theme.activated', function () {
+        Event::listen('main.theme.activated', function() {
             Menu::syncAll();
         });
 
-        Event::listen('router.beforeRoute', function ($url) {
+        Event::listen('router.beforeRoute', function($url) {
             if (!request()->routeIs('igniter.pages.*')) {
                 return;
             }
@@ -34,21 +34,21 @@ class Extension extends \Igniter\System\Classes\BaseExtension
             return resolve(PageManager::class)->initPage($url);
         });
 
-        Event::listen('main.page.beforeRenderPage', function ($controller, $page) {
+        Event::listen('main.page.beforeRenderPage', function($controller, $page) {
             $contents = resolve(PageManager::class)->getPageContents($page);
             if (strlen($contents)) {
                 return $contents;
             }
         });
 
-        Event::listen('pages.menuitem.listTypes', function () {
+        Event::listen('pages.menuitem.listTypes', function() {
             return [
                 'static-page' => 'igniter.pages::default.menu.text_static_page',
                 'all-static-pages' => 'igniter.pages::default.menu.text_all_static_pages',
             ];
         });
 
-        Event::listen('pages.menuitem.getTypeInfo', function ($type) {
+        Event::listen('pages.menuitem.getTypeInfo', function($type) {
             if ($type == 'static-page') {
                 return StaticPage::getMenuTypeInfo($type);
             }
@@ -56,7 +56,7 @@ class Extension extends \Igniter\System\Classes\BaseExtension
             return [];
         });
 
-        Event::listen('pages.menuitem.resolveItem', function ($item, $url, $theme) {
+        Event::listen('pages.menuitem.resolveItem', function($item, $url, $theme) {
             if ($theme && ($item->type == 'static-page' || $item->type == 'all-static-pages')) {
                 return StaticPage::resolveMenuItem($item, $url, $theme);
             }
@@ -104,8 +104,8 @@ class Extension extends \Igniter\System\Classes\BaseExtension
             ->domain(config('igniter-routes.domain'))
             ->name('igniter.pages.')
             ->prefix(Igniter::uri())
-            ->group(function (Router $router) {
-                resolve(PageManager::class)->listPageSlugs()->each(function ($slug) use ($router) {
+            ->group(function(Router $router) {
+                resolve(PageManager::class)->listPageSlugs()->each(function($slug) use ($router) {
                     $router->pagic($slug)->name($slug);
                 });
             });

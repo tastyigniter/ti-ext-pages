@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::table('pages', function (Blueprint $table) {
+        Schema::table('pages', function(Blueprint $table) {
             $table->timestamp('date_added')->change();
             $table->timestamp('date_updated')->change();
             $table->renameColumn('date_added', 'created_at');

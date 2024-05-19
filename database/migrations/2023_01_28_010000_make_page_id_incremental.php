@@ -17,7 +17,7 @@ return new class extends Migration
             return;
         }
 
-        Schema::table('pages', function (Blueprint $table) {
+        Schema::table('pages', function(Blueprint $table) {
             $table->unsignedBigInteger('page_id', true)->change();
         });
     }

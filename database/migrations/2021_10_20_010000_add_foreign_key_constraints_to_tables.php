@@ -8,12 +8,12 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::table('pages', function (Blueprint $table) {
+        Schema::table('pages', function(Blueprint $table) {
             $table->unsignedBigInteger('page_id')->change();
         });
 
-        rescue(function () {
-            Schema::table('pages', function (Blueprint $table) {
+        rescue(function() {
+            Schema::table('pages', function(Blueprint $table) {
                 $table->foreignId('language_id')->change()->constrained('languages', 'language_id');
             });
         });
@@ -22,7 +22,7 @@ return new class extends Migration
     public function down()
     {
         try {
-            Schema::table('pages', function (Blueprint $table) {
+            Schema::table('pages', function(Blueprint $table) {
                 $table->dropForeignKeyIfExists('language_id');
             });
         } catch (\Exception $e) {

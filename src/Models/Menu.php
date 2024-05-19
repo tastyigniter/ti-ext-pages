@@ -92,7 +92,7 @@ class Menu extends Model
 
     public function createMenuItemsFromConfig($items)
     {
-        $iterator = function ($items, $parentId = null) use (&$iterator) {
+        $iterator = function($items, $parentId = null) use (&$iterator) {
             foreach ($items as $item) {
                 if ($item['type'] == 'static-page' && !is_numeric($item['reference'])) {
                     $item['reference'] = ($page = Page::whereSlug($item['reference'])->first())

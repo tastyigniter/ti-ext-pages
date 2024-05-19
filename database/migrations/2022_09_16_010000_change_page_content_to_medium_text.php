@@ -10,7 +10,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::table('pages', function (Blueprint $table) {
+        Schema::table('pages', function(Blueprint $table) {
             $table->mediumText('content')->change();
         });
     }
