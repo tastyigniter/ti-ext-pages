@@ -9,7 +9,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::table('pages', function (Blueprint $table) {
+        Schema::table('pages', function(Blueprint $table) {
             $table->dropColumn('name');
             $table->dropColumn('heading');
 
@@ -22,14 +22,14 @@ return new class extends Migration
         });
 
         DB::table('pages')->update(['layout' => 'static']);
-        DB::table('pages')->get()->each(function ($model) {
+        DB::table('pages')->get()->each(function($model) {
             $navigation = @unserialize($model->navigation) ?: [];
             DB::table('pages')->where('page_id', $model->page_id)->update([
                 'metadata' => json_encode(['navigation' => empty($navigation) ? '0' : '1']),
             ]);
         });
 
-        Schema::table('pages', function (Blueprint $table) {
+        Schema::table('pages', function(Blueprint $table) {
             $table->dropColumn('navigation');
         });
     }

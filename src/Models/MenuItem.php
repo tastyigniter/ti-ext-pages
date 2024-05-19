@@ -107,9 +107,9 @@ class MenuItem extends Model
 
     public function getParentIdOptions()
     {
-        return self::select('id', 'title')->get()->filter(function ($model) {
+        return self::select('id', 'title')->get()->filter(function($model) {
             return $model->id !== $this->id;
-        })->mapWithKeys(function ($model) {
+        })->mapWithKeys(function($model) {
             return [$model->id => $model->title];
         });
     }
