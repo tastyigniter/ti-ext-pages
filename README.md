@@ -81,13 +81,13 @@ You can loop through the menu items and display them in your blade view:
 
 In some cases, you may want to tag a particular menu item explicitly as active. You can do that in the `onInit()`
 function of the layout, by assigning a value to the `activeMenuItem` layout variable matching the menu item code that you
-want to activate. 
+want to activate.
 
 ```php
 function onInit()
 {
     $this['activeMenuItem'] = 'about-us';
-}	
+}
 ```
 
 ### Creating menu item types
