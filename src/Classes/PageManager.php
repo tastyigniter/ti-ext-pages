@@ -27,7 +27,7 @@ class PageManager
         $page->permalink = $url;
         $page['staticPage'] = $staticPage;
 
-        $this->fillSettingsFromAttributes($page, $staticPage);
+        $this->applySettingsFromAttributes($page, $staticPage);
 
         return $page;
     }
@@ -50,9 +50,10 @@ class PageManager
     {
         $url = ltrim(RouterHelper::normalizeUrl($url), '/');
 
-        $query = PageModel::query()->isEnabled();
-
-        return $query->where('permalink_slug', $url)->first();
+        return PageModel::query()
+            ->isEnabled()
+            ->where('permalink_slug', $url)
+            ->first();
     }
 
     protected function makePage($staticPage)
@@ -70,14 +71,16 @@ class PageManager
         ]);
     }
 
-    protected function fillSettingsFromAttributes($page, $staticPage)
+    protected function applySettingsFromAttributes($page, $staticPage)
     {
+        $settings = $page->settings;
+
         $settings['id'] = str_replace('/', '-', $staticPage->permalink_slug);
         $settings['title'] = $staticPage->title;
         $settings['layout'] = $staticPage->layout ?? 'static';
         $settings['description'] = $staticPage->meta_description;
         $settings['keywords'] = $staticPage->meta_keywords;
-        $settings['is_hidden'] = !(bool)$staticPage->status;
+        $settings['is_hidden'] = !$staticPage->status;
 
         $page->settings = $settings;
     }

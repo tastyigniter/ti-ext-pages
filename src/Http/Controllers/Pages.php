@@ -25,6 +25,7 @@ class Pages extends \Igniter\Admin\Classes\AdminController
     public array $formConfig = [
         'name' => 'lang:igniter.pages::default.text_form_name',
         'model' => \Igniter\Pages\Models\Page::class,
+        'request' => \Igniter\Pages\Http\Requests\PageRequest::class,
         'create' => [
             'title' => 'lang:admin::lang.form.create_title',
             'redirect' => 'igniter/pages/pages/edit/{page_id}',
@@ -59,20 +60,5 @@ class Pages extends \Igniter\Admin\Classes\AdminController
         }
 
         $this->asExtension('ListController')->index();
-    }
-
-    public function formValidate($model, $form)
-    {
-        $rules[] = ['language_id', 'lang:igniter.pages::default.label_language', 'required|integer'];
-        $rules[] = ['title', 'lang:igniter.pages::default.label_title', 'required|min:2|max:255'];
-        $rules[] = ['permalink_slug', 'lang:igniter.pages::default.label_permalink_slug', 'alpha_dash|max:255'];
-        $rules[] = ['content', 'lang:igniter.pages::default.label_content', 'required|min:2'];
-        $rules[] = ['meta_description', 'lang:igniter.pages::default.label_meta_description', 'nullable'];
-        $rules[] = ['meta_keywords', 'lang:igniter.pages::default.label_meta_keywords', 'nullable'];
-        $rules[] = ['metadata.navigation_hidden', 'lang:igniter.pages::default.label_navigation', 'required'];
-        $rules[] = ['status', 'lang:admin::lang.label_status', 'required|integer'];
-        $rules[] = ['layout', 'lang:igniter.pages::default.label_layout', 'nullable|alpha_dash'];
-
-        return $this->validatePasses($form->getSaveData(), $rules);
     }
 }

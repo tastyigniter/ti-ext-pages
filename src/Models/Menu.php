@@ -54,6 +54,11 @@ class Menu extends Model
         }
     }
 
+    public function getThemeCodeOptions()
+    {
+        return Theme::all()->pluck('name', 'code')->toArray();
+    }
+
     //
     // Events
     //
