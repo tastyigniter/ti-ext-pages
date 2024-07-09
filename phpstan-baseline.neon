@@ -16,22 +16,12 @@ parameters:
 			path: src/Classes/MenuManager.php
 
 		-
-			message: "#^Access to an undefined property Igniter\\\\Pages\\\\Models\\\\MenuItem\\:\\:\\$reference\\.$#"
-			count: 1
-			path: src/Classes/Page.php
-
-		-
-			message: "#^Access to an undefined property Igniter\\\\Pages\\\\Models\\\\MenuItem\\:\\:\\$type\\.$#"
-			count: 2
-			path: src/Classes/Page.php
-
-		-
 			message: "#^Call to an undefined static method Igniter\\\\Pages\\\\Models\\\\Page\\:\\:whereIsEnabled\\(\\)\\.$#"
 			count: 1
 			path: src/Classes/Page.php
 
 		-
-			message: "#^Call to an undefined method Illuminate\\\\Database\\\\Eloquent\\\\Builder\\:\\:isEnabled\\(\\)\\.$#"
+			message: "#^Call to an undefined method Illuminate\\\\Database\\\\Eloquent\\\\Builder\\<Igniter\\\\Pages\\\\Models\\\\Page\\>\\:\\:isEnabled\\(\\)\\.$#"
 			count: 1
 			path: src/Classes/PageManager.php
 
@@ -86,6 +76,11 @@ parameters:
 			path: src/Models/Menu.php
 
 		-
+			message: "#^Access to an undefined property Illuminate\\\\Support\\\\Optional\\:\\:\\$name\\.$#"
+			count: 1
+			path: src/Models/Menu.php
+
+		-
 			message: "#^Call to an undefined method Igniter\\\\Pages\\\\Models\\\\Menu\\:\\:items\\(\\)\\.$#"
 			count: 3
 			path: src/Models/Menu.php
@@ -124,6 +119,11 @@ parameters:
 			message: "#^Call to an undefined static method Igniter\\\\Pages\\\\Models\\\\MenuItem\\:\\:select\\(\\)\\.$#"
 			count: 1
 			path: src/Models/MenuItem.php
+
+		-
+			message: "#^Access to an undefined property Igniter\\\\Pages\\\\Models\\\\Page\\:\\:\\$language_id\\.$#"
+			count: 1
+			path: src/Models/Page.php
 
 		-
 			message: "#^Access to an undefined property Igniter\\\\Pages\\\\Models\\\\Page\\:\\:\\$layout\\.$#"

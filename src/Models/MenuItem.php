@@ -41,15 +41,10 @@ class MenuItem extends Model
     ];
 
     public $relation = [
-        'hasOne' => [],
         'belongsTo' => [
             'menu' => [Menu::class],
             'parent' => [MenuItem::class, 'foreignKey' => 'parent_id', 'otherKey' => 'id'],
         ],
-        'belongsToMany' => [],
-        'morphTo' => [],
-        'morphOne' => [],
-        'morphMany' => [],
     ];
 
     public $rules = [

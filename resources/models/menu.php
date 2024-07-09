@@ -48,11 +48,6 @@ return [
     'form' => [
         'toolbar' => [
             'buttons' => [
-                'back' => [
-                    'label' => 'admin::lang.button_icon_back',
-                    'class' => 'btn btn-outline-secondary',
-                    'href' => 'igniter/pages/menus',
-                ],
                 'save' => [
                     'label' => 'lang:admin::lang.button_save',
                     'context' => ['create', 'edit'],
@@ -70,9 +65,15 @@ return [
             ],
         ],
         'fields' => [
-            'theme_name' => [
+            'theme_code@create' => [
                 'label' => 'igniter.pages::default.menu.label_theme',
-                'type' => 'text',
+                'type' => 'select',
+                'span' => 'left',
+                'cssClass' => 'flex-width',
+            ],
+            'theme_code@edit' => [
+                'label' => 'igniter.pages::default.menu.label_theme',
+                'type' => 'select',
                 'span' => 'left',
                 'cssClass' => 'flex-width',
                 'disabled' => true,
@@ -102,6 +103,7 @@ return [
                     'containerAttributes' => [
                         'data-control' => 'menu-item-editor',
                     ],
+                    'request' => \Igniter\Pages\Http\Requests\MenuItemRequest::class
                 ],
                 '_new_item' => [
                     'tab' => 'igniter.pages::default.menu.text_menu_items',

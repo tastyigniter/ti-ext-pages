@@ -8,6 +8,7 @@ use Igniter\Flame\Database\Traits\Sortable;
 use Igniter\Main\Classes\ThemeManager;
 use Igniter\Main\Template\Layout;
 use Igniter\System\Models\Concerns\Switchable;
+use Igniter\System\Models\Language;
 use Illuminate\Support\Collection;
 
 /**
@@ -105,8 +106,10 @@ class Page extends Model
         return html_entity_decode($value);
     }
 
-    public function getMorphClass()
+    public function beforeSave()
     {
-        return 'pages';
+        if (is_null($this->language_id)) {
+            $this->language_id = Language::getDefault()->getKey();
+        }
     }
 }

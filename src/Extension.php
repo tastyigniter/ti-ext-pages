@@ -14,8 +14,16 @@ use Illuminate\Support\Facades\Route;
 
 class Extension extends \Igniter\System\Classes\BaseExtension
 {
+    protected array $morphMap = [
+        'pages' => \Igniter\Pages\Models\Page::class,
+        'static_menus' => \Igniter\Pages\Models\Menu::class,
+        'static_menu_items' => \Igniter\Pages\Models\MenuItem::class,
+    ];
+
     public function register()
     {
+        parent::register();
+
         $this->app->singleton(MenuManager::class);
         $this->app->singleton(PageManager::class);
     }
@@ -35,8 +43,7 @@ class Extension extends \Igniter\System\Classes\BaseExtension
         });
 
         Event::listen('main.page.beforeRenderPage', function($controller, $page) {
-            $contents = resolve(PageManager::class)->getPageContents($page);
-            if (strlen($contents)) {
+            if ($contents = resolve(PageManager::class)->getPageContents($page)) {
                 return $contents;
             }
         });

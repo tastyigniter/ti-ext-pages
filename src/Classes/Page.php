@@ -20,8 +20,6 @@ class Page extends \Igniter\Main\Template\Page
 
     /**
      * Handler for the pages.menuitem.resolveItem event.
-     * @param \Igniter\Pages\Models\MenuItem $item
-     * @return ?array
      */
     public static function resolveMenuItem($item, string $url, Theme $theme): ?array
     {
@@ -63,13 +61,12 @@ class Page extends \Igniter\Main\Template\Page
 
     protected static function listStaticPageMenuOptions()
     {
-        $references = [];
-
-        $pages = PageModel::whereIsEnabled()->orderBy('title')->get();
-        foreach ($pages as $page) {
-            $references[$page->page_id] = $page->title;
-        }
-
-        return $references;
+        return PageModel::whereIsEnabled()
+            ->orderBy('title')
+            ->get()
+            ->mapWithKeys(function($page) {
+                return [$page->page_id => $page->title];
+            })
+            ->all();
     }
 }

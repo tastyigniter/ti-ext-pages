@@ -128,8 +128,11 @@ $config['form']['fields'] = [
     'permalink_slug' => [
         'label' => 'lang:igniter.pages::default.label_permalink_slug',
         'type' => 'text',
-        //        'comment' => 'lang:igniter.pages::default.help_permalink',
         'span' => 'right',
+        'preset' => [
+            'field' => 'title',
+            'type' => 'slug',
+        ],
     ],
 ];
 

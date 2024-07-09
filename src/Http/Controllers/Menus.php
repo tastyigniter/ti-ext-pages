@@ -30,6 +30,7 @@ class Menus extends \Igniter\Admin\Classes\AdminController
     public array $formConfig = [
         'name' => 'Static Menu',
         'model' => \Igniter\Pages\Models\Menu::class,
+        'request' => \Igniter\Pages\Http\Requests\MenuRequest::class,
         'create' => [
             'title' => 'lang:admin::lang.form.create_title',
             'redirect' => 'igniter/pages/menus/edit/{id}',
