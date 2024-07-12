@@ -103,7 +103,7 @@ return [
                     'containerAttributes' => [
                         'data-control' => 'menu-item-editor',
                     ],
-                    'request' => \Igniter\Pages\Http\Requests\MenuItemRequest::class
+                    'request' => \Igniter\Pages\Http\Requests\MenuItemRequest::class,
                 ],
                 '_new_item' => [
                     'tab' => 'igniter.pages::default.menu.text_menu_items',

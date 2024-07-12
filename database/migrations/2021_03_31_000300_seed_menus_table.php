@@ -10,7 +10,5 @@ return new class extends Migration
         Menu::syncAll();
     }
 
-    public function down()
-    {
-    }
+    public function down() {}
 };
