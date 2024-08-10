@@ -28,7 +28,7 @@ it('returns null for uninitialized page with invalid URL', function() {
 it('gets page contents for initialized page', function() {
     $url = 'about-us';
 
-    $pageManager = new PageManager();
+    $pageManager = new PageManager;
 
     $page = $pageManager->initPage($url);
 

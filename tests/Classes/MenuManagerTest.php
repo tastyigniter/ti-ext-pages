@@ -15,7 +15,7 @@ beforeEach(function() {
 });
 
 it('loads menus from config files across loaded themes', function() {
-    $menuManager = new MenuManager();
+    $menuManager = new MenuManager;
     $menus = $menuManager->getMenusConfig();
 
     expect($menus)->not->toBeEmpty()
