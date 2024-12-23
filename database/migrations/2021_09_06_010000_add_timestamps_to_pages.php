@@ -11,6 +11,9 @@ return new class extends Migration
         Schema::table('pages', function(Blueprint $table) {
             $table->timestamp('date_added')->change();
             $table->timestamp('date_updated')->change();
+        });
+
+        Schema::table('pages', function(Blueprint $table) {
             $table->renameColumn('date_added', 'created_at');
             $table->renameColumn('date_updated', 'updated_at');
         });
