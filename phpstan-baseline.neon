@@ -36,12 +36,12 @@ parameters:
 			path: src/Extension.php
 
 		-
-			message: "#^Call to static method hasDatabase\\(\\) on an unknown class Igniter\\\\Flame\\\\Support\\\\Facades\\\\Igniter\\.$#"
+			message: "#^Call to an undefined static method Igniter\\\\Flame\\\\Support\\\\Facades\\\\Igniter\\:\\:hasDatabase\\(\\)\\.$#"
 			count: 1
 			path: src/Extension.php
 
 		-
-			message: "#^Call to static method uri\\(\\) on an unknown class Igniter\\\\Flame\\\\Support\\\\Facades\\\\Igniter\\.$#"
+			message: "#^Call to an undefined static method Igniter\\\\Flame\\\\Support\\\\Facades\\\\Igniter\\:\\:uri\\(\\)\\.$#"
 			count: 1
 			path: src/Extension.php
 
