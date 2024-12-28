@@ -2,7 +2,7 @@
 
 namespace Igniter\Pages;
 
-use Igniter\Flame\Igniter;
+use Igniter\Flame\Support\Facades\Igniter;
 use Igniter\Pages\Classes\MenuManager;
 use Igniter\Pages\Classes\Page as StaticPage;
 use Igniter\Pages\Classes\PageManager;
