@@ -2,6 +2,7 @@
 
 namespace Igniter\Pages\Tests\Classes;
 
+use Igniter\Flame\Exception\ApplicationException;
 use Igniter\Main\Models\Theme;
 use Igniter\Pages\Classes\PageManager;
 
@@ -33,6 +34,26 @@ it('gets page contents for initialized page', function() {
     $page = $pageManager->initPage($url);
 
     expect($pageManager->getPageContents($page))->not->toBeEmpty();
+});
+
+it('gets empty page contents for non static page', function() {
+    $url = 'empty-page';
+
+    $pageManager = new PageManager;
+
+    $page = $pageManager->initPage($url);
+
+    expect($pageManager->getPageContents($page))->toBeNull();
+});
+
+it('throws exception when no active theme', function() {
+    config(['igniter-system.defaultTheme' => 'invalid-theme']);
+
+    $url = 'about-us';
+
+    $pageManager = new PageManager;
+
+    expect(fn() => $pageManager->initPage($url))->toThrow(ApplicationException::class);
 });
 
 it('lists page slugs for enabled pages', function() {

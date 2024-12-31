@@ -32,10 +32,7 @@ class MenuManager
                 continue;
             }
 
-            $metaPath = $themeObj->getMetaPath();
-            if ($themeObj->hasParent()) {
-                $metaPath = $themeObj->getParent()->getMetaPath();
-            }
+            $metaPath = $themeObj->hasParent() ? $themeObj->getParent()->getMetaPath() : $themeObj->getMetaPath();
 
             $files = File::glob($metaPath.'/menus/*.php');
             foreach ($files as $file) {
@@ -54,9 +51,7 @@ class MenuManager
 
     public function generateReferences(Menu $menu, $pageOrLayout = null)
     {
-        if (!strlen($currentUrl = Request::path())) {
-            $currentUrl = '/';
-        }
+        $currentUrl = !strlen($currentUrl = Request::path()) ? '/' : $currentUrl;
 
         $currentUrl = strtolower(URL::to($currentUrl));
         $activeMenuItem = $pageOrLayout->activeMenuItem ?: false;
@@ -75,7 +70,7 @@ class MenuManager
                     $parentReference->isActive = $currentUrl == strtolower(URL::to($item->url)) || $activeMenuItem === $item->code;
                 } else {
                     $parentReference = $this->resolveItem(
-                        $menu, $item, $parentReference, $currentUrl, $activeMenuItem
+                        $menu, $item, $parentReference, $currentUrl, $activeMenuItem,
                     );
                 }
 
@@ -125,11 +120,16 @@ class MenuManager
         $response = Event::dispatch('pages.menuitem.resolveItem', [$item, $currentUrl, $theme]);
 
         if (is_array($response)) {
-            foreach ($response as $itemInfo) {
-                if (!is_array($itemInfo)) {
-                    continue;
+            $eventResultItems = [];
+            foreach (array_filter($response) as $eventResult) {
+                if (!isset($eventResult[0])) {
+                    $eventResult = [$eventResult];
                 }
 
+                $eventResultItems = array_merge($eventResultItems, $eventResult);
+            }
+
+            foreach ($eventResultItems as $itemInfo) {
                 if (isset($itemInfo['url'])) {
                     $parentReference->url = $itemInfo['url'];
                     $parentReference->isActive = $itemInfo['isActive'] || $activeMenuItem === $item->code;

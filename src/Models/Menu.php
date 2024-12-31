@@ -59,26 +59,9 @@ class Menu extends Model
         return Theme::all()->pluck('name', 'code')->toArray();
     }
 
-    //
-    // Events
-    //
-
-    protected function afterSave()
-    {
-        $this->restorePurgedValues();
-
-        if (array_key_exists('items', $this->attributes)) {
-            $this->addMenuItems((array)$this->attributes['items']);
-        }
-    }
-
     public function addMenuItems($items)
     {
         $id = $this->getKey();
-        if (!is_numeric($id)) {
-            return false;
-        }
-
         $idsToKeep = [];
         foreach ($items as $item) {
             $item['menu_id'] = $id;

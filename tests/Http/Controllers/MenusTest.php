@@ -38,6 +38,33 @@ it('loads static menu preview page', function() {
         ->assertOk();
 });
 
+it('creates new menu item', function() {
+    $menu = Menu::firstWhere('code', 'main-menu');
+
+    actingAsSuperUser()
+        ->post(route('igniter.pages.menus', ['slug' => 'edit/'.$menu->getKey()]), [
+        ], [
+            'X-Requested-With' => 'XMLHttpRequest',
+            'X-IGNITER-REQUEST-HANDLER' => 'onNewItem',
+        ]);
+
+    expect($menu->items()->where('title', 'New Item')->exists())->toBeTrue();
+});
+
+it('gets menu item info', function() {
+    $menu = Menu::firstWhere('code', 'main-menu');
+    $menuItem = $menu->items()->first();
+
+    actingAsSuperUser()
+        ->post(route('igniter.pages.menus', ['slug' => 'edit/'.$menu->getKey()]), [
+            'type' => $menuItem->type,
+        ], [
+            'X-Requested-With' => 'XMLHttpRequest',
+            'X-IGNITER-REQUEST-HANDLER' => 'onGetMenuItemTypeInfo',
+        ])
+        ->assertOk();
+});
+
 it('creates static menu', function() {
     actingAsSuperUser()
         ->post(route('igniter.pages.menus', ['slug' => 'create']), [

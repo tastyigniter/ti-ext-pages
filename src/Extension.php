@@ -7,6 +7,9 @@ use Igniter\Pages\Classes\MenuManager;
 use Igniter\Pages\Classes\Page as StaticPage;
 use Igniter\Pages\Classes\PageManager;
 use Igniter\Pages\Models\Menu;
+use Igniter\Pages\Models\Observers\MenuObserver;
+use Igniter\Pages\Models\Observers\PageObserver;
+use Igniter\Pages\Models\Page;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Event;
@@ -18,6 +21,11 @@ class Extension extends \Igniter\System\Classes\BaseExtension
         'pages' => \Igniter\Pages\Models\Page::class,
         'static_menus' => \Igniter\Pages\Models\Menu::class,
         'static_menu_items' => \Igniter\Pages\Models\MenuItem::class,
+    ];
+
+    protected $observers = [
+        Page::class => PageObserver::class,
+        Menu::class => MenuObserver::class,
     ];
 
     public function register()

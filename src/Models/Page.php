@@ -8,7 +8,6 @@ use Igniter\Flame\Database\Traits\Sortable;
 use Igniter\Main\Classes\ThemeManager;
 use Igniter\Main\Template\Layout;
 use Igniter\System\Models\Concerns\Switchable;
-use Igniter\System\Models\Language;
 use Illuminate\Support\Collection;
 
 /**
@@ -20,7 +19,7 @@ class Page extends Model
     use Sortable;
     use Switchable;
 
-    const SORT_ORDER = 'priority';
+    public const SORT_ORDER = 'priority';
 
     /**
      * @var string The database table name
@@ -54,7 +53,7 @@ class Page extends Model
         ],
     ];
 
-    protected static ?Collection $pagesCache = null;
+    public static ?Collection $pagesCache = null;
 
     public static function getDropdownOptions()
     {
@@ -104,12 +103,5 @@ class Page extends Model
     public function getContentAttribute($value)
     {
         return html_entity_decode($value);
-    }
-
-    public function beforeSave()
-    {
-        if (is_null($this->language_id)) {
-            $this->language_id = Language::getDefault()->getKey();
-        }
     }
 }
