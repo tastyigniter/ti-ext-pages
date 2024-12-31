@@ -1,3 +1,10 @@
+<p align="center">
+    <a href="https://github.com/tastyigniter/ti-ext-pages/actions"><img src="https://github.com/tastyigniter/ti-ext-pages/actions/workflows/pipeline.yml/badge.svg" alt="Build Status"></a>
+    <a href="https://packagist.org/packages/tastyigniter/ti-ext-pages"><img src="https://img.shields.io/packagist/dt/tastyigniter/ti-ext-pages" alt="Total Downloads"></a>
+    <a href="https://packagist.org/packages/tastyigniter/ti-ext-pages"><img src="https://img.shields.io/packagist/v/tastyigniter/ti-ext-pages" alt="Latest Stable Version"></a>
+    <a href="https://packagist.org/packages/tastyigniter/ti-ext-pages"><img src="https://img.shields.io/packagist/l/tastyigniter/ti-ext-pages" alt="License"></a>
+</p>
+
 ## Introduction
 
 The TastyIgniter pages extension provides a simple way to create and manage static pages and navigation items through the admin user interface.
