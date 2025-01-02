@@ -10,6 +10,27 @@ use Illuminate\Support\Facades\Event;
 
 /**
  * MenuItem Model
+ *
+ * @property int $id
+ * @property int $menu_id
+ * @property int|null $parent_id
+ * @property string $title
+ * @property string $code
+ * @property string|null $description
+ * @property string $type
+ * @property string|null $url
+ * @property string|null $reference
+ * @property array|null $config
+ * @property int|null $nest_left
+ * @property int|null $nest_right
+ * @property int $priority
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Kalnoy\Nestedset\Collection<int, MenuItem> $children
+ * @property-read int|null $children_count
+ * @property-read mixed $summary
+ * @property-read MenuItem|null $parent
+ * @mixin \Igniter\Flame\Database\Model
  */
 class MenuItem extends Model
 {

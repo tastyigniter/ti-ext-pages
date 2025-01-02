@@ -12,6 +12,21 @@ use Illuminate\Support\Collection;
 
 /**
  * Pages Model Class
+ *
+ * @property int $page_id
+ * @property int $language_id
+ * @property string $title
+ * @property string $content
+ * @property string|null $meta_description
+ * @property string|null $meta_keywords
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property bool $status
+ * @property string|null $permalink_slug
+ * @property string|null $layout
+ * @property array|null $metadata
+ * @property int|null $priority
+ * @mixin \Igniter\Flame\Database\Model
  */
 class Page extends Model
 {

@@ -28,6 +28,7 @@ class MenuManager
         $menus = [];
         $themes = Theme::whereIsEnabled()->get();
         foreach ($themes as $theme) {
+            /** @var Theme $theme */
             if (!$themeObj = $theme->getTheme()) {
                 continue;
             }

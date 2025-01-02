@@ -9,6 +9,15 @@ use Igniter\Pages\Classes\MenuManager;
 
 /**
  * Menu Model
+ *
+ * @property int $id
+ * @property string $theme_code
+ * @property string $name
+ * @property string $code
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read mixed $theme_name
+ * @mixin \Igniter\Flame\Database\Model
  */
 class Menu extends Model
 {

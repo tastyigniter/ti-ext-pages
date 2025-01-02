@@ -11,11 +11,6 @@ parameters:
 			path: src/Classes/MenuManager.php
 
 		-
-			message: "#^Call to an undefined static method Igniter\\\\Main\\\\Models\\\\Theme\\:\\:whereIsEnabled\\(\\)\\.$#"
-			count: 1
-			path: src/Classes/MenuManager.php
-
-		-
 			message: "#^Call to an undefined static method Igniter\\\\Pages\\\\Models\\\\Page\\:\\:whereIsEnabled\\(\\)\\.$#"
 			count: 1
 			path: src/Classes/Page.php
@@ -36,16 +31,6 @@ parameters:
 			path: src/Extension.php
 
 		-
-			message: "#^Call to an undefined static method Igniter\\\\Flame\\\\Support\\\\Facades\\\\Igniter\\:\\:hasDatabase\\(\\)\\.$#"
-			count: 1
-			path: src/Extension.php
-
-		-
-			message: "#^Call to an undefined static method Igniter\\\\Flame\\\\Support\\\\Facades\\\\Igniter\\:\\:uri\\(\\)\\.$#"
-			count: 1
-			path: src/Extension.php
-
-		-
 			message: "#^Call to an undefined method Igniter\\\\Admin\\\\Classes\\\\BaseWidget\\:\\:getField\\(\\)\\.$#"
 			count: 1
 			path: src/Http/Controllers/Menus.php
@@ -56,32 +41,7 @@ parameters:
 			path: src/Http/Controllers/Menus.php
 
 		-
-			message: "#^Call to an undefined static method Igniter\\\\Admin\\\\Facades\\\\AdminMenu\\:\\:setContext\\(\\)\\.$#"
-			count: 1
-			path: src/Http/Controllers/Menus.php
-
-		-
-			message: "#^Call to an undefined static method Igniter\\\\Admin\\\\Facades\\\\AdminMenu\\:\\:setContext\\(\\)\\.$#"
-			count: 1
-			path: src/Http/Controllers/Pages.php
-
-		-
-			message: "#^Access to an undefined property Igniter\\\\Pages\\\\Models\\\\Menu\\:\\:\\$code\\.$#"
-			count: 1
-			path: src/Models/Menu.php
-
-		-
-			message: "#^Access to an undefined property Igniter\\\\Pages\\\\Models\\\\Menu\\:\\:\\$name\\.$#"
-			count: 1
-			path: src/Models/Menu.php
-
-		-
 			message: "#^Access to an undefined property Igniter\\\\Pages\\\\Models\\\\Menu\\:\\:\\$theme\\.$#"
-			count: 1
-			path: src/Models/Menu.php
-
-		-
-			message: "#^Access to an undefined property Igniter\\\\Pages\\\\Models\\\\Menu\\:\\:\\$theme_code\\.$#"
 			count: 1
 			path: src/Models/Menu.php
 
@@ -111,34 +71,9 @@ parameters:
 			path: src/Models/Menu.php
 
 		-
-			message: "#^Access to an undefined property Igniter\\\\Pages\\\\Models\\\\MenuItem\\:\\:\\$id\\.$#"
-			count: 1
-			path: src/Models/MenuItem.php
-
-		-
-			message: "#^Access to an undefined property Igniter\\\\Pages\\\\Models\\\\MenuItem\\:\\:\\$parent\\.$#"
-			count: 1
-			path: src/Models/MenuItem.php
-
-		-
-			message: "#^Access to an undefined property Igniter\\\\Pages\\\\Models\\\\MenuItem\\:\\:\\$type\\.$#"
-			count: 1
-			path: src/Models/MenuItem.php
-
-		-
 			message: "#^Call to an undefined static method Igniter\\\\Pages\\\\Models\\\\MenuItem\\:\\:select\\(\\)\\.$#"
 			count: 1
 			path: src/Models/MenuItem.php
-
-		-
-			message: "#^Access to an undefined property Igniter\\\\Pages\\\\Models\\\\Page\\:\\:\\$language_id\\.$#"
-			count: 1
-			path: src/Models/Observers/PageObserver.php
-
-		-
-			message: "#^Access to an undefined property Igniter\\\\Pages\\\\Models\\\\Page\\:\\:\\$layout\\.$#"
-			count: 1
-			path: src/Models/Page.php
 
 		-
 			message: "#^Access to an undefined property Igniter\\\\Pages\\\\Models\\\\Page\\:\\:\\$theme\\.$#"
