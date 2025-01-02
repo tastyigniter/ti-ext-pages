@@ -54,7 +54,7 @@ it('returns summary attribute with parent and type', function() {
     $summary = $menuItem->getSummaryAttribute(null);
 
     expect($summary)->toBe('Parent: Parent Item Type: url');
-})->only();
+});
 
 it('configures menu item model correctly', function() {
     $menuItem = new MenuItem;
