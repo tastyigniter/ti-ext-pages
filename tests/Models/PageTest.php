@@ -83,6 +83,9 @@ it('sets default language id before saving', function() {
     $language = Language::factory()->create(['status' => 1]);
     $language->makeDefault();
     $page = new Page();
+    $page->title = 'Test Page';
+    $page->content = 'Test Content';
+    $page->status = true;
     $page->save();
     $page = $page->fresh();
 

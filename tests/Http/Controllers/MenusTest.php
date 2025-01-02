@@ -92,7 +92,7 @@ it('updates static menu', function() {
                 'code' => 'updated-menu',
                 'theme_code' => 'test-theme',
                 'description' => 'Updated menu description',
-                'items' => [['id' => 1, 'priority' => 1, 'type' => 'menu', 'item_id' => 1, 'children' => []]],
+                'items' => [['id' => 1, 'priority' => 1, 'title' => 'Menu Item', 'code' => 'menu-item', 'type' => 'menu', 'item_id' => 1, 'children' => []]],
             ],
         ], [
             'X-Requested-With' => 'XMLHttpRequest',

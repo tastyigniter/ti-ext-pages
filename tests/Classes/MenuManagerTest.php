@@ -22,6 +22,7 @@ it('loads menus from config files across loaded themes', function() {
         'code' => 'test-theme',
         'version' => '1.0.0',
         'status' => 1,
+        'data' => [],
     ]);
 
     $menuManager = new MenuManager;

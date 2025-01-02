@@ -19,7 +19,7 @@ it('resolves static page menu item with valid reference', function() {
     $item = (object)['type' => 'static-page', 'reference' => 1];
     $url = 'http://localhost/test-page';
     $language = Language::factory()->create(['status' => 1]);
-    PageModel::create(['permalink_slug' => 'test-page', 'title' => 'AATest Page', 'status' => 1, 'language_id' => $language->getKey()]);
+    PageModel::create(['permalink_slug' => 'test-page', 'title' => 'AATest Page', 'status' => 1, 'content' => '', 'language_id' => $language->getKey()]);
 
     $result = Page::resolveMenuItem($item, $url, $theme);
 

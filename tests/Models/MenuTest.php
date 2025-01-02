@@ -11,11 +11,13 @@ it('adds menu items after save', function() {
     $menu = new Menu([
         'name' => 'Test Menu',
         'code' => 'test-menu-page',
+        'theme_code' => 'igniter-orange',
     ]);
 
     $menu->items = [
         [
             'title' => 'Test Page',
+            'code' => 'test-page',
             'url' => '/test-page-menu',
             'type' => 'url',
         ],

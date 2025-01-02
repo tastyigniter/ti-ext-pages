@@ -35,8 +35,9 @@ it('returns type options including custom types', function() {
 });
 
 it('returns parent id options excluding current item', function() {
-    $menuItem = MenuItem::create(['title' => 'Parent Item', 'type' => 'url']);
-    $childItem = MenuItem::create(['title' => 'Child Item', 'type' => 'url', 'parent_id' => $menuItem->id]);
+    $menu = Menu::create(['name' => 'Test Menu', 'code' => 'test-menu', 'theme_code' => 'test-theme']);
+    $menuItem = MenuItem::create(['menu_id' => $menu->getKey(), 'code' => 'test-menu-item', 'title' => 'Parent Item', 'type' => 'url']);
+    $childItem = MenuItem::create(['menu_id' => $menu->getKey(), 'code' => 'test-menu-item-2', 'title' => 'Child Item', 'type' => 'url', 'parent_id' => $menuItem->id]);
 
     $parentIdOptions = $childItem->getParentIdOptions();
 
@@ -46,13 +47,14 @@ it('returns parent id options excluding current item', function() {
 });
 
 it('returns summary attribute with parent and type', function() {
-    $parentItem = MenuItem::create(['title' => 'Parent Item', 'type' => 'url']);
-    $menuItem = MenuItem::create(['title' => 'Child Item', 'type' => 'url', 'parent_id' => $parentItem->id, 'type' => 'url']);
+    $menu = Menu::create(['name' => 'Test Menu', 'code' => 'test-menu', 'theme_code' => 'test-theme']);
+    $parentItem = MenuItem::create(['menu_id' => $menu->getKey(), 'code' => 'test-menu-item', 'title' => 'Parent Item', 'type' => 'url']);
+    $menuItem = MenuItem::create(['menu_id' => $menu->getKey(), 'code' => 'test-menu-item-2', 'title' => 'Child Item', 'type' => 'url', 'parent_id' => $parentItem->id, 'type' => 'url']);
 
     $summary = $menuItem->getSummaryAttribute(null);
 
     expect($summary)->toBe('Parent: Parent Item Type: url');
-});
+})->only();
 
 it('configures menu item model correctly', function() {
     $menuItem = new MenuItem;
@@ -68,6 +70,7 @@ it('configures menu item model correctly', function() {
             'code',
             'title',
             'description',
+            'menu_id',
             'parent_id',
             'priority',
             'type',

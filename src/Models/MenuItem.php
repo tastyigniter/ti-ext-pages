@@ -46,6 +46,7 @@ class MenuItem extends Model
         'code',
         'title',
         'description',
+        'menu_id',
         'parent_id',
         'priority',
         'type',
