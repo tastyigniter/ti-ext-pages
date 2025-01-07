@@ -10,14 +10,16 @@ return new class extends Migration
     public function up()
     {
         $tableName = 'pages';
-        $primaryKey = 'id';
+        $primaryKey = 'page_id';
         $driver = DB::getDriverName();
 
         switch ($driver) {
             case 'mysql':
                 $this->ensurePrimaryKeyHasAutoIncrementForMysql($tableName, $primaryKey);
+                break;
             case 'pgsql':
                 $this->ensurePrimaryKeyHasAutoIncrementForPostgresql($tableName, $primaryKey);
+                break;
         }
     }
 
@@ -40,11 +42,25 @@ return new class extends Migration
 
     protected function ensurePrimaryKeyHasAutoIncrementForPostgresql(string $tableName, string $primaryKey)
     {
+        // Check if the column is backed by a sequence
         $sequenceCheck = DB::selectOne("
-            SELECT pg_get_serial_sequence(?, ?) as sequence
+        SELECT pg_get_serial_sequence(?, ?) AS sequence
+    ", [$tableName, $primaryKey]);
+
+        if (isset($sequenceCheck->sequence)) {
+            // Check if the default value is set to use the sequence
+            $defaultCheck = DB::selectOne("
+            SELECT column_default 
+            FROM information_schema.columns 
+            WHERE table_name = ? 
+              AND column_name = ?
         ", [$tableName, $primaryKey]);
 
-        if (is_null($sequenceCheck->sequence)) {
+            if (!str_contains($defaultCheck->column_default ?? '', 'nextval')) {
+                DB::statement("ALTER TABLE $tableName ALTER COLUMN $primaryKey SET DEFAULT nextval('{$sequenceCheck->sequence}');");
+            }
+        } else {
+            // Create a new sequence and link it to the column
             $sequenceName = "{$tableName}_{$primaryKey}_seq";
             DB::statement("CREATE SEQUENCE $sequenceName;");
             DB::statement("ALTER TABLE $tableName ALTER COLUMN $primaryKey SET DEFAULT nextval('$sequenceName');");
