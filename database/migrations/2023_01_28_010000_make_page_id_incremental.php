@@ -9,7 +9,7 @@ return new class extends Migration
 {
     public function up()
     {
-        $tableName = 'pages';
+        $tableName = DB::getTablePrefix().'pages';
         $primaryKey = 'page_id';
         $driver = DB::getDriverName();
 
