@@ -17,9 +17,9 @@ beforeEach(function() {
 });
 
 it('loads menus from config files across loaded themes', function() {
-    Theme::create([
+    Theme::factory()->create([
         'name' => 'Test Theme',
-        'code' => 'test-theme',
+        'code' => 'tests-theme',
         'version' => '1.0.0',
         'status' => 1,
         'data' => [],

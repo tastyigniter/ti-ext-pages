@@ -75,7 +75,7 @@ it('returns empty array for invalid menu type info', function() {
 it('resolves static page menu item', function() {
     $url = 'test-url';
     $item = (object)['type' => 'static-page', 'reference' => 1];
-    $theme = new Theme('test-theme-path', ['code' => 'test-theme']);
+    $theme = new Theme('tests-theme-path', ['code' => 'tests-theme']);
 
     $result = Event::dispatch('pages.menuitem.resolveItem', [$item, $url, $theme]);
 

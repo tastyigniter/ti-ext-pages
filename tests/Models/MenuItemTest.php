@@ -35,7 +35,7 @@ it('returns type options including custom types', function() {
 });
 
 it('returns parent id options excluding current item', function() {
-    $menu = Menu::create(['name' => 'Test Menu', 'code' => 'test-menu', 'theme_code' => 'test-theme']);
+    $menu = Menu::create(['name' => 'Test Menu', 'code' => 'test-menu', 'theme_code' => 'tests-theme']);
     $menuItem = MenuItem::create(['menu_id' => $menu->getKey(), 'code' => 'test-menu-item', 'title' => 'Parent Item', 'type' => 'url']);
     $childItem = MenuItem::create(['menu_id' => $menu->getKey(), 'code' => 'test-menu-item-2', 'title' => 'Child Item', 'type' => 'url', 'parent_id' => $menuItem->id]);
 
@@ -47,7 +47,7 @@ it('returns parent id options excluding current item', function() {
 });
 
 it('returns summary attribute with parent and type', function() {
-    $menu = Menu::create(['name' => 'Test Menu', 'code' => 'test-menu', 'theme_code' => 'test-theme']);
+    $menu = Menu::create(['name' => 'Test Menu', 'code' => 'test-menu', 'theme_code' => 'tests-theme']);
     $parentItem = MenuItem::create(['menu_id' => $menu->getKey(), 'code' => 'test-menu-item', 'title' => 'Parent Item', 'type' => 'url']);
     $menuItem = MenuItem::create(['menu_id' => $menu->getKey(), 'code' => 'test-menu-item-2', 'title' => 'Child Item', 'type' => 'url', 'parent_id' => $parentItem->id, 'type' => 'url']);
 

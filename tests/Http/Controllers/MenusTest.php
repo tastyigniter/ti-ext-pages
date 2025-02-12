@@ -71,7 +71,7 @@ it('creates static menu', function() {
             'Menu' => [
                 'name' => 'Created Menu',
                 'code' => 'created-menu',
-                'theme_code' => 'test-theme',
+                'theme_code' => 'tests-theme',
                 'description' => 'Created menu description',
             ],
         ], [
@@ -90,7 +90,7 @@ it('updates static menu', function() {
             'Menu' => [
                 'name' => 'Updated Menu',
                 'code' => 'updated-menu',
-                'theme_code' => 'test-theme',
+                'theme_code' => 'tests-theme',
                 'description' => 'Updated menu description',
                 'items' => [['id' => 1, 'priority' => 1, 'title' => 'Menu Item', 'code' => 'menu-item', 'type' => 'menu', 'item_id' => 1, 'children' => []]],
             ],

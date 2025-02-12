@@ -31,7 +31,7 @@ it('loads enabled pages in alphabetical order', function() {
 
 it('returns layout options for active theme', function() {
     $themeManager = mock(ThemeManager::class);
-    $themeManager->shouldReceive('getActiveTheme')->andReturn(new Theme('test-theme-path', ['code' => 'igniter-orange']));
+    $themeManager->shouldReceive('getActiveTheme')->andReturn(new Theme('tests-theme-path', ['code' => 'igniter-orange']));
     app()->instance(ThemeManager::class, $themeManager);
 
     $page = new Page;
@@ -59,9 +59,9 @@ it('returns null when layout is not found', function() {
 });
 
 it('returns null when no available layout in active theme', function() {
-    $page = new Page(['theme' => 'test-theme']);
+    $page = new Page(['theme' => 'tests-theme']);
     $themeManager = mock(ThemeManager::class);
-    $themeManager->shouldReceive('getActiveTheme')->andReturn(new Theme('test-theme-path', ['code' => 'test-theme']));
+    $themeManager->shouldReceive('getActiveTheme')->andReturn(new Theme('tests-theme-path', ['code' => 'tests-theme']));
     app()->instance(ThemeManager::class, $themeManager);
 
     $layout = $page->getLayoutObject();
