@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Igniter\Pages\Tests\Classes;
 
 use Igniter\Flame\Exception\ApplicationException;
+use Igniter\Flame\Pagic\Model;
 use Igniter\Main\Models\Theme;
 use Igniter\Pages\Classes\PageManager;
 
@@ -55,7 +56,7 @@ it('throws exception when no active theme', function(): void {
 
     $pageManager = new PageManager;
 
-    expect(fn() => $pageManager->initPage($url))->toThrow(ApplicationException::class);
+    expect(fn(): ?Model => $pageManager->initPage($url))->toThrow(ApplicationException::class);
 });
 
 it('lists page slugs for enabled pages', function(): void {
