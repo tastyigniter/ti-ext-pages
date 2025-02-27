@@ -19,7 +19,7 @@ use Illuminate\Support\Collection;
  * Pages Model Class
  *
  * @property int $page_id
- * @property int $language_id
+ * @property null|int $language_id
  * @property string $title
  * @property string $content
  * @property string|null $meta_description

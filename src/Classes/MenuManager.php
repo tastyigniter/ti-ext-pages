@@ -93,7 +93,7 @@ class MenuManager
 
         $items = $iterator($menu->items()->sorted()->get()->toTree());
 
-        $hasActiveChild = function($items) use (&$hasActiveChild) {
+        $hasActiveChild = function($items) use (&$hasActiveChild): bool {
             foreach ($items as $item) {
                 if ($item->isActive) {
                     return true;
@@ -104,6 +104,8 @@ class MenuManager
                     return $result;
                 }
             }
+
+            return false;
         };
 
         $iterator = function($items) use (&$iterator, &$hasActiveChild): void {

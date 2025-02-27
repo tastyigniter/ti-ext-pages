@@ -24,7 +24,7 @@ use Illuminate\Support\Collection;
  * @property Carbon|null $updated_at
  * @property-read mixed $theme_name
  * @property-read Collection<int, MenuItem> $items
- * @property-read Theme $theme
+ * @property-read null|Theme $theme
  * @method static HasMany<static>|MenuItem items()
  * @method static BelongsTo<static>|Menu theme()
  * @mixin Model

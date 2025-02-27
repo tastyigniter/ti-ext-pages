@@ -1,11 +1,21 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Call to an undefined method Illuminate\\\\Database\\\\Schema\\\\Blueprint\\:\\:dropForeignKeyIfExists\\(\\)\\.$#"
+			message: "#^Call to an undefined method Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<int, Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\:\\:toTree\\(\\)\\.$#"
 			count: 1
-			path: database/migrations/2021_10_20_010000_add_foreign_key_constraints_to_tables.php
+			path: src/Classes/MenuManager.php
 
 		-
-			message: "#^Call to an undefined method Illuminate\\\\Routing\\\\Router\\:\\:pagic\\(\\)\\.$#"
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<int,Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\:\\:mapWithKeys\\(\\) expects callable\\(Illuminate\\\\Database\\\\Eloquent\\\\Model, int\\)\\: array\\<int, string\\>, Closure\\(Igniter\\\\Pages\\\\Models\\\\Page\\)\\: non\\-empty\\-array\\<int, string\\> given\\.$#"
 			count: 1
-			path: src/Extension.php
+			path: src/Classes/Page.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<int,Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\:\\:mapWithKeys\\(\\) expects callable\\(Illuminate\\\\Database\\\\Eloquent\\\\Model, int\\)\\: array\\<int, string\\>, Closure\\(Igniter\\\\Pages\\\\Models\\\\MenuItem\\)\\: non\\-empty\\-array\\<int, string\\> given\\.$#"
+			count: 1
+			path: src/Models/MenuItem.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\:\\:filter\\(\\) expects \\(callable\\(Illuminate\\\\Database\\\\Eloquent\\\\Model, int\\)\\: bool\\)\\|null, Closure\\(Igniter\\\\Pages\\\\Models\\\\MenuItem\\)\\: bool given\\.$#"
+			count: 1
+			path: src/Models/MenuItem.php

@@ -133,8 +133,8 @@ class MenuItem extends Model
         return self::query()
             ->select('id', 'title')
             ->get()
-            ->filter(fn($model): bool => $model->id !== $this->id)
-            ->mapWithKeys(fn($model) => [$model->id => $model->title]);
+            ->filter(fn(self $model): bool => $model->id !== $this->id)
+            ->mapWithKeys(fn(self $model) => [$model->id => $model->title]);
     }
 
     public function getSummaryAttribute($value): string
