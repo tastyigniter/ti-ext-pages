@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Igniter\Pages\Models\Observers;
 
 use Igniter\Pages\Models\Menu;
 
 class MenuObserver
 {
-    public function saved(Menu $model)
+    public function saved(Menu $model): void
     {
         $model->restorePurgedValues();
 

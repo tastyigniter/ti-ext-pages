@@ -1,11 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Igniter\Pages\Http\Requests;
 
+use Override;
 use Igniter\System\Classes\FormRequest;
 
 class MenuRequest extends FormRequest
 {
+    #[Override]
     public function attributes()
     {
         return [
@@ -16,7 +20,7 @@ class MenuRequest extends FormRequest
         ];
     }
 
-    public function rules()
+    public function rules(): array
     {
         return [
             'theme_code' => ['sometimes', 'required', 'alpha_dash'],

@@ -1,8 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Igniter\Pages\Http\Controllers;
 
+use Igniter\Admin\Classes\AdminController;
 use Igniter\Admin\Facades\AdminMenu;
+use Igniter\Admin\Http\Actions\FormController;
+use Igniter\Admin\Http\Actions\ListController;
+use Igniter\Admin\Widgets\Form;
+use Igniter\Pages\Http\Requests\MenuRequest;
 use Igniter\Pages\Models\Menu;
 use Igniter\Pages\Models\MenuItem;
 use Illuminate\Support\Facades\Request;
@@ -10,16 +17,16 @@ use Illuminate\Support\Facades\Request;
 /**
  * Menus Admin Controller
  */
-class Menus extends \Igniter\Admin\Classes\AdminController
+class Menus extends AdminController
 {
     public array $implement = [
-        \Igniter\Admin\Http\Actions\FormController::class,
-        \Igniter\Admin\Http\Actions\ListController::class,
+        FormController::class,
+        ListController::class,
     ];
 
     public array $listConfig = [
         'list' => [
-            'model' => \Igniter\Pages\Models\Menu::class,
+            'model' => Menu::class,
             'title' => 'Static Menus',
             'emptyMessage' => 'lang:admin::lang.list.text_empty',
             'defaultSort' => ['id', 'DESC'],
@@ -29,8 +36,8 @@ class Menus extends \Igniter\Admin\Classes\AdminController
 
     public array $formConfig = [
         'name' => 'Static Menu',
-        'model' => \Igniter\Pages\Models\Menu::class,
-        'request' => \Igniter\Pages\Http\Requests\MenuRequest::class,
+        'model' => Menu::class,
+        'request' => MenuRequest::class,
         'create' => [
             'title' => 'lang:admin::lang.form.create_title',
             'redirect' => 'igniter/pages/menus/edit/{id}',
@@ -62,7 +69,7 @@ class Menus extends \Igniter\Admin\Classes\AdminController
         AdminMenu::setContext('pages', 'design');
     }
 
-    public function index()
+    public function index(): void
     {
         if ($this->getUser()->hasPermission('Igniter.PageMenus.Manage')) {
             Menu::syncAll();
@@ -71,14 +78,14 @@ class Menus extends \Igniter\Admin\Classes\AdminController
         $this->asExtension('ListController')->index();
     }
 
-    public function edit($context, $recordId)
+    public function edit($context, $recordId): void
     {
         $this->addJs('igniter.pages::/js/menuitemseditor.js');
 
         $this->asExtension('FormController')->edit($context, $recordId);
     }
 
-    public function edit_onNewItem($context, $recordId)
+    public function edit_onNewItem($context, $recordId): array
     {
         $model = $this->asExtension('FormController')->formFindModelObject($recordId);
         $model->items()->create([
@@ -94,17 +101,19 @@ class Menus extends \Igniter\Admin\Classes\AdminController
 
         flash()->success(sprintf(lang('admin::lang.alert_success'), 'Menu item created'))->now();
 
-        $formField = $this->widgets['form']->getField('items');
+        /** @var Form $form */
+        $form = $this->widgets['form'];
+        $formField = $form->getField('items');
 
         return [
             '#notification' => $this->makePartial('flash'),
-            '#'.$formField->getId('group') => $this->widgets['form']->renderField($formField, [
+            '#'.$formField->getId('group') => $form->renderField($formField, [
                 'useContainer' => false,
             ]),
         ];
     }
 
-    public function edit_onGetMenuItemTypeInfo($context, $recordId)
+    public function edit_onGetMenuItemTypeInfo($context, $recordId): array
     {
         $this->asExtension('FormController')->formFindModelObject($recordId);
 

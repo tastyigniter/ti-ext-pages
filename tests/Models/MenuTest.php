@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Igniter\Pages\Tests\Models;
 
 use Igniter\Flame\Database\Traits\Purgeable;
@@ -7,7 +9,7 @@ use Igniter\Main\Models\Theme;
 use Igniter\Pages\Models\Menu;
 use Igniter\Pages\Models\MenuItem;
 
-it('adds menu items after save', function() {
+it('adds menu items after save', function(): void {
     $menu = new Menu([
         'name' => 'Test Menu',
         'code' => 'test-menu-page',
@@ -31,7 +33,7 @@ it('adds menu items after save', function() {
     ]);
 });
 
-it('configures menu model correctly', function() {
+it('configures menu model correctly', function(): void {
     $menu = new Menu;
 
     expect(class_uses_recursive($menu))

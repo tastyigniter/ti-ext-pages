@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Igniter\Pages\Classes;
 
 use Igniter\Main\Models\Theme;
@@ -11,7 +13,10 @@ use Illuminate\Support\Facades\URL;
 
 class MenuManager
 {
-    protected static $themesCache;
+    /**
+     * @var array<string, \Igniter\Main\Classes\Theme>
+     */
+    protected static array $themesCache;
 
     protected $defaultMenuItem = [
         'code' => null,
@@ -39,7 +44,7 @@ class MenuManager
             foreach ($files as $file) {
                 $config = File::getRequire($file);
                 $menus[] = [
-                    'code' => basename($file, '.php'),
+                    'code' => basename((string)$file, '.php'),
                     'name' => array_get($config, 'name', '-- no name --'),
                     'themeCode' => $theme->code,
                     'items' => array_get($config, 'items', []),
@@ -52,12 +57,13 @@ class MenuManager
 
     public function generateReferences(Menu $menu, $pageOrLayout = null)
     {
-        $currentUrl = !strlen($currentUrl = Request::path()) ? '/' : $currentUrl;
+        $currentUrl = ($currentUrl = Request::path()) === '' ? '/' : $currentUrl;
 
         $currentUrl = strtolower(URL::to($currentUrl));
+
         $activeMenuItem = $pageOrLayout->activeMenuItem ?: false;
 
-        $iterator = function($items) use (&$iterator, $currentUrl, $activeMenuItem, $menu) {
+        $iterator = function($items) use (&$iterator, $currentUrl, $activeMenuItem, $menu): array {
             $result = [];
 
             foreach ($items as $item) {
@@ -68,14 +74,14 @@ class MenuManager
 
                 if ($item->type == 'url') {
                     $parentReference->url = $item->url;
-                    $parentReference->isActive = $currentUrl == strtolower(URL::to($item->url)) || $activeMenuItem === $item->code;
+                    $parentReference->isActive = $currentUrl === strtolower(URL::to($item->url)) || $activeMenuItem === $item->code;
                 } else {
                     $parentReference = $this->resolveItem(
                         $menu, $item, $parentReference, $currentUrl, $activeMenuItem,
                     );
                 }
 
-                if (count($item->children)) {
+                if (count($item->children) > 0) {
                     $parentReference->items = $iterator($item->children);
                 }
 
@@ -100,7 +106,7 @@ class MenuManager
             }
         };
 
-        $iterator = function($items) use (&$iterator, &$hasActiveChild) {
+        $iterator = function($items) use (&$iterator, &$hasActiveChild): void {
             foreach ($items as $item) {
                 $item->isChildActive = $hasActiveChild($item->items);
                 $iterator($item->items);
@@ -137,7 +143,7 @@ class MenuManager
                 }
 
                 if (isset($itemInfo['items'])) {
-                    $itemIterator = function($items) use (&$itemIterator, $parentReference) {
+                    $itemIterator = function($items) use (&$itemIterator, $parentReference): array {
                         $result = [];
                         foreach ($items as $item) {
                             $reference = (object)$this->defaultMenuItem;
@@ -147,7 +153,7 @@ class MenuManager
                             $reference->isActive = array_get($item, 'isActive', false);
                             $reference->extraAttributes = array_get($item, 'extraAttributes');
 
-                            if (!strlen($parentReference->url)) {
+                            if ((string)$parentReference->url === '') {
                                 $parentReference->url = $reference->url;
                                 $parentReference->isActive = $reference->isActive;
                             }
@@ -173,10 +179,7 @@ class MenuManager
     protected function getThemeFromMenu($menu)
     {
         $code = $menu->theme_code;
-        if (isset(self::$themesCache[$code])) {
-            return self::$themesCache[$code];
-        }
 
-        return self::$themesCache[$code] = $menu->theme->getTheme();
+        return self::$themesCache[$code] ?? (self::$themesCache[$code] = $menu->theme->getTheme());
     }
 }

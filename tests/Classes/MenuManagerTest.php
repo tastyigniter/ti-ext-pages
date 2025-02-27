@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Igniter\Pages\Tests\Classes;
 
 use Igniter\Main\Models\Theme;
@@ -11,12 +13,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Event;
 use Mockery;
 
-beforeEach(function() {
+beforeEach(function(): void {
     Theme::syncAll();
     Menu::syncAll();
 });
 
-it('loads menus from config files across loaded themes', function() {
+it('loads menus from config files across loaded themes', function(): void {
     Theme::factory()->create([
         'name' => 'Test Theme',
         'code' => 'tests-theme',
@@ -32,7 +34,7 @@ it('loads menus from config files across loaded themes', function() {
         ->and($menus)->toHaveCount(3);
 });
 
-it('generates menu references with active state', function() {
+it('generates menu references with active state', function(): void {
     $request = Request::create('/account/address');
     app()->instance('request', $request);
 
@@ -66,39 +68,35 @@ it('generates menu references with active state', function() {
     $menuItem2->parent()->associate($parent)->save();
     $menuItem3->parent()->associate($menuItem)->save();
 
-    Event::listen('pages.menuitem.resolveItem', function($item, $currentUrl, $theme) {
-        return [
-            'url' => $item->url,
+    Event::listen('pages.menuitem.resolveItem', fn($item, $currentUrl, $theme): array => [
+        'url' => $item->url,
+        'isActive' => $item->url == $currentUrl,
+        'items' => [
+            [
+                'title' => 'Address Edit',
+                'code' => 'address-edit',
+            ],
+        ],
+    ]);
+
+    Event::listen('pages.menuitem.resolveItem', fn($item, $currentUrl, $theme): array => [
+        [
             'isActive' => $item->url == $currentUrl,
             'items' => [
                 [
-                    'title' => 'Address Edit',
-                    'code' => 'address-edit',
-                ],
-            ],
-        ];
-    });
-
-    Event::listen('pages.menuitem.resolveItem', function($item, $currentUrl, $theme) {
-        return [
-            [
-                'isActive' => $item->url == $currentUrl,
-                'items' => [
-                    [
-                        'title' => 'Address Preview',
-                        'code' => 'address-preview',
-                        'url' => '/account/address',
-                        'items' => [
-                            [
-                                'title' => 'Address Edit',
-                                'code' => 'address-edit',
-                            ],
+                    'title' => 'Address Preview',
+                    'code' => 'address-preview',
+                    'url' => '/account/address',
+                    'items' => [
+                        [
+                            'title' => 'Address Edit',
+                            'code' => 'address-edit',
                         ],
                     ],
                 ],
             ],
-        ];
-    });
+        ],
+    ]);
 
     $items = (new MenuManager)->generateReferences($menu, $page);
 

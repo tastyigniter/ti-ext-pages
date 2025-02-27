@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Igniter\Pages\Tests\Classes;
 
 use Igniter\Main\Classes\Theme;
@@ -7,14 +9,14 @@ use Igniter\Pages\Classes\Page;
 use Igniter\Pages\Models\Page as PageModel;
 use Igniter\System\Models\Language;
 
-it('returns menu type info with static page references', function() {
+it('returns menu type info with static page references', function(): void {
     $typeInfo = Page::getMenuTypeInfo('static-page');
 
     expect($typeInfo)->toBeArray()
         ->and($typeInfo['references'])->toBeArray();
 });
 
-it('resolves static page menu item with valid reference', function() {
+it('resolves static page menu item with valid reference', function(): void {
     $theme = new Theme('tests-theme-path', ['code' => 'tests-theme']);
     $item = (object)['type' => 'static-page', 'reference' => 1];
     $url = 'http://localhost/test-page';
@@ -28,7 +30,7 @@ it('resolves static page menu item with valid reference', function() {
         ->and($result['isActive'])->toBeTrue();
 });
 
-it('returns null for static page menu item with invalid reference', function() {
+it('returns null for static page menu item with invalid reference', function(): void {
     $theme = new Theme('tests-theme-path', ['code' => 'tests-theme']);
     $item = (object)['type' => 'static-page', 'reference' => 999];
     $url = 'http://example.com/test-page';
@@ -40,7 +42,7 @@ it('returns null for static page menu item with invalid reference', function() {
     expect($result)->toBeNull();
 });
 
-it('resolves menu item with multiple pages', function() {
+it('resolves menu item with multiple pages', function(): void {
     $theme = new Theme('tests-theme-path', ['code' => 'tests-theme']);
     $item = (object)['type' => 'all-pages'];
     $url = 'http://example.com/test-page';
@@ -54,7 +56,7 @@ it('resolves menu item with multiple pages', function() {
         ->and($result['items'][1]['title'])->toBe('Policy');
 });
 
-it('excludes hidden pages from menu items', function() {
+it('excludes hidden pages from menu items', function(): void {
     $theme = new Theme('tests-theme-path', ['code' => 'tests-theme']);
     $item = (object)['type' => 'all-pages'];
     $url = 'http://example.com/test-page';

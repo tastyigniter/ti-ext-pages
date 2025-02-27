@@ -1,11 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Igniter\Pages\Http\Requests;
 
+use Override;
 use Igniter\System\Classes\FormRequest;
 
 class PageRequest extends FormRequest
 {
+    #[Override]
     public function attributes()
     {
         return [
@@ -21,7 +25,7 @@ class PageRequest extends FormRequest
         ];
     }
 
-    public function rules()
+    public function rules(): array
     {
         return [
             'language_id' => ['nullable', 'integer'],

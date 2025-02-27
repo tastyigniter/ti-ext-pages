@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -8,10 +10,10 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
         if (!Schema::hasTable('pages')) {
-            Schema::create('pages', function(Blueprint $table) {
+            Schema::create('pages', function(Blueprint $table): void {
                 $table->engine = 'InnoDB';
                 $table->integer('page_id', true);
                 $table->integer('language_id');
@@ -33,12 +35,12 @@ return new class extends Migration
         $this->seedPages();
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('pages');
     }
 
-    protected function seedPages()
+    protected function seedPages(): void
     {
         if (DB::table('pages')->count()) {
             return;

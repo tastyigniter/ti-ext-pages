@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Igniter\Pages\Tests;
 
 use Igniter\Flame\Support\Facades\Igniter;
@@ -12,16 +14,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
 
-it('syncs all menus when theme is activated', function() {
+it('syncs all menus when theme is activated', function(): void {
     Event::dispatch('main.theme.activated');
 
     expect(true)->toBeTrue();
 });
 
-it('initializes page for matching route', function() {
+it('initializes page for matching route', function(): void {
     $url = 'about-us';
     $request = Request::create($url);
     $request->setRouteResolver(fn() => Route::get($url)->name('igniter.pages.*'));
+
     app()->instance('request', $request);
 
     $result = Event::dispatch('router.beforeRoute', [$url]);
@@ -29,10 +32,11 @@ it('initializes page for matching route', function() {
     expect($result[0])->toBeInstanceOf(Page::class);
 });
 
-it('does not initialize page for non-matching route', function() {
+it('does not initialize page for non-matching route', function(): void {
     $url = 'non-existing-page';
     $request = Request::create($url);
     $request->setRouteResolver(fn() => Route::get($url));
+
     app()->instance('request', $request);
 
     $result = Event::dispatch('router.beforeRoute', [$url]);
@@ -40,7 +44,7 @@ it('does not initialize page for non-matching route', function() {
     expect($result[0])->toBeNull();
 });
 
-it('returns page contents before rendering page', function() {
+it('returns page contents before rendering page', function(): void {
     $url = 'about-us';
     $controller = MainController::getController();
     $page = (new PageManager)->initPage($url);
@@ -50,7 +54,7 @@ it('returns page contents before rendering page', function() {
     expect($result[0])->not->toBeEmpty();
 });
 
-it('returns menu item types', function() {
+it('returns menu item types', function(): void {
     $result = Event::dispatch('pages.menuitem.listTypes');
 
     expect($result[0])->toBeArray()
@@ -58,21 +62,21 @@ it('returns menu item types', function() {
         ->and($result[0])->toHaveKey('all-static-pages');
 });
 
-it('returns menu type info for static page', function() {
+it('returns menu type info for static page', function(): void {
     $result = Event::dispatch('pages.menuitem.getTypeInfo', ['static-page']);
 
     expect($result[0])->toBeArray()
         ->and($result[0]['references'])->toContain('About Us', 'Policy', 'Terms and Conditions');
 });
 
-it('returns empty array for invalid menu type info', function() {
+it('returns empty array for invalid menu type info', function(): void {
     $result = Event::dispatch('pages.menuitem.getTypeInfo', ['invalid-type']);
 
     expect($result[0])->toBeArray()
         ->and($result[0])->toBeEmpty();
 });
 
-it('resolves static page menu item', function() {
+it('resolves static page menu item', function(): void {
     $url = 'test-url';
     $item = (object)['type' => 'static-page', 'reference' => 1];
     $theme = new Theme('tests-theme-path', ['code' => 'tests-theme']);
@@ -82,7 +86,7 @@ it('resolves static page menu item', function() {
     expect($result[0]['url'])->toEndWith('about-us');
 });
 
-it('does not register routes when no database is configured', function() {
+it('does not register routes when no database is configured', function(): void {
     Igniter::shouldReceive('hasDatabase')->andReturnFalse();
     $extension = new Extension(app());
 
@@ -91,7 +95,7 @@ it('does not register routes when no database is configured', function() {
     expect(Route::has('igniter.pages.*'))->toBeFalse();
 });
 
-it('returns registered permissions', function() {
+it('returns registered permissions', function(): void {
     $extension = new Extension(app());
 
     $permissions = $extension->registerPermissions();

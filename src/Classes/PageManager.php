@@ -1,9 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Igniter\Pages\Classes;
 
 use Igniter\Flame\Exception\ApplicationException;
+use Igniter\Flame\Pagic\Model;
 use Igniter\Flame\Support\RouterHelper;
+use Igniter\Main\Classes\Theme;
 use Igniter\Main\Classes\ThemeManager;
 use Igniter\Pages\Models\Page as PageModel;
 use Illuminate\Support\Facades\Lang;
@@ -11,11 +15,11 @@ use Illuminate\Support\Facades\Lang;
 class PageManager
 {
     /**
-     * @var \Igniter\Main\Classes\Theme
+     * @var Theme
      */
     protected $theme;
 
-    public function initPage($url)
+    public function initPage($url): ?Model
     {
         $staticPage = $this->findByUrl($url);
 
@@ -35,7 +39,7 @@ class PageManager
     public function getPageContents($page)
     {
         if (!isset($page['staticPage'])) {
-            return;
+            return null;
         }
 
         return $page['staticPage']->content;
@@ -43,7 +47,7 @@ class PageManager
 
     public function listPageSlugs()
     {
-        return PageModel::whereIsEnabled()->dropdown('permalink_slug');
+        return PageModel::query()->whereIsEnabled()->dropdown('permalink_slug');
     }
 
     protected function findByUrl($url)
@@ -51,12 +55,12 @@ class PageManager
         $url = ltrim(RouterHelper::normalizeUrl($url), '/');
 
         return PageModel::query()
-            ->isEnabled()
+            ->whereIsEnabled()
             ->where('permalink_slug', $url)
             ->first();
     }
 
-    protected function makePage($staticPage)
+    protected function makePage($staticPage): Page
     {
         if (!$theme = resolve(ThemeManager::class)->getActiveTheme()) {
             throw new ApplicationException(Lang::get('igniter::main.not_found.active_theme'));

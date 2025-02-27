@@ -1,12 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Igniter\Pages\Models;
 
 use Igniter\Flame\Database\Model;
 use Igniter\Flame\Database\Traits\NestedTree;
 use Igniter\Flame\Database\Traits\Sortable;
 use Igniter\Flame\Database\Traits\Validation;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Event;
+use Kalnoy\Nestedset\Collection;
 
 /**
  * MenuItem Model
@@ -24,13 +28,15 @@ use Illuminate\Support\Facades\Event;
  * @property int|null $nest_left
  * @property int|null $nest_right
  * @property int $priority
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Kalnoy\Nestedset\Collection<int, MenuItem> $children
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Collection<int, MenuItem> $children
  * @property-read int|null $children_count
  * @property-read mixed $summary
  * @property-read MenuItem|null $parent
- * @mixin \Igniter\Flame\Database\Model
+ * @method static MenuItem sorted()
+ * @method static Collection<int, MenuItem> get()
+ * @mixin Model
  */
 class MenuItem extends Model
 {
@@ -124,22 +130,20 @@ class MenuItem extends Model
 
     public function getParentIdOptions()
     {
-        return self::select('id', 'title')->get()->filter(function($model) {
-            return $model->id !== $this->id;
-        })->mapWithKeys(function($model) {
-            return [$model->id => $model->title];
-        });
+        return self::query()
+            ->select('id', 'title')
+            ->get()
+            ->filter(fn($model): bool => $model->id !== $this->id)
+            ->mapWithKeys(fn($model) => [$model->id => $model->title]);
     }
 
-    public function getSummaryAttribute($value)
+    public function getSummaryAttribute($value): string
     {
         $summary = '';
         if ($this->parent) {
             $summary .= 'Parent: '.$this->parent->title.' ';
         }
 
-        $summary .= 'Type: '.$this->type;
-
-        return $summary;
+        return $summary.('Type: '.$this->type);
     }
 }

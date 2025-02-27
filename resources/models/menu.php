@@ -1,5 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
+use Igniter\Pages\Http\Requests\MenuItemRequest;
+
 return [
     'list' => [
         'toolbar' => [
@@ -103,7 +107,7 @@ return [
                     'containerAttributes' => [
                         'data-control' => 'menu-item-editor',
                     ],
-                    'request' => \Igniter\Pages\Http\Requests\MenuItemRequest::class,
+                    'request' => MenuItemRequest::class,
                 ],
                 '_new_item' => [
                     'tab' => 'igniter.pages::default.menu.text_menu_items',

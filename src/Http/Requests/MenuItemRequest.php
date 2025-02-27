@@ -1,11 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Igniter\Pages\Http\Requests;
 
+use Override;
 use Igniter\System\Classes\FormRequest;
 
 class MenuItemRequest extends FormRequest
 {
+    #[Override]
     public function attributes()
     {
         return [
@@ -20,7 +24,7 @@ class MenuItemRequest extends FormRequest
         ];
     }
 
-    public function rules()
+    public function rules(): array
     {
         return [
             'title' => ['required', 'string'],

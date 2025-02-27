@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Igniter\Pages\Tests\Models;
 
 use Igniter\Flame\Database\Traits\HasPermalink;
@@ -11,7 +13,7 @@ use Igniter\Pages\Models\Page;
 use Igniter\System\Models\Concerns\Switchable;
 use Igniter\System\Models\Language;
 
-it('returns dropdown options for enabled pages', function() {
+it('returns dropdown options for enabled pages', function(): void {
     $options = Page::getDropdownOptions();
 
     expect($options->isNotEmpty())->toBeTrue()
@@ -20,7 +22,7 @@ it('returns dropdown options for enabled pages', function() {
         ->toContain('Policy');
 });
 
-it('loads enabled pages in alphabetical order', function() {
+it('loads enabled pages in alphabetical order', function(): void {
     Page::$pagesCache = null;
     $pages = Page::loadPages();
 
@@ -29,7 +31,7 @@ it('loads enabled pages in alphabetical order', function() {
         ->and($pages->last()->title)->toBe('Terms and Conditions');
 });
 
-it('returns layout options for active theme', function() {
+it('returns layout options for active theme', function(): void {
     $themeManager = mock(ThemeManager::class);
     $themeManager->shouldReceive('getActiveTheme')->andReturn(new Theme('tests-theme-path', ['code' => 'igniter-orange']));
     app()->instance(ThemeManager::class, $themeManager);
@@ -41,7 +43,7 @@ it('returns layout options for active theme', function() {
         ->and($options)->toHaveKeys(['static', 'default']);
 });
 
-it('returns layout object for the page', function() {
+it('returns layout object for the page', function(): void {
     $page = new Page(['layout' => 'default', 'theme' => 'igniter-orange']);
 
     $layout = $page->getLayoutObject();
@@ -50,7 +52,7 @@ it('returns layout object for the page', function() {
         ->and($layout->fileName)->toBe('default.blade.php');
 });
 
-it('returns null when layout is not found', function() {
+it('returns null when layout is not found', function(): void {
     $page = new Page(['layout' => 'nonexistent', 'theme' => 'igniter-orange']);
 
     $layout = $page->getLayoutObject();
@@ -58,7 +60,7 @@ it('returns null when layout is not found', function() {
     expect($layout)->toBeNull();
 });
 
-it('returns null when no available layout in active theme', function() {
+it('returns null when no available layout in active theme', function(): void {
     $page = new Page(['theme' => 'tests-theme']);
     $themeManager = mock(ThemeManager::class);
     $themeManager->shouldReceive('getActiveTheme')->andReturn(new Theme('tests-theme-path', ['code' => 'tests-theme']));
@@ -69,7 +71,7 @@ it('returns null when no available layout in active theme', function() {
     expect($layout)->toBeNull();
 });
 
-it('decodes HTML entities in content attribute', function() {
+it('decodes HTML entities in content attribute', function(): void {
     $page = new Page(['content' => 'Test &amp; Content']);
 
     $content = $page->getContentAttribute($page->content);
@@ -77,11 +79,12 @@ it('decodes HTML entities in content attribute', function() {
     expect($content)->toBe('Test & Content');
 });
 
-it('sets default language id before saving', function() {
+it('sets default language id before saving', function(): void {
     Page::$pagesCache = null;
     Language::clearDefaultModel();
     $language = Language::factory()->create(['status' => 1]);
     $language->makeDefault();
+
     $page = new Page();
     $page->title = 'Test Page';
     $page->content = 'Test Content';
@@ -92,7 +95,7 @@ it('sets default language id before saving', function() {
     expect($page->language_id)->toBe($language->getKey());
 });
 
-it('configures page model correctly', function() {
+it('configures page model correctly', function(): void {
     $page = new Page;
 
     expect(class_uses_recursive($page))
@@ -112,7 +115,7 @@ it('configures page model correctly', function() {
         ])
         ->and($page->relation)->toEqual([
             'belongsTo' => [
-                'language' => \Igniter\System\Models\Language::class,
+                'language' => Language::class,
             ],
         ])
         ->and($page->permalinkable())->toEqual([

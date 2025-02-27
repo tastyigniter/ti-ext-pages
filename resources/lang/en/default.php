@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'text_title' => 'Static Pages',
     'text_tab_edit' => 'Edit',

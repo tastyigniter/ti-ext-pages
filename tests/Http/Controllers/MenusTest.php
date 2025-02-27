@@ -1,28 +1,30 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Igniter\Pages\Tests\Http\Controllers;
 
 use Igniter\Main\Models\Theme;
 use Igniter\Pages\Models\Menu;
 
-beforeEach(function() {
+beforeEach(function(): void {
     Theme::syncAll();
     Menu::syncAll();
 });
 
-it('loads static menus page', function() {
+it('loads static menus page', function(): void {
     actingAsSuperUser()
         ->get(route('igniter.pages.menus'))
         ->assertOk();
 });
 
-it('loads create static menu page', function() {
+it('loads create static menu page', function(): void {
     actingAsSuperUser()
         ->get(route('igniter.pages.menus', ['slug' => 'create']))
         ->assertOk();
 });
 
-it('loads edit static menu page', function() {
+it('loads edit static menu page', function(): void {
     $menu = Menu::firstWhere('code', 'main-menu');
 
     actingAsSuperUser()
@@ -30,7 +32,7 @@ it('loads edit static menu page', function() {
         ->assertOk();
 });
 
-it('loads static menu preview page', function() {
+it('loads static menu preview page', function(): void {
     $menu = Menu::firstWhere('code', 'main-menu');
 
     actingAsSuperUser()
@@ -38,7 +40,7 @@ it('loads static menu preview page', function() {
         ->assertOk();
 });
 
-it('creates new menu item', function() {
+it('creates new menu item', function(): void {
     $menu = Menu::firstWhere('code', 'main-menu');
 
     actingAsSuperUser()
@@ -51,7 +53,7 @@ it('creates new menu item', function() {
     expect($menu->items()->where('title', 'New Item')->exists())->toBeTrue();
 });
 
-it('gets menu item info', function() {
+it('gets menu item info', function(): void {
     $menu = Menu::firstWhere('code', 'main-menu');
     $menuItem = $menu->items()->first();
 
@@ -65,7 +67,7 @@ it('gets menu item info', function() {
         ->assertOk();
 });
 
-it('creates static menu', function() {
+it('creates static menu', function(): void {
     actingAsSuperUser()
         ->post(route('igniter.pages.menus', ['slug' => 'create']), [
             'Menu' => [
@@ -82,7 +84,7 @@ it('creates static menu', function() {
     expect(Menu::where('name', 'Created Menu')->exists())->toBeTrue();
 });
 
-it('updates static menu', function() {
+it('updates static menu', function(): void {
     $menu = Menu::firstWhere('code', 'main-menu');
 
     actingAsSuperUser()
@@ -91,9 +93,19 @@ it('updates static menu', function() {
                 'name' => 'Updated Menu',
                 'code' => 'updated-menu',
                 'theme_code' => 'tests-theme',
-                'description' => 'Updated menu description',
-                'items' => [['id' => 1, 'priority' => 1, 'title' => 'Menu Item', 'code' => 'menu-item', 'type' => 'menu', 'item_id' => 1, 'children' => []]],
+                'items' => [
+                    [
+                        'id' => 1,
+                        'priority' => 1,
+                        'title' => 'Menu Item',
+                        'code' => 'menu-item',
+                        'type' => 'menu',
+                        'item_id' => 1,
+                        'children' => [],
+                    ],
+                ],
             ],
+            '___dragged_items' => [1],
         ], [
             'X-Requested-With' => 'XMLHttpRequest',
             'X-IGNITER-REQUEST-HANDLER' => 'onSave',
@@ -102,7 +114,7 @@ it('updates static menu', function() {
     expect(Menu::find($menu->id)->name)->toBe('Updated Menu');
 });
 
-it('deletes static menu', function() {
+it('deletes static menu', function(): void {
     $menu = Menu::firstWhere('code', 'main-menu');
 
     actingAsSuperUser()

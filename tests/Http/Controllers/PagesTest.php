@@ -1,22 +1,24 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Igniter\Pages\Tests\Http\Controllers;
 
 use Igniter\Pages\Models\Page;
 
-it('loads static pages page', function() {
+it('loads static pages page', function(): void {
     actingAsSuperUser()
         ->get(route('igniter.pages.pages'))
         ->assertOk();
 });
 
-it('loads create static page', function() {
+it('loads create static page', function(): void {
     actingAsSuperUser()
         ->get(route('igniter.pages.pages', ['slug' => 'create']))
         ->assertOk();
 });
 
-it('loads edit static page', function() {
+it('loads edit static page', function(): void {
     $page = Page::firstWhere('permalink_slug', 'about-us');
 
     actingAsSuperUser()
@@ -24,7 +26,7 @@ it('loads edit static page', function() {
         ->assertOk();
 });
 
-it('creates static page', function() {
+it('creates static page', function(): void {
     actingAsSuperUser()
         ->post(route('igniter.pages.pages', ['slug' => 'create']), [
             'Page' => [
@@ -44,7 +46,7 @@ it('creates static page', function() {
     expect(Page::where('permalink_slug', 'test-page')->exists())->toBeTrue();
 });
 
-it('updates static page', function() {
+it('updates static page', function(): void {
     $page = Page::firstWhere('permalink_slug', 'about-us');
 
     actingAsSuperUser()
@@ -66,7 +68,7 @@ it('updates static page', function() {
         ->and(Page::where('permalink_slug', 'test-page')->exists())->toBeTrue();
 });
 
-it('deletes static page', function() {
+it('deletes static page', function(): void {
     $page = Page::firstWhere('permalink_slug', 'about-us');
 
     actingAsSuperUser()
@@ -77,4 +79,3 @@ it('deletes static page', function() {
 
     expect(Page::where('page_id', $page->getKey())->exists())->toBeFalse();
 });
-

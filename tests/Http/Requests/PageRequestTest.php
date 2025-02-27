@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Igniter\Pages\Tests\Http\Requests;
 
 use Igniter\Pages\Http\Requests\PageRequest;
 
-it('returns correct attribute labels', function() {
+it('returns correct attribute labels', function(): void {
     $request = new PageRequest();
 
     $attributes = $request->attributes();
@@ -20,7 +22,7 @@ it('returns correct attribute labels', function() {
         ->and($attributes)->toHaveKey('layout', lang('igniter.pages::default.label_layout'));
 });
 
-it('returns correct validation rules', function() {
+it('returns correct validation rules', function(): void {
     $request = new PageRequest();
 
     $rules = $request->rules();

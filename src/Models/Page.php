@@ -1,13 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Igniter\Pages\Models;
 
+use Igniter\Flame\Database\Builder;
 use Igniter\Flame\Database\Model;
 use Igniter\Flame\Database\Traits\HasPermalink;
 use Igniter\Flame\Database\Traits\Sortable;
 use Igniter\Main\Classes\ThemeManager;
 use Igniter\Main\Template\Layout;
 use Igniter\System\Models\Concerns\Switchable;
+use Igniter\System\Models\Language;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
 /**
@@ -19,14 +24,17 @@ use Illuminate\Support\Collection;
  * @property string $content
  * @property string|null $meta_description
  * @property string|null $meta_keywords
- * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Support\Carbon $updated_at
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
  * @property bool $status
  * @property string|null $permalink_slug
  * @property string|null $layout
  * @property array|null $metadata
  * @property int|null $priority
- * @mixin \Igniter\Flame\Database\Model
+ * @method static Builder<static>|Page query()
+ * @method static Builder<static>|Page whereIsEnabled()
+ * @method static Builder<static>|Page whereSlug(?string $slug)
+ * @mixin Model
  */
 class Page extends Model
 {
@@ -58,7 +66,7 @@ class Page extends Model
 
     public $relation = [
         'belongsTo' => [
-            'language' => \Igniter\System\Models\Language::class,
+            'language' => Language::class,
         ],
     ];
 
@@ -91,7 +99,7 @@ class Page extends Model
         $layouts = Layout::listInTheme($theme, true);
         foreach ($layouts as $layout) {
             $baseName = $layout->getBaseFileName();
-            $result[$baseName] = strlen($layout->description) ? $layout->description : $baseName;
+            $result[$baseName] = strlen($layout->description) !== 0 ? $layout->description : $baseName;
         }
 
         return $result;
@@ -101,22 +109,23 @@ class Page extends Model
     {
         if (!$layoutId = $this->layout) {
             $layouts = $this->getLayoutOptions();
-            $layoutId = count($layouts) ? array_keys($layouts)[0] : null;
+            $layoutId = count($layouts) > 0 ? array_keys($layouts)[0] : null;
         }
 
         if (!$layoutId) {
             return null;
         }
 
-        if (!$layout = Layout::load($this->theme, $layoutId)) {
+        $themeCode = resolve(ThemeManager::class)->getActiveThemeCode();
+        if (!$layout = Layout::load($themeCode, $layoutId)) {
             return null;
         }
 
         return $layout;
     }
 
-    public function getContentAttribute($value)
+    public function getContentAttribute($value): string
     {
-        return html_entity_decode($value);
+        return html_entity_decode((string)$value);
     }
 }

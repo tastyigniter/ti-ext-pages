@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Igniter\Pages\Tests\Http\Requests;
 
 use Igniter\Pages\Http\Requests\MenuRequest;
 
-it('returns correct attribute labels', function() {
+it('returns correct attribute labels', function(): void {
     $request = new MenuRequest();
 
     $attributes = $request->attributes();
@@ -15,7 +17,7 @@ it('returns correct attribute labels', function() {
         ->and($attributes)->toHaveKey('items', lang('igniter.pages::default.menu.text_menu_items'));
 });
 
-it('returns correct validation rules', function() {
+it('returns correct validation rules', function(): void {
     $request = new MenuRequest();
 
     $rules = $request->rules();

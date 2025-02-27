@@ -1,7 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Igniter\Pages;
 
+use Igniter\System\Classes\BaseExtension;
+use Igniter\Pages\Models\MenuItem;
+use Override;
 use Igniter\Flame\Support\Facades\Igniter;
 use Igniter\Pages\Classes\MenuManager;
 use Igniter\Pages\Classes\Page as StaticPage;
@@ -15,12 +20,12 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
 
-class Extension extends \Igniter\System\Classes\BaseExtension
+class Extension extends BaseExtension
 {
     protected array $morphMap = [
         'pages' => \Igniter\Pages\Models\Page::class,
-        'static_menus' => \Igniter\Pages\Models\Menu::class,
-        'static_menu_items' => \Igniter\Pages\Models\MenuItem::class,
+        'static_menus' => Menu::class,
+        'static_menu_items' => MenuItem::class,
     ];
 
     protected $observers = [
@@ -28,7 +33,8 @@ class Extension extends \Igniter\System\Classes\BaseExtension
         Menu::class => MenuObserver::class,
     ];
 
-    public function register()
+    #[Override]
+    public function register(): void
     {
         parent::register();
 
@@ -36,9 +42,10 @@ class Extension extends \Igniter\System\Classes\BaseExtension
         $this->app->singleton(PageManager::class);
     }
 
-    public function boot()
+    #[Override]
+    public function boot(): void
     {
-        Event::listen('main.theme.activated', function() {
+        Event::listen('main.theme.activated', function(): void {
             Menu::syncAll();
         });
 
@@ -56,14 +63,12 @@ class Extension extends \Igniter\System\Classes\BaseExtension
             }
         });
 
-        Event::listen('pages.menuitem.listTypes', function() {
-            return [
-                'static-page' => 'igniter.pages::default.menu.text_static_page',
-                'all-static-pages' => 'igniter.pages::default.menu.text_all_static_pages',
-            ];
-        });
+        Event::listen('pages.menuitem.listTypes', fn(): array => [
+            'static-page' => 'igniter.pages::default.menu.text_static_page',
+            'all-static-pages' => 'igniter.pages::default.menu.text_all_static_pages',
+        ]);
 
-        Event::listen('pages.menuitem.getTypeInfo', function($type) {
+        Event::listen('pages.menuitem.getTypeInfo', function($type): ?array {
             if ($type == 'static-page') {
                 return StaticPage::getMenuTypeInfo($type);
             }
@@ -82,6 +87,7 @@ class Extension extends \Igniter\System\Classes\BaseExtension
         $this->defineRoutes();
     }
 
+    #[Override]
     public function registerNavigation(): array
     {
         return [
@@ -99,6 +105,7 @@ class Extension extends \Igniter\System\Classes\BaseExtension
         ];
     }
 
+    #[Override]
     public function registerPermissions(): array
     {
         return [
@@ -119,8 +126,8 @@ class Extension extends \Igniter\System\Classes\BaseExtension
             ->domain(config('igniter-routes.domain'))
             ->name('igniter.pages.')
             ->prefix(Igniter::uri())
-            ->group(function(Router $router) {
-                resolve(PageManager::class)->listPageSlugs()->each(function($slug) use ($router) {
+            ->group(function(Router $router): void {
+                resolve(PageManager::class)->listPageSlugs()->each(function($slug) use ($router): void {
                     $router->pagic($slug)->name($slug);
                 });
             });

@@ -1,20 +1,27 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Igniter\Pages\Http\Controllers;
 
+use Igniter\Admin\Classes\AdminController;
+use Igniter\Admin\Http\Actions\ListController;
+use Igniter\Admin\Http\Actions\FormController;
+use Igniter\Pages\Models\Page;
+use Igniter\Pages\Http\Requests\PageRequest;
 use Igniter\Admin\Facades\AdminMenu;
 use Igniter\Pages\Models\Menu;
 
-class Pages extends \Igniter\Admin\Classes\AdminController
+class Pages extends AdminController
 {
     public array $implement = [
-        \Igniter\Admin\Http\Actions\ListController::class,
-        \Igniter\Admin\Http\Actions\FormController::class,
+        ListController::class,
+        FormController::class,
     ];
 
     public array $listConfig = [
         'list' => [
-            'model' => \Igniter\Pages\Models\Page::class,
+            'model' => Page::class,
             'title' => 'lang:igniter.pages::default.text_title',
             'emptyMessage' => 'lang:igniter.pages::default.text_empty',
             'defaultSort' => ['page_id', 'DESC'],
@@ -24,8 +31,8 @@ class Pages extends \Igniter\Admin\Classes\AdminController
 
     public array $formConfig = [
         'name' => 'lang:igniter.pages::default.text_form_name',
-        'model' => \Igniter\Pages\Models\Page::class,
-        'request' => \Igniter\Pages\Http\Requests\PageRequest::class,
+        'model' => Page::class,
+        'request' => PageRequest::class,
         'create' => [
             'title' => 'lang:admin::lang.form.create_title',
             'redirect' => 'igniter/pages/pages/edit/{page_id}',
@@ -53,7 +60,7 @@ class Pages extends \Igniter\Admin\Classes\AdminController
         AdminMenu::setContext('pages', 'design');
     }
 
-    public function index()
+    public function index(): void
     {
         if ($this->getUser()->hasPermission('Igniter.PageMenus.Manage')) {
             Menu::syncAll();

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 $config['list']['filter'] = [
     'search' => [
         'prompt' => 'lang:igniter.pages::default.text_filter_search',
