@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Igniter\Pages\Http\Controllers;
 
 use Igniter\Admin\Classes\AdminController;
-use Igniter\Admin\Http\Actions\ListController;
-use Igniter\Admin\Http\Actions\FormController;
-use Igniter\Pages\Models\Page;
-use Igniter\Pages\Http\Requests\PageRequest;
 use Igniter\Admin\Facades\AdminMenu;
+use Igniter\Admin\Http\Actions\FormController;
+use Igniter\Admin\Http\Actions\ListController;
+use Igniter\Pages\Http\Requests\PageRequest;
 use Igniter\Pages\Models\Menu;
+use Igniter\Pages\Models\Page;
 
 class Pages extends AdminController
 {

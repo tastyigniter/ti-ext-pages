@@ -29,13 +29,13 @@ return new class extends Migration
 
     protected function ensurePrimaryKeyHasAutoIncrementForMysql(string $tableName, string $primaryKey): void
     {
-        $columnInfo = DB::selectOne("
+        $columnInfo = DB::selectOne('
             SELECT EXTRA 
             FROM INFORMATION_SCHEMA.COLUMNS 
             WHERE TABLE_SCHEMA = DATABASE() 
               AND TABLE_NAME = ? 
               AND COLUMN_NAME = ?
-        ", [$tableName, $primaryKey]);
+        ', [$tableName, $primaryKey]);
 
         if (!isset($columnInfo->EXTRA) || stripos($columnInfo->EXTRA, 'auto_increment') === false) {
             DB::statement(sprintf('ALTER TABLE `%s` MODIFY `%s` INT NOT NULL AUTO_INCREMENT;', $tableName, $primaryKey));
@@ -45,18 +45,18 @@ return new class extends Migration
     protected function ensurePrimaryKeyHasAutoIncrementForPostgresql(string $tableName, string $primaryKey): void
     {
         // Check if the column is backed by a sequence
-        $sequenceCheck = DB::selectOne("
+        $sequenceCheck = DB::selectOne('
         SELECT pg_get_serial_sequence(?, ?) AS sequence
-    ", [$tableName, $primaryKey]);
+    ', [$tableName, $primaryKey]);
 
         if (isset($sequenceCheck->sequence)) {
             // Check if the default value is set to use the sequence
-            $defaultCheck = DB::selectOne("
+            $defaultCheck = DB::selectOne('
             SELECT column_default 
             FROM information_schema.columns 
             WHERE table_name = ? 
               AND column_name = ?
-        ", [$tableName, $primaryKey]);
+        ', [$tableName, $primaryKey]);
 
             if (!str_contains($defaultCheck->column_default ?? '', 'nextval')) {
                 DB::statement(sprintf("ALTER TABLE %s ALTER COLUMN %s SET DEFAULT nextval('%s');", $tableName, $primaryKey, $sequenceCheck->sequence));

@@ -7,7 +7,7 @@ namespace Igniter\Pages\Tests\Http\Requests;
 use Igniter\Pages\Http\Requests\PageRequest;
 
 it('returns correct attribute labels', function(): void {
-    $request = new PageRequest();
+    $request = new PageRequest;
 
     $attributes = $request->attributes();
 
@@ -23,7 +23,7 @@ it('returns correct attribute labels', function(): void {
 });
 
 it('returns correct validation rules', function(): void {
-    $request = new PageRequest();
+    $request = new PageRequest;
 
     $rules = $request->rules();
 

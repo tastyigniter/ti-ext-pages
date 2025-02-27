@@ -7,7 +7,7 @@ namespace Igniter\Pages\Tests\Http\Requests;
 use Igniter\Pages\Http\Requests\MenuItemRequest;
 
 it('returns correct attribute labels', function(): void {
-    $request = new MenuItemRequest();
+    $request = new MenuItemRequest;
 
     $attributes = $request->attributes();
 
@@ -22,7 +22,7 @@ it('returns correct attribute labels', function(): void {
 });
 
 it('returns correct validation rules', function(): void {
-    $request = new MenuItemRequest();
+    $request = new MenuItemRequest;
 
     $rules = $request->rules();
 

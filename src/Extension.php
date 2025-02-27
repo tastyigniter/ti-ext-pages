@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace Igniter\Pages;
 
-use Igniter\System\Classes\BaseExtension;
-use Igniter\Pages\Models\MenuItem;
-use Override;
 use Igniter\Flame\Support\Facades\Igniter;
 use Igniter\Pages\Classes\MenuManager;
 use Igniter\Pages\Classes\Page as StaticPage;
 use Igniter\Pages\Classes\PageManager;
 use Igniter\Pages\Models\Menu;
+use Igniter\Pages\Models\MenuItem;
 use Igniter\Pages\Models\Observers\MenuObserver;
 use Igniter\Pages\Models\Observers\PageObserver;
 use Igniter\Pages\Models\Page;
+use Igniter\System\Classes\BaseExtension;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
+use Override;
 
 class Extension extends BaseExtension
 {
