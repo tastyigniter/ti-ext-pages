@@ -1,16 +1,16 @@
 <?php
 
-namespace Igniter\Pages\Database\Migrations;
+declare(strict_types=1);
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMenusTable extends Migration
+return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
-        Schema::create('igniter_pages_menus', function (Blueprint $table) {
+        Schema::create('igniter_pages_menus', function(Blueprint $table): void {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('theme_code')->index();
@@ -19,7 +19,7 @@ class CreateMenusTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('igniter_pages_menu_items', function (Blueprint $table) {
+        Schema::create('igniter_pages_menu_items', function(Blueprint $table): void {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('menu_id')->unsigned()->index();
@@ -38,9 +38,9 @@ class CreateMenusTable extends Migration
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('igniter_pages_menus');
         Schema::dropIfExists('igniter_pages_menu_items');
     }
-}
+};

@@ -1,26 +1,72 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Igniter\Pages\Database\Migrations;
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
 
-class MakePageIdIncremental extends Migration
+return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
-        $tablePrefix = Schema::getConnection()->getTablePrefix();
-        if (DB::select(DB::raw('SHOW KEYS FROM '.$tablePrefix.'pages WHERE Key_name=\'PRIMARY\' AND Column_name=\'page_id\'')))
-            return;
+        $tableName = DB::getTablePrefix().'pages';
+        $primaryKey = 'page_id';
+        $driver = DB::getDriverName();
 
-        Schema::table('pages', function (Blueprint $table) {
-            $table->unsignedBigInteger('page_id', true)->change();
-        });
+        switch ($driver) {
+            case 'mysql':
+                $this->ensurePrimaryKeyHasAutoIncrementForMysql($tableName, $primaryKey);
+                break;
+            case 'pgsql':
+                $this->ensurePrimaryKeyHasAutoIncrementForPostgresql($tableName, $primaryKey);
+                break;
+        }
     }
 
-    public function down()
+    public function down(): void {}
+
+    protected function ensurePrimaryKeyHasAutoIncrementForMysql(string $tableName, string $primaryKey): void
     {
+        $columnInfo = DB::selectOne('
+            SELECT EXTRA 
+            FROM INFORMATION_SCHEMA.COLUMNS 
+            WHERE TABLE_SCHEMA = DATABASE() 
+              AND TABLE_NAME = ? 
+              AND COLUMN_NAME = ?
+        ', [$tableName, $primaryKey]);
+
+        if (!isset($columnInfo->EXTRA) || stripos($columnInfo->EXTRA, 'auto_increment') === false) {
+            DB::statement(sprintf('ALTER TABLE `%s` MODIFY `%s` INT NOT NULL AUTO_INCREMENT;', $tableName, $primaryKey));
+        }
     }
-}
+
+    protected function ensurePrimaryKeyHasAutoIncrementForPostgresql(string $tableName, string $primaryKey): void
+    {
+        // Check if the column is backed by a sequence
+        $sequenceCheck = DB::selectOne('
+        SELECT pg_get_serial_sequence(?, ?) AS sequence
+    ', [$tableName, $primaryKey]);
+
+        if (isset($sequenceCheck->sequence)) {
+            // Check if the default value is set to use the sequence
+            $defaultCheck = DB::selectOne('
+            SELECT column_default 
+            FROM information_schema.columns 
+            WHERE table_name = ? 
+              AND column_name = ?
+        ', [$tableName, $primaryKey]);
+
+            if (!str_contains($defaultCheck->column_default ?? '', 'nextval')) {
+                DB::statement(sprintf("ALTER TABLE %s ALTER COLUMN %s SET DEFAULT nextval('%s');", $tableName, $primaryKey, $sequenceCheck->sequence));
+            }
+        } else {
+            // Create a new sequence and link it to the column
+            $sequenceName = sprintf('%s_%s_seq', $tableName, $primaryKey);
+            DB::statement(sprintf('CREATE SEQUENCE %s;', $sequenceName));
+            DB::statement(sprintf("ALTER TABLE %s ALTER COLUMN %s SET DEFAULT nextval('%s');", $tableName, $primaryKey, $sequenceName));
+            DB::statement(sprintf('ALTER SEQUENCE %s OWNED BY %s.%s;', $sequenceName, $tableName, $primaryKey));
+        }
+    }
+};

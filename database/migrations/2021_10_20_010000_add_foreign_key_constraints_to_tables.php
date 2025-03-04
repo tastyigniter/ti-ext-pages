@@ -1,29 +1,33 @@
 <?php
 
-namespace Igniter\Pages\Database\Migrations;
+declare(strict_types=1);
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignKeyConstraintsToTables extends Migration
+return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
-        Schema::table('pages', function (Blueprint $table) {
+        Schema::table('pages', function(Blueprint $table): void {
             $table->unsignedBigInteger('page_id')->change();
-            $table->foreignId('language_id')->change()->constrained('languages', 'language_id');
+        });
+
+        rescue(function(): void {
+            Schema::table('pages', function(Blueprint $table): void {
+                $table->foreignId('language_id')->change()->constrained('languages', 'language_id');
+            });
         });
     }
 
-    public function down()
+    public function down(): void
     {
         try {
-            Schema::table('pages', function (Blueprint $table) {
-                $table->dropForeign(['language_id']);
+            Schema::table('pages', function(Blueprint $table): void {
+                $table->dropForeignKeyIfExists('language_id');
             });
-        }
-        catch (\Exception $e) {
+        } catch (Exception) {
         }
     }
-}
+};

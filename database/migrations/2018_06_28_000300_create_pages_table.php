@@ -1,6 +1,6 @@
 <?php
 
-namespace Igniter\Pages\Database\Migrations;
+declare(strict_types=1);
 
 use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
@@ -8,12 +8,12 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePagesTable extends Migration
+return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
         if (!Schema::hasTable('pages')) {
-            Schema::create('pages', function (Blueprint $table) {
+            Schema::create('pages', function(Blueprint $table): void {
                 $table->engine = 'InnoDB';
                 $table->integer('page_id', true);
                 $table->integer('language_id');
@@ -35,22 +35,23 @@ class CreatePagesTable extends Migration
         $this->seedPages();
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('pages');
     }
 
-    protected function seedPages()
+    protected function seedPages(): void
     {
-        if (DB::table('pages')->count())
+        if (DB::table('pages')->count()) {
             return;
+        }
 
         $now = Carbon::now();
         $language = DB::table('languages')->where('code', 'en')->first();
 
         DB::table('pages')->insert([
             [
-                'language_id' => $language->language_id,
+                'language_id' => $language?->language_id,
                 'name' => 'About Us',
                 'title' => 'About Us',
                 'permalink_slug' => 'about-us',
@@ -62,7 +63,7 @@ class CreatePagesTable extends Migration
                 'status' => 1,
             ],
             [
-                'language_id' => $language->language_id,
+                'language_id' => $language?->language_id,
                 'name' => 'Policy',
                 'title' => 'Policy',
                 'permalink_slug' => 'policy',
@@ -74,7 +75,7 @@ class CreatePagesTable extends Migration
                 'status' => 1,
             ],
             [
-                'language_id' => $language->language_id,
+                'language_id' => $language?->language_id,
                 'name' => 'Terms and Conditions',
                 'title' => 'Terms and Conditions',
                 'permalink_slug' => 'terms-and-conditions',
@@ -87,4 +88,4 @@ class CreatePagesTable extends Migration
             ],
         ]);
     }
-}
+};

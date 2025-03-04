@@ -1,18 +1,16 @@
 <?php
 
-namespace Igniter\Pages\Database\Migrations;
+declare(strict_types=1);
 
 use Igniter\Pages\Models\Menu;
 use Illuminate\Database\Migrations\Migration;
 
-class SeedMenusTable extends Migration
+return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Menu::syncAll();
     }
 
-    public function down()
-    {
-    }
-}
+    public function down(): void {}
+};
