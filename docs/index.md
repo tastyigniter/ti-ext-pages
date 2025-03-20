@@ -1,3 +1,9 @@
+---
+title: "Pages"
+section: "extensions"
+sortOrder: 70
+---
+
 ## Installation
 
 You can install the extension via composer using the following command:
