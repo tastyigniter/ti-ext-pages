@@ -99,7 +99,7 @@ class Page extends Model
         $layouts = Layout::listInTheme($theme, true);
         foreach ($layouts as $layout) {
             $baseName = $layout->getBaseFileName();
-            $result[$baseName] = strlen($layout->description) !== 0 ? $layout->description : $baseName;
+            $result[$baseName] = strlen((string) $layout->description) !== 0 ? $layout->description : $baseName;
         }
 
         return $result;
