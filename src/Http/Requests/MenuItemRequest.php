@@ -31,7 +31,7 @@ class MenuItemRequest extends FormRequest
             'type' => ['required', 'string'],
             'url' => ['required_if:type,url', 'string'],
             'reference' => ['alpha_dash'],
-            'parent_id' => ['integer'],
+            'parent_id' => ['nullable', 'integer'],
             'description' => ['nullable', 'string', 'max:500'],
             'code' => ['alpha_dash'],
             'config[extraAttributes]' => ['string'],
