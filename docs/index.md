@@ -24,7 +24,7 @@ In the admin area, you can create, edit, or delete frontend pages and navigation
 
 ## Usage
 
-This section explains how to integrate the Pages extension into your own theme if you need to create static pages, display static navigation menus, or create custom menu item types. The Pages extension provides a simple API for managing managing custom navigation menus.
+This section covers how to integrate the Pages extension into your own theme if you need to create static pages, display static navigation menus, or create custom menu item types. The Pages extension provides a simple API for managing managing custom navigation menus.
 
 ### Creating a Layout
 
