@@ -24,6 +24,8 @@ In the admin area, you can create, edit, or delete frontend pages and navigation
 
 ## Usage
 
+This section covers how to integrate the Pages extension into your own theme if you need to create static pages, display static navigation menus, or create custom menu item types. The Pages extension provides a simple API for managing managing custom navigation menus.
+
 ### Creating a Layout
 
 The first step is to create a layout that will host all static pages of the website. The layout file should contain the `@themePage` directive, which renders the content of the static page.
@@ -44,7 +46,7 @@ description: Static layout for static pages
 
 ### Displaying menu items
 
-The `generateReferences` method of the `MenuManager` class is used to generate the navigation menu items. The method accepts a `Menu` model instance, `Page` template object and returns an array of navigation menu items with references.
+The `generateReferences` method of the `Igniter\Pages\Classes\MenuManager` class is used to generate the navigation menu items. The method accepts a `Igniter\Pages\Models\Menu` model instance, `Page` template object and returns an array of navigation menu items with references.
 
 ```php
 use Igniter\Pages\Classes\MenuManager;
@@ -180,3 +182,5 @@ Event::listen('pages.menuitem.referencesGenerated', function (&$items) {
 The Pages extension registers the following permissions:
 
 - `Igniter.Pages.Manage`: Control who can manage static pages in the admin area.
+
+For more on restricting access to the admin area, see the [TastyIgniter Permissions](https://tastyigniter.com/docs/customize/permissions) documentation.

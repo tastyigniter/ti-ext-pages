@@ -42,7 +42,7 @@ class Page extends Model
     use Sortable;
     use Switchable;
 
-    public const SORT_ORDER = 'priority';
+    public const string SORT_ORDER = 'priority';
 
     /**
      * @var string The database table name
@@ -99,7 +99,7 @@ class Page extends Model
         $layouts = Layout::listInTheme($theme, true);
         foreach ($layouts as $layout) {
             $baseName = $layout->getBaseFileName();
-            $result[$baseName] = strlen((string) $layout->description) !== 0 ? $layout->description : $baseName;
+            $result[$baseName] = strlen((string)$layout->description) !== 0 ? $layout->description : $baseName;
         }
 
         return $result;
