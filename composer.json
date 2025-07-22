@@ -35,8 +35,8 @@
             "name": "Static Pages",
             "icon": {
                 "class": "fa fa-files-o",
-                "color": "#664500",
-                "backgroundColor": "#FECC4D"
+                "color": "#FFFFFF",
+                "backgroundColor": "#FF4900"
             },
             "homepage": "https://tastyigniter.com/marketplace/item/igniter-pages"
         },
