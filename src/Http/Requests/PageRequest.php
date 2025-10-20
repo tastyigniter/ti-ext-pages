@@ -10,7 +10,7 @@ use Override;
 class PageRequest extends FormRequest
 {
     #[Override]
-    public function attributes()
+    public function attributes(): array
     {
         return [
             'language_id' => lang('igniter.pages::default.label_language'),

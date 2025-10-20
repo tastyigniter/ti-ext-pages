@@ -10,7 +10,7 @@ use Override;
 class MenuRequest extends FormRequest
 {
     #[Override]
-    public function attributes()
+    public function attributes(): array
     {
         return [
             'theme_code' => lang('igniter.pages::default.menu.label_theme'),

@@ -36,7 +36,7 @@ class PageManager
         return $page;
     }
 
-    public function getPageContents($page)
+    public function getPageContents(null|array|Page $page)
     {
         if (!isset($page['staticPage'])) {
             return null;
