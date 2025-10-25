@@ -8,6 +8,7 @@ use Igniter\Flame\Exception\ApplicationException;
 use Igniter\Flame\Pagic\Model;
 use Igniter\Flame\Support\RouterHelper;
 use Igniter\Main\Classes\Theme;
+use Igniter\Main\Template\Page as PageTemplate;
 use Igniter\Main\Classes\ThemeManager;
 use Igniter\Pages\Models\Page as PageModel;
 use Illuminate\Support\Facades\Lang;
@@ -36,7 +37,7 @@ class PageManager
         return $page;
     }
 
-    public function getPageContents(null|array|Page $page)
+    public function getPageContents(null|array|PageTemplate $page)
     {
         if (!isset($page['staticPage'])) {
             return null;
