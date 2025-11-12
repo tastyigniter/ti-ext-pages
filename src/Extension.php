@@ -76,7 +76,7 @@ class Extension extends BaseExtension
             return [];
         });
 
-        Event::listen('pages.menuitem.resolveItem', function($item, $url, $theme) {
+        Event::listen('pages.menuitem.resolveItem', function($item, string $url, $theme) {
             if ($theme && ($item->type == 'static-page' || $item->type == 'all-static-pages')) {
                 return StaticPage::resolveMenuItem($item, $url, $theme);
             }

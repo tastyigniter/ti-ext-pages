@@ -132,9 +132,10 @@ class MenuItem extends Model
     {
         return self::query()
             ->select('id', 'title')
+            ->whereHas('menu', fn($query) => $query->where('theme_code', $this->menu->theme_code))
             ->get()
             ->filter(fn(self $model): bool => $model->id !== $this->id)
-            ->mapWithKeys(fn(self $model) => [$model->id => $model->title]);
+            ->mapWithKeys(fn(self $model): array => [$model->id => $model->title]);
     }
 
     public function getSummaryAttribute($value): string

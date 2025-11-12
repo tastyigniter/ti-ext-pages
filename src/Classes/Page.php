@@ -70,7 +70,7 @@ class Page extends \Igniter\Main\Template\Page
         return PageModel::whereIsEnabled()
             ->orderBy('title')
             ->get()
-            ->mapWithKeys(fn(PageModel $page) => [$page->page_id => $page->title])
+            ->mapWithKeys(fn(PageModel $page): array => [$page->page_id => $page->title])
             ->all();
     }
 }

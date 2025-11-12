@@ -20,7 +20,7 @@ beforeEach(function(): void {
 
 it('loads menus from config files across loaded themes', function(): void {
     Theme::factory()->create([
-        'name' => 'Test Theme',
+        'name' => 'Theme Name',
         'code' => 'tests-theme',
         'version' => '1.0.0',
         'status' => 1,
