@@ -149,7 +149,7 @@ class MenuManager
                         $result = [];
                         foreach ($items as $item) {
                             $reference = (object)$this->defaultMenuItem;
-                            $reference->code = array_get($item, 'code', null);
+                            $reference->code = array_get($item, 'code');
                             $reference->title = array_get($item, 'title', '-- no title --');
                             $reference->url = array_get($item, 'url', '#');
                             $reference->isActive = array_get($item, 'isActive', false);
