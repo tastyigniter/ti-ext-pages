@@ -6,7 +6,6 @@ namespace Igniter\Pages\Tests\Models;
 
 use Igniter\Flame\Database\Traits\NestedTree;
 use Igniter\Flame\Database\Traits\Sortable;
-use Igniter\Flame\Database\Traits\Validation;
 use Igniter\Pages\Models\Menu;
 use Igniter\Pages\Models\MenuItem;
 use Illuminate\Support\Facades\Event;
@@ -58,7 +57,6 @@ it('configures menu item model correctly', function(): void {
     expect(class_uses_recursive($menuItem))
         ->toContain(NestedTree::class)
         ->toContain(Sortable::class)
-        ->toContain(Validation::class)
         ->and(MenuItem::SORT_ORDER)->toEqual('priority')
         ->and($menuItem->getTable())->toBe('igniter_pages_menu_items')
         ->and($menuItem->getKeyName())->toBe('id')
