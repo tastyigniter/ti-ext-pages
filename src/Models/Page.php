@@ -85,11 +85,7 @@ class Page extends Model
 
     public static function loadPages()
     {
-        if (!is_null(self::$pagesCache)) {
-            return self::$pagesCache;
-        }
-
-        return self::$pagesCache = static::whereIsEnabled()->orderBy('title')->get();
+        return self::$pagesCache ??= static::whereIsEnabled()->orderBy('title')->get();
     }
 
     public function getLayoutOptions()
