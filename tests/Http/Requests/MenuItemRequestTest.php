@@ -28,10 +28,10 @@ it('returns correct validation rules', function(): void {
 
     expect($rules)->toHaveKey('title', ['required', 'string'])
         ->and($rules)->toHaveKey('type', ['required', 'string'])
-        ->and($rules)->toHaveKey('url', ['required_if:type,url', 'string'])
-        ->and($rules)->toHaveKey('reference', ['nullable', 'alpha_dash'])
+        ->and($rules)->toHaveKey('url', ['required_if:type,url', 'nullable', 'string'])
+        ->and($rules)->toHaveKey('reference', ['nullable', 'string'])
         ->and($rules)->toHaveKey('parent_id', ['nullable', 'integer'])
         ->and($rules)->toHaveKey('description', ['nullable', 'string', 'max:500'])
-        ->and($rules)->toHaveKey('code', ['alpha_dash'])
+        ->and($rules)->toHaveKey('code', ['nullable', 'alpha_dash'])
         ->and($rules)->toHaveKey('config[extraAttributes]', ['string']);
 });

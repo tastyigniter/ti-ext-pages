@@ -7,7 +7,6 @@ namespace Igniter\Pages\Models;
 use Igniter\Flame\Database\Model;
 use Igniter\Flame\Database\Traits\NestedTree;
 use Igniter\Flame\Database\Traits\Sortable;
-use Igniter\Flame\Database\Traits\Validation;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Event;
 use Kalnoy\Nestedset\Collection;
@@ -42,7 +41,6 @@ class MenuItem extends Model
 {
     use NestedTree;
     use Sortable;
-    use Validation;
 
     const SORT_ORDER = 'priority';
 
@@ -73,15 +71,6 @@ class MenuItem extends Model
             'menu' => [Menu::class],
             'parent' => [MenuItem::class, 'foreignKey' => 'parent_id', 'otherKey' => 'id'],
         ],
-    ];
-
-    public $rules = [
-        ['type', 'igniter.pages::default.menu.label_type', 'required|string'],
-        ['code', 'igniter.pages::default.menu.label_code', 'alpha_dash'],
-        ['title', 'igniter.pages::default.menu.label_title', 'max:128'],
-        ['description', 'admin::lang.label_description', 'max:255'],
-        ['parent_id', 'igniter.pages::default.menu.label_parent_id', 'nullable|integer'],
-        ['url', 'igniter.pages::default.menu.label_url', 'max:500'],
     ];
 
     public static function getTypeInfo($type)
