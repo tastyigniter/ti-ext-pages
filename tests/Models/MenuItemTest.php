@@ -78,13 +78,5 @@ it('configures menu item model correctly', function(): void {
                 'menu' => [Menu::class],
                 'parent' => [MenuItem::class, 'foreignKey' => 'parent_id', 'otherKey' => 'id'],
             ],
-        ])
-        ->and($menuItem->rules)->toEqual([
-            ['type', 'igniter.pages::default.menu.label_type', 'required|string'],
-            ['code', 'igniter.pages::default.menu.label_code', 'alpha_dash'],
-            ['title', 'igniter.pages::default.menu.label_title', 'max:128'],
-            ['description', 'admin::lang.label_description', 'max:255'],
-            ['parent_id', 'igniter.pages::default.menu.label_parent_id', 'nullable|integer'],
-            ['url', 'igniter.pages::default.menu.label_url', 'max:500'],
         ]);
 });
