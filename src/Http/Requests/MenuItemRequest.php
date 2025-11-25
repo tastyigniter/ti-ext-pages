@@ -30,7 +30,7 @@ class MenuItemRequest extends FormRequest
             'title' => ['required', 'string'],
             'type' => ['required', 'string'],
             'url' => ['required_if:type,url', 'nullable', 'string'],
-            'reference' => ['nullable', 'string'],
+            'reference' => ['nullable', 'regex:/^[\w.\-]+$/'],
             'parent_id' => ['nullable', 'integer'],
             'description' => ['nullable', 'string', 'max:500'],
             'code' => ['nullable', 'alpha_dash'],

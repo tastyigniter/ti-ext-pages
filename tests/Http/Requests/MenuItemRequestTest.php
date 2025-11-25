@@ -29,7 +29,7 @@ it('returns correct validation rules', function(): void {
     expect($rules)->toHaveKey('title', ['required', 'string'])
         ->and($rules)->toHaveKey('type', ['required', 'string'])
         ->and($rules)->toHaveKey('url', ['required_if:type,url', 'nullable', 'string'])
-        ->and($rules)->toHaveKey('reference', ['nullable', 'string'])
+        ->and($rules)->toHaveKey('reference', ['nullable', 'regex:/^[\w.\-]+$/'])
         ->and($rules)->toHaveKey('parent_id', ['nullable', 'integer'])
         ->and($rules)->toHaveKey('description', ['nullable', 'string', 'max:500'])
         ->and($rules)->toHaveKey('code', ['nullable', 'alpha_dash'])
