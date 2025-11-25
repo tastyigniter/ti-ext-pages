@@ -6,7 +6,6 @@ namespace Igniter\Pages\Tests\Models;
 
 use Igniter\Flame\Database\Traits\NestedTree;
 use Igniter\Flame\Database\Traits\Sortable;
-use Igniter\Flame\Database\Traits\Validation;
 use Igniter\Pages\Models\Menu;
 use Igniter\Pages\Models\MenuItem;
 use Illuminate\Support\Facades\Event;
@@ -58,7 +57,6 @@ it('configures menu item model correctly', function(): void {
     expect(class_uses_recursive($menuItem))
         ->toContain(NestedTree::class)
         ->toContain(Sortable::class)
-        ->toContain(Validation::class)
         ->and(MenuItem::SORT_ORDER)->toEqual('priority')
         ->and($menuItem->getTable())->toBe('igniter_pages_menu_items')
         ->and($menuItem->getKeyName())->toBe('id')
@@ -80,13 +78,5 @@ it('configures menu item model correctly', function(): void {
                 'menu' => [Menu::class],
                 'parent' => [MenuItem::class, 'foreignKey' => 'parent_id', 'otherKey' => 'id'],
             ],
-        ])
-        ->and($menuItem->rules)->toEqual([
-            ['type', 'igniter.pages::default.menu.label_type', 'required|string'],
-            ['code', 'igniter.pages::default.menu.label_code', 'alpha_dash'],
-            ['title', 'igniter.pages::default.menu.label_title', 'max:128'],
-            ['description', 'admin::lang.label_description', 'max:255'],
-            ['parent_id', 'igniter.pages::default.menu.label_parent_id', 'nullable|integer'],
-            ['url', 'igniter.pages::default.menu.label_url', 'max:500'],
         ]);
 });

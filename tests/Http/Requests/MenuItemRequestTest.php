@@ -18,7 +18,7 @@ it('returns correct attribute labels', function(): void {
         ->and($attributes)->toHaveKey('parent_id', lang('igniter.pages::default.menu.label_parent_id'))
         ->and($attributes)->toHaveKey('description', lang('admin::lang.label_description'))
         ->and($attributes)->toHaveKey('code', lang('igniter.pages::default.menu.label_code'))
-        ->and($attributes)->toHaveKey('config[extraAttributes]', lang('igniter.pages::default.menu.label_attributes'));
+        ->and($attributes)->toHaveKey('config.extraAttributes', lang('igniter.pages::default.menu.label_attributes'));
 });
 
 it('returns correct validation rules', function(): void {
@@ -28,10 +28,10 @@ it('returns correct validation rules', function(): void {
 
     expect($rules)->toHaveKey('title', ['required', 'string'])
         ->and($rules)->toHaveKey('type', ['required', 'string'])
-        ->and($rules)->toHaveKey('url', ['required_if:type,url', 'string'])
-        ->and($rules)->toHaveKey('reference', ['nullable', 'alpha_dash'])
+        ->and($rules)->toHaveKey('url', ['required_if:type,url', 'nullable', 'string'])
+        ->and($rules)->toHaveKey('reference', ['nullable', 'regex:/^[\w.\-]+$/'])
         ->and($rules)->toHaveKey('parent_id', ['nullable', 'integer'])
         ->and($rules)->toHaveKey('description', ['nullable', 'string', 'max:500'])
-        ->and($rules)->toHaveKey('code', ['alpha_dash'])
-        ->and($rules)->toHaveKey('config[extraAttributes]', ['string']);
+        ->and($rules)->toHaveKey('code', ['nullable', 'alpha_dash'])
+        ->and($rules)->toHaveKey('config.extraAttributes', ['string']);
 });

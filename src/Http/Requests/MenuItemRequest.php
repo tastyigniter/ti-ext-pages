@@ -20,7 +20,7 @@ class MenuItemRequest extends FormRequest
             'parent_id' => lang('igniter.pages::default.menu.label_parent_id'),
             'description' => lang('admin::lang.label_description'),
             'code' => lang('igniter.pages::default.menu.label_code'),
-            'config[extraAttributes]' => lang('igniter.pages::default.menu.label_attributes'),
+            'config.extraAttributes' => lang('igniter.pages::default.menu.label_attributes'),
         ];
     }
 
@@ -29,12 +29,12 @@ class MenuItemRequest extends FormRequest
         return [
             'title' => ['required', 'string'],
             'type' => ['required', 'string'],
-            'url' => ['required_if:type,url', 'string'],
-            'reference' => ['nullable', 'alpha_dash'],
+            'url' => ['required_if:type,url', 'nullable', 'string'],
+            'reference' => ['nullable', 'regex:/^[\w.\-]+$/'],
             'parent_id' => ['nullable', 'integer'],
             'description' => ['nullable', 'string', 'max:500'],
-            'code' => ['alpha_dash'],
-            'config[extraAttributes]' => ['string'],
+            'code' => ['nullable', 'alpha_dash'],
+            'config.extraAttributes' => ['string'],
         ];
     }
 }
