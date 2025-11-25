@@ -42,7 +42,7 @@ class MenuItem extends Model
     use NestedTree;
     use Sortable;
 
-    const SORT_ORDER = 'priority';
+    public const string SORT_ORDER = 'priority';
 
     public $table = 'igniter_pages_menu_items';
 

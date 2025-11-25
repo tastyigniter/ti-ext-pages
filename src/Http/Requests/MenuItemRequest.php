@@ -20,7 +20,7 @@ class MenuItemRequest extends FormRequest
             'parent_id' => lang('igniter.pages::default.menu.label_parent_id'),
             'description' => lang('admin::lang.label_description'),
             'code' => lang('igniter.pages::default.menu.label_code'),
-            'config[extraAttributes]' => lang('igniter.pages::default.menu.label_attributes'),
+            'config.extraAttributes' => lang('igniter.pages::default.menu.label_attributes'),
         ];
     }
 
@@ -34,7 +34,7 @@ class MenuItemRequest extends FormRequest
             'parent_id' => ['nullable', 'integer'],
             'description' => ['nullable', 'string', 'max:500'],
             'code' => ['nullable', 'alpha_dash'],
-            'config[extraAttributes]' => ['string'],
+            'config.extraAttributes' => ['string'],
         ];
     }
 }
