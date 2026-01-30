@@ -18,10 +18,6 @@ The TastyIgniter pages extension provides a simple way to create and manage stat
 
 Documentation can be found on the [TastyIgniter documentation website](https://tastyigniter.com/docs/extensions/pages).
 
-## Changelog
-
-Please see [CHANGELOG](https://github.com/tastyigniter/ti-ext-pages/blob/master/CHANGELOG.md) for more information on what has changed recently.
-
 ## Reporting issues
 
 If you encounter a bug in this extension, please report it using the [Issue Tracker](https://github.com/tastyigniter/TastyIgniter/issues) on GitHub.
