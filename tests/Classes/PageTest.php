@@ -18,16 +18,35 @@ it('returns menu type info with static page references', function(): void {
 
 it('resolves static page menu item with valid reference', function(): void {
     $theme = new Theme('tests-theme-path', ['code' => 'tests-theme']);
-    $item = (object)['type' => 'static-page', 'reference' => 1];
     $url = 'http://localhost/test-page';
     $language = Language::factory()->create(['status' => 1]);
-    PageModel::create(['permalink_slug' => 'test-page', 'title' => 'AATest Page', 'status' => 1, 'content' => '', 'language_id' => $language->getKey()]);
+    $page = PageModel::create(['permalink_slug' => 'test-page', 'title' => 'AATest Page', 'status' => 1, 'content' => '', 'language_id' => $language->getKey()]);
+    $item = (object)['type' => 'static-page', 'reference' => $page->getKey()];
+
+    PageModel::$pagesCache = null;
 
     $result = Page::resolveMenuItem($item, $url, $theme);
 
     expect($result)->toBeArray()
         ->and($result['url'])->toEndWith('/test-page')
         ->and($result['isActive'])->toBeTrue();
+});
+
+it('resolves static page menu item to the page matching its reference id', function(): void {
+    $theme = new Theme('tests-theme-path', ['code' => 'tests-theme']);
+    $language = Language::factory()->create(['status' => 1]);
+
+    PageModel::create(['permalink_slug' => 'aaa', 'title' => 'AAA Page', 'status' => 1, 'content' => '', 'language_id' => $language->getKey()]);
+    $target = PageModel::create(['permalink_slug' => 'zzz', 'title' => 'ZZZ Page', 'status' => 1, 'content' => '', 'language_id' => $language->getKey()]);
+
+    PageModel::$pagesCache = null;
+
+    $item = (object)['type' => 'static-page', 'reference' => $target->getKey()];
+    $result = Page::resolveMenuItem($item, 'http://localhost/zzz', $theme);
+
+    expect($result)->toBeArray()
+        ->and($result['url'])->toEndWith('/zzz')
+        ->and($result['url'])->not->toEndWith('/aaa');
 });
 
 it('returns null for static page menu item with invalid reference', function(): void {
