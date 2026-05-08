@@ -31,7 +31,7 @@ class Page extends \Igniter\Main\Template\Page
         $pages = PageModel::loadPages();
 
         if ($item->type == 'static-page') {
-            $pages->where('page_id', $item->reference);
+            $pages = $pages->where('page_id', $item->reference);
         }
 
         if ($pages->isEmpty()) {

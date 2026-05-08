@@ -23,7 +23,7 @@ use Override;
 class Extension extends BaseExtension
 {
     protected array $morphMap = [
-        'pages' => \Igniter\Pages\Models\Page::class,
+        'pages' => Page::class,
         'static_menus' => Menu::class,
         'static_menu_items' => MenuItem::class,
     ];
@@ -82,7 +82,7 @@ class Extension extends BaseExtension
             }
         });
 
-        Relation::morphMap(['pages' => \Igniter\Pages\Models\Page::class]);
+        Relation::morphMap(['pages' => Page::class]);
 
         $this->defineRoutes();
     }
