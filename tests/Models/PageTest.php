@@ -79,6 +79,31 @@ it('decodes HTML entities in content attribute', function(): void {
     expect($content)->toBe('Test & Content');
 });
 
+it('strips script tags from content attribute', function(): void {
+    $page = new Page(['content' => '<p>Safe</p><script>alert(1)</script>']);
+
+    expect($page->content)
+        ->toContain('<p>Safe</p>')
+        ->not->toContain('<script>');
+});
+
+it('strips script tags when saving page content', function(): void {
+    Page::$pagesCache = null;
+    Language::clearDefaultModel();
+    $language = Language::factory()->create(['status' => 1]);
+    $language->makeDefault();
+
+    $page = new Page;
+    $page->title = 'XSS Save Test';
+    $page->content = '<p>Safe</p><script>alert(1)</script>';
+    $page->status = true;
+    $page->save();
+
+    expect($page->fresh()->content)
+        ->toContain('<p>Safe</p>')
+        ->not->toContain('<script>');
+});
+
 it('sets default language id before saving', function(): void {
     Page::$pagesCache = null;
     Language::clearDefaultModel();

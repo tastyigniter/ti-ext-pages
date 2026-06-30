@@ -14,6 +14,7 @@ use Igniter\System\Models\Concerns\Switchable;
 use Igniter\System\Models\Language;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
+use Stevebauman\Purify\Facades\Purify;
 
 /**
  * Pages Model Class
@@ -122,6 +123,11 @@ class Page extends Model
 
     public function getContentAttribute($value): string
     {
-        return html_entity_decode((string)$value);
+        return html_entity_decode(Purify::clean((string)$value));
+    }
+
+    public function setContentAttribute($value): void
+    {
+        $this->attributes['content'] = Purify::clean((string)$value);
     }
 }
