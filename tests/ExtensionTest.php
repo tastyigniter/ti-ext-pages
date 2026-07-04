@@ -10,6 +10,7 @@ use Igniter\Main\Classes\Theme;
 use Igniter\Pages\Classes\Page;
 use Igniter\Pages\Classes\PageManager;
 use Igniter\Pages\Extension;
+use Igniter\Pages\Models\Page as PageModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
@@ -44,14 +45,19 @@ it('does not initialize page for non-matching route', function(): void {
     expect($result[0])->toBeNull();
 });
 
-it('returns page contents before rendering page', function(): void {
+it('returns sanitized page contents before rendering page', function(): void {
     $url = 'about-us';
     $controller = MainController::getController();
     $page = (new PageManager)->initPage($url);
 
+    PageModel::where('permalink_slug', 'about-us')->update([
+        'content' => '<p>About</p><script>alert(1)</script>',
+    ]);
+
     $result = Event::dispatch('main.page.beforeRenderPage', [$controller, $page]);
 
-    expect($result[0])->not->toBeEmpty();
+    expect($result[0])->not->toBeEmpty()
+        ->not->toContain('<script>');
 });
 
 it('returns menu item types', function(): void {

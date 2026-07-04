@@ -10,7 +10,8 @@
         }
     ],
     "require": {
-        "tastyigniter/core": "^v4.0"
+        "tastyigniter/core": "^v4.0",
+        "stevebauman/purify": "^6.0"
     },
     "require-dev": {
         "larastan/larastan": "^3.0",

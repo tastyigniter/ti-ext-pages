@@ -19,6 +19,7 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
 use Override;
+use Stevebauman\Purify\Facades\Purify;
 
 class Extension extends BaseExtension
 {
@@ -59,7 +60,7 @@ class Extension extends BaseExtension
 
         Event::listen('main.page.beforeRenderPage', function($controller, $page) {
             if ($contents = resolve(PageManager::class)->getPageContents($page)) {
-                return $contents;
+                return Purify::clean($contents);
             }
         });
 
