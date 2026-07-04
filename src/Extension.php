@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
 use Override;
 use Stevebauman\Purify\Facades\Purify;
+use Stevebauman\Purify\PurifyServiceProvider;
 
 class Extension extends BaseExtension
 {
@@ -38,6 +39,8 @@ class Extension extends BaseExtension
     public function register(): void
     {
         parent::register();
+
+        $this->app->register(PurifyServiceProvider::class);
 
         $this->app->singleton(MenuManager::class);
         $this->app->singleton(PageManager::class);
