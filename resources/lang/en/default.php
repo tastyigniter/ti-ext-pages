@@ -28,6 +28,10 @@ return [
     'label_meta_keywords' => 'Meta Keywords',
     'label_layout' => 'Layout',
     'label_navigation' => 'Hide in Navigation',
+    'label_editor' => 'Editor',
+    'text_editor_content' => 'Rich text',
+    'text_editor_builder' => 'Page builder',
+    'help_editor' => 'Use the page builder to compose the page from sections and blocks provided by the active theme.',
     'label_status' => 'Status',
 
     'help_permalink' => 'Use ONLY alpha-numeric lowercase characters, underscores or dashes and make sure it is unique GLOBALLY.',

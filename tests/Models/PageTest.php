@@ -136,6 +136,7 @@ it('configures page model correctly', function(): void {
             'page_id' => 'int',
             'language_id' => 'integer',
             'metadata' => 'json',
+            'sections' => 'array',
             'status' => 'boolean',
         ])
         ->and($page->relation)->toEqual([

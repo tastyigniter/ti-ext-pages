@@ -23,6 +23,8 @@ use Stevebauman\Purify\Facades\Purify;
  * @property null|int $language_id
  * @property string $title
  * @property string $content
+ * @property string $editor
+ * @property array|null $sections
  * @property string|null $meta_description
  * @property string|null $meta_keywords
  * @property Carbon $created_at
@@ -39,6 +41,13 @@ use Stevebauman\Purify\Facades\Purify;
  */
 class Page extends Model
 {
+    public const string EDITOR_CONTENT = 'content';
+
+    public const string EDITOR_BUILDER = 'builder';
+
+    /** Page code used for static pages in the page builder. */
+    public const string BUILDER_PAGE_CODE = 'static';
+
     use HasPermalink;
     use Sortable;
     use Switchable;
@@ -62,6 +71,7 @@ class Page extends Model
     protected $casts = [
         'language_id' => 'integer',
         'metadata' => 'json',
+        'sections' => 'array',
         'status' => 'boolean',
     ];
 
@@ -119,6 +129,22 @@ class Page extends Model
         }
 
         return $layout;
+    }
+
+    public function getEditorOptions(): array
+    {
+        return [
+            self::EDITOR_CONTENT => 'lang:igniter.pages::default.text_editor_content',
+            self::EDITOR_BUILDER => 'lang:igniter.pages::default.text_editor_builder',
+        ];
+    }
+
+    /**
+     * Whether the page is built with page builder sections instead of content.
+     */
+    public function usesPageBuilder(): bool
+    {
+        return $this->editor === self::EDITOR_BUILDER;
     }
 
     public function getContentAttribute($value): string

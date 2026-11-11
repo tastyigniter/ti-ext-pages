@@ -139,10 +139,32 @@ $config['form']['fields'] = [
 ];
 
 $config['form']['tabs']['fields'] = [
+    'editor' => [
+        'label' => 'lang:igniter.pages::default.label_editor',
+        'type' => 'radiotoggle',
+        'tab' => 'lang:igniter.pages::default.text_tab_edit',
+        'default' => 'content',
+        'comment' => 'lang:igniter.pages::default.help_editor',
+    ],
     'content' => [
         'type' => 'richeditor',
         'tab' => 'lang:igniter.pages::default.text_tab_edit',
         'cssClass' => 'richeditor-fluid',
+        'trigger' => [
+            'action' => 'show',
+            'field' => 'editor',
+            'condition' => 'value[content]',
+        ],
+    ],
+    'sections' => [
+        'type' => 'pagebuilder',
+        'tab' => 'lang:igniter.pages::default.text_tab_edit',
+        'pageCode' => 'static',
+        'trigger' => [
+            'action' => 'show',
+            'field' => 'editor',
+            'condition' => 'value[builder]',
+        ],
     ],
     'layout' => [
         'label' => 'lang:igniter.pages::default.label_layout',

@@ -7,12 +7,6 @@ parameters:
 			path: src/Classes/MenuManager.php
 
 		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Database\\Eloquent\\Collection\<int,Illuminate\\Database\\Eloquent\\Model\>\:\:mapWithKeys\(\) expects callable\(Illuminate\\Database\\Eloquent\\Model, int\)\: array\<int, string\>, Closure\(Igniter\\Pages\\Models\\Page\)\: non\-empty\-array\<int, string\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Classes/Page.php
-
-		-
 			message: '#^Access to an undefined property Igniter\\Pages\\Models\\MenuItem\:\:\$menu\.$#'
 			identifier: property.notFound
 			count: 1

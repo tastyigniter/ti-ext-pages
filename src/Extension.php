@@ -19,7 +19,6 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
 use Override;
-use Stevebauman\Purify\Facades\Purify;
 use Stevebauman\Purify\PurifyServiceProvider;
 
 class Extension extends BaseExtension
@@ -61,11 +60,7 @@ class Extension extends BaseExtension
             return resolve(PageManager::class)->initPage($url);
         });
 
-        Event::listen('main.page.beforeRenderPage', function($controller, $page) {
-            if ($contents = resolve(PageManager::class)->getPageContents($page)) {
-                return Purify::clean($contents);
-            }
-        });
+        Event::listen('main.page.beforeRenderPage', fn($controller, $page): ?string => resolve(PageManager::class)->renderPageContents($controller->getTheme(), $page));
 
         Event::listen('pages.menuitem.listTypes', fn(): array => [
             'static-page' => 'igniter.pages::default.menu.text_static_page',
