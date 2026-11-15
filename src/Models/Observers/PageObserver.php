@@ -11,8 +11,6 @@ class PageObserver
 {
     public function saving(Page $model): void
     {
-        if (is_null($model->language_id)) {
-            $model->language_id = Language::getDefault()->getKey();
-        }
+        $model->language_id ??= Language::getDefault()->getKey();
     }
 }
