@@ -32,6 +32,7 @@ class Pages extends AdminController
     public array $formConfig = [
         'name' => 'lang:igniter.pages::default.text_form_name',
         'model' => Page::class,
+        'recordName' => 'title',
         'request' => PageRequest::class,
         'create' => [
             'title' => 'lang:admin::lang.form.create_title',
